@@ -154,7 +154,7 @@ AWS_DEFAULT_ACL = None
 
 AWS_ACCESS_KEY_ID = os.environ['AKIAY2TFGLB57YCEFYON']
 AWS_SECRET_ACCESS_KEY = os.environ['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']
-AWS_STORAGE_BUCKET_NAME = os.getenv('wriber-store')
+AWS_STORAGE_BUCKET_NAME = os.environ['wriber-store']
 
 region = 'eu-north-1'
 
