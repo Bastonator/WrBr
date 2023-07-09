@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wriber</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <style>
+      .login-btn{
+      padding: 10px 7px;
+      background-color: white;
+      color: coral;
+      border-radius: 6px;
+      border-style: solid;
+      border-width: 1px;
+      border-color: white;
+      transition: 0.6s;
+      }
+
+      .login-btn:hover{
+      background-color: coral;
+      color: white;
+      }
+  </style>
+  </head>
+  <body>
+  {%if messages%}
+            {% for message in messages  %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+<div class="container">
+{% block content %}
+   <center>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+
+               <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+<div class="card" style="width: 25rem;">
+  <div class="card-header" style="height: 5rem; background-color: coral; color: white " align="left">
+    <h1>Login</h1>
+  </div>
+    <br>
+  <div class="form-group">
+    <input type="text" class="form-control" name="username" aria-describedby="emailHelp" placeholder="Username">
+  </div>
+    <br>
+  <div class="form-group">
+    <input type="password" class="form-control" name="password" placeholder="Password">
+  </div>
+    <br>
+  <input type="submit" value="Login" class="login-btn" style="padding: 10px 7px;">
+</div>
+                  Don't have an account <a href="{% url 'signup-user' %}">sign up</a> here...
+                </form>
+
+            </center>
+{% endblock %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
+

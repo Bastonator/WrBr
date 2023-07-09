@@ -1,0 +1,7 @@
+<div class="container">
+<form class="d-flex" role="search" method="POST" action="{% url 'searched-services' %}">
+  {% csrf_token %}
+  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched_services">
+  <button class="btn btn-outline-dark" type="submit">Search</button>
+</form>
+</div>

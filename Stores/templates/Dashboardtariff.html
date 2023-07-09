@@ -1,0 +1,44 @@
+{% extends 'WriberAccount.html' %}
+
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+        {% block content %}
+
+
+<br>
+
+         <h3>Your Tariffs</h3>
+
+        <ul>
+            <li style="display: inline;"><a href="{% url 'account-page' request.user.id %}"><button class="home-home-button">Home</button></a></li>
+            <li style="display: inline;"><a href="{% url 'orders' %}"><button class="home-product">Orders</button></a></li>
+            <li style="display: inline;"><a href="{% url 'dashboard-tariff' %}"><button class="home-product">Tariffs</button></a></li>
+        </ul>
+
+
+
+        <br>
+
+    {% if tariff_page %}
+        {% for tariff in tariff_page %}
+
+        <a href="{{ tariff.get_absolute_url }}">
+            {{ tariff.name }}
+        </a>
+
+        <a href="{% url 'modify-tariff' pk=tariff.pk %}">
+            Update
+        </a>
+
+        {% endfor %}
+    {% else %}
+         <a href="{% url 'add-tariff' %}">
+            <button class="tariff-add" style="width: 100px; height: 40px; border-style: solid; border-color: gray;
+             border-radius: 10px; border-width: 1px; background-color: white; transition: 0.5s;">Add Tariff</button>
+         </a>
+    {% endif %}
+
+
+
+{% endblock %}
+    </div>

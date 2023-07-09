@@ -1,0 +1,164 @@
+{% extends 'WriberPageView.html' %}
+
+<div class="container" style="display: inline-block; margin-left: 10px;">
+{% block content %}
+
+    {% if locations_forpage %}
+        {% for price in locations_forpage %}
+        <div class="container list-tariff" style="display: inline-block; float: left; width: 41%;
+            margin-left: 40px;">
+            <br>
+            <h6>Abuko: D{{ price.abuko }}</h6>
+
+            <h6>Brufut Taf:  D{{ price.brufut_Taf }}</h6>
+
+            <h6>Brufut Heights:  D{{ price.brufut_heights }}</h6>
+
+            <h6>Brikama:  D{{ price.brikama }}</h6>
+
+            <h6>Barra:  D{{ price.barra }}</h6>
+
+            <h6>Banjul:  D{{ price.banjul }}</h6>
+
+            <h6>Bakau:  D{{ price.bakau }}</h6>
+
+            <h6>Batokunku:  D{{ price.batokunku }}</h6>
+
+            <h6>Brusubi:  D{{ price.brusubi }}</h6>
+
+            <h6>Bijilo:  D{{ price.bijilo }}</h6>
+
+            <h6>Busumbala:  D{{ price.busumbala }}</h6>
+
+            <h6>Banjulinding:  D{{ price.banjulinding }}</h6>
+
+            <h6>Bundung:  D{{ price.bundung }}</h6>
+
+            <h6>Bakoteh:  D{{ price.bakoteh }}</h6>
+
+            <h6>Churchill Town:  D{{ price.churchill_Town }}</h6>
+
+            <h6>Coastal Road:  D{{ price.coastal_Road }}</h6>
+
+            <h6>Dippa Kunda:  D{{ price.dippa_kunda }}</h6>
+
+            <h6>Dalaba Estate :  D{{ price.dalaba_estate }}</h6>
+
+            <h6>Ebou Town:  D{{ price.ebou_town }}</h6>
+
+            <h6>Fajara:  D{{ price.fajara }}</h6>
+
+            <h6>Farato:  D{{ price.farato }}</h6>
+
+            <h6>Pipeline:  D{{ price.pipline }}</h6>
+
+            <h6>Faraba:  D{{ price.faraba }}</h6>
+
+            <h6>Fajikunda:  D{{ price.faji_kunda }}</h6>
+
+            <h6>Gunjur:  D{{ price.gunjur }}</h6>
+
+            <h6>Jabang:  D{{ price.jabang }}</h6>
+
+            <h6>Jimpex:  D{{ price.jimpex }}</h6>
+
+            <h6>Jamburr:  D{{ price.jamburr }}</h6>
+
+            <h6>Jambanjelly:  D{{ price.jambanjelly }}</h6>
+
+            <h6>Kanifing:  D{{ price.kanifing }}</h6>
+
+            <h6>Kartong:  D{{ price.kartong }}</h6>
+
+            <h6>Kotu:  D{{ price.kotu }}</h6>
+
+            <h6>Kololi:  D{{ price.kololi }}</h6>
+
+            <h6>Kerr Sering:  D{{ price.kerr_sering }}</h6>
+
+            <h6>Latriya:  D{{ price.latriya }}</h6>
+
+        </div>
+
+        <div class="container list-tariff" style="display: inline-block; float: left; width: 41%;
+            margin-left: 40px;">
+            <br>
+            <h6>Lamin: D{{ price.lamin }}</h6>
+
+            <h6>Latrikunda German: D{{ price.latrikunda_german }}</h6>
+
+            <h6>Latrikunda Sabigi: D{{ price.latrikunda_sabigi }}</h6>
+
+            <h6>Manjai: D{{ price.manjai }}</h6>
+
+            <h6>Mariamakunda: D{{ price.mariamakunda }}</h6>
+
+            <h6>Marakesa: D{{ price.marakesa }}</h6>
+
+            <h6>Madinabaa: D{{ price.madinabaa }}</h6>
+
+            <h6>Madinari: D{{ price.madinari }}</h6>
+
+            <h6>Madiyana: D{{ price.madiyana }}</h6>
+
+            <h6>Nema Su: D{{ price.nema_su }}</h6>
+
+            <h6>Old Jeshwang: D{{ price.old_jeshwang }}</h6>
+
+            <h6>New Jeshwang: D{{ price.new_jeshwang }}</h6>
+
+            <h6>Old Yundum: D{{ price.old_yundum }}</h6>
+
+            <h6>Paradise View: D{{ price.paradise_view }}</h6>
+
+            <h6>Paradise Estate: D{{ price.paradise_estate }}</h6>
+
+            <h6>Salaji: D{{ price.salaji }}</h6>
+
+            <h6>Sanchaba: D{{ price.sanchaba }}</h6>
+
+            <h6>Serrekunda: D{{ price.serekunda }}</h6>
+
+            <h6>Senegambia: D{{ price.senegambia }}</h6>
+
+            <h6>Sinchu: D{{ price.sinchu }}</h6>
+
+            <h6>Sukuta: D{{ price.sukuta }}</h6>
+
+            <h6>Sanyang: D{{ price.sanyang }}</h6>
+
+            <h6>TurnTable: D{{ price.turntable }}</h6>
+
+            <h6>Traffics Lights: D{{ price.traffic_lights }}</h6>
+
+            <h6>Senegambia: D{{ price.senegambia }}</h6>
+
+            <h6>Tallinding: D{{ price.tallinding }}</h6>
+
+            <h6>Tabokoto: D{{ price.tabokoto }}</h6>
+
+            <h6>Tipper Garage: D{{ price.tipper_garage }}</h6>
+
+            <h6>Tanji: D{{ price.tanji }}</h6>
+
+            <h6>Tujereng: D{{ price.tujereng }}</h6>
+
+            <h6>Wulinkama: D{{ price.wulinkama }}</h6>
+
+            <h6>Westfield: D{{ price.westfield }}</h6>
+
+            <h6>Yundum: D{{ price.yundum }}</h6>
+
+            <h6>Yuna: D{{ price.yuna }}</h6>
+
+            <h6>Yarambamba: D{{ price.yarambamba }}</h6>
+        </div>
+
+
+
+
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
+</div>

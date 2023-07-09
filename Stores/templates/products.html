@@ -1,0 +1,58 @@
+{% extends 'home.html' %}
+
+
+
+<br>
+
+<div class="container">
+{% block content %}
+
+
+<div class="row" style="margin-left: 30px;">
+
+    {% if all_products %}
+      {% for all_product in all_products %}
+
+    <div class="col" style="margin-top: 10px;">
+        <div class="card" style="width: 260px; border-radius: 2px;">
+            <a href="{{ all_product.get_absolute_url }}">
+                <img src="{{ all_product.image_url.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
+                height="245px;" width="260px;">
+            </a>
+                <div class="card-body">
+                    <div style="display: inline-block;">
+                        <a style="text-decoration: none; color: coral" href="{{ all_product.get_absolute_url }}">
+                            <h5 class="card-title">
+                                {{ all_product.product_name }}
+                            </h5>
+                        </a>
+                    </div>
+                    <div style="display: inline-block; margin-left: 1px;">
+                        <p class="card-text">D{{ all_product.product_price }}</p>
+                    </div>
+                        <p class="card-text">{{ all_product.stock_available }} in Stock</p>
+                        <P class="card-text">{{ all_product.product_description }}</P>
+                    <div class="container-fluid" style="background-color: WhiteSmoke;">
+                        <a style="text-decoration: none;" href="{{ all_product.page_owner.get_absolute_url }}">
+                            <small>
+                            {{ all_product.page_owner }}
+                            </small>
+                        </a>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+      {% endfor %}
+    {% endif %}
+
+
+</div>
+
+
+
+
+
+{% endblock %}
+</div>

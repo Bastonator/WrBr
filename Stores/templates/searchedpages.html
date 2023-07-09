@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wriber</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+      .card{
+         box-shadow: gray;
+         max-width: 100%;
+         text-align: left;
+         margin: auto;
+         border-color: lightsalmon;
+      }
+      .card:hover{
+         opacity: 0.9;
+         border-color: lightsalmon;
+    </style>
+  </head>
+  <body>
+
+<br>
+
+{% include 'searchbarforpages.html' %}
+
+<br>
+
+{% include 'searchnavbar.html' %}
+
+<br>
+<div class="container">
+{% block content %}
+
+
+
+
+
+{% if pages %}
+
+
+<div class="row" style="margin-left: 80px; margin-right: 1px;">
+
+    {% for page in pages %}
+     <div class="col">
+        <div class="card">
+            <a href="{% url 'wriber' page.id %}">
+                <img src="{{ page.theme_photo.url }}" class="card-img-top" alt="{{ page.page_name }}"
+                 height="300px;">
+            </a>
+            <div class="card-body">
+                <a style="text-decoration: none; color: coral" href="{% url 'wriber' page.id %}">
+                    <h5 class="card-title">
+                        {{ page.page_name }}
+                    </h5>
+                </a>
+                    <p class="card-text">{{ page.headline|safe }}</p>
+                    <p class="card-text">{{ page.highlight|safe }}</p>
+            </div>
+        </div>
+     </div>
+
+    {% endfor %}
+</div>
+
+{% else %}
+
+    Didn't quite catch that, can you repeat it.
+
+
+{% endif %}
+
+
+
+
+
+
+
+{% endblock %}
+</div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+

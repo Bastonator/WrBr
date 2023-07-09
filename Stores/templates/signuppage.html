@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wriber</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <style>
+
+  </style>
+  </head>
+  <body>
+  {%if messages%}
+            {% for message in messages  %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+
+<div class="container">
+
+
+{% block content %}
+
+{% if form.errors %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    The data you entered was invalid
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+
+{% endif %}
+<center>
+       <br>
+
+    <div class="card" style="width: 41rem; height: 40rem">
+        <div class="card-header" style="height: 5rem; background-color: coral; color: white" align="left">
+            <h1>Sign Up</h1>
+        </div>
+        <div class="container">
+            <form action="{% url 'signup-user' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+<center>
+<br>
+                {{form.first_name}}
+
+<br>
+                {{form.last_name}}
+<br>
+                {{form.username.label}}
+                {{form.username}}
+<br>
+                {{form.email}}
+    <div align="left">
+        <small style="color: darkslateblue;">Make sure you choose a valid email address, or you will face problems along the way!</small>
+    </div>
+<br>
+                {{form.password1.label}}
+                {{form.password1}}
+    <div align="left">
+        <small style="color: darkslateblue;">Keep it safe, it will be used to access the profile dashboard!</small>
+    </div>
+<br>
+                {{form.password2.label}}
+                {{form.password2}}
+
+</center>
+                <br>
+              <input type="submit" value="Sign Up" class="btn btn-outline-dark" style="padding: 10px 40px; width: 200px;">
+
+            </form>
+        </div>
+    </div>
+
+
+</center>
+
+    <br>
+{% endblock %}
+
+
+    </div>
+
+
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "POST",
+            "GET",
+            "PUT"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ]
+    }
+]
+
+
+
+
+
+  Those who are not able to load static files:
+add these following lines in settings.py
+AWS_S3_ENDPOINT_URL: 'https://sts.ap-south-1.amazonaws.com'
+AWS_S3_REGION_NAME = 'ap-south-1'
+
+change region code according to your account settings.
+
+For everyone getting problems logging in, all of your previous customers, tags, products, are all deleted. They all got deleted in the previous video. What you need to do is to create a super user. if your are NOT able to create a superuser: Go to signals.py, and change "group = Group.objects.get(name='customer')" to "group, created = Group.objects.get_or_create(name='customer')". Once you create superuser with "python manage.py createsuperuser", log in to the admin panel (/admin).  Go to the group section, create two groups with one being called (capitalisation  does matter for both), "customer" and "admin". I would give all permissions to the admin group just because.
+Lastly, go to part 6 in the tutorial at 10:09-11:36 and 12:16-end of video. I spent four days trying to figure this out but after nothing else working, so I hope my frustration doesn't go to y'all.
+
+
+Those who are facing image is not showing  issue
+
+Just upload (AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME)  in setting.py
+
+Then, go to your AWS S3 make the folder which contains image, make that folder to public
+
+That's it your good to go

@@ -1,0 +1,29 @@
+{% extends 'WriberAccount.html'%}
+
+<br>
+
+<div class="container">
+
+<br>
+<br>
+
+{% block content %}
+    <br>
+
+<center>
+    <h3 align="left">Update Your Page</h3>
+     <div class="container" style="width: 1000px; margin-left: 39px; justify-content: center;
+                            background-color: snow;">
+                 <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                      <div align="right">
+                        <input type="submit" value="Update Page" class="btn btn-outline-dark">
+                      </div>
+                </form>
+     </div>
+</center>
+
+
+{% endblock %}
+</div>

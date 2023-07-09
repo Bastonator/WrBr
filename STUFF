@@ -1,0 +1,661 @@
+{% url 'wriber' page.id %}
+
+
+
+<div class="row">
+
+    <a href="{% url 'wriber-xalen' page.id %}">
+      <div class="col" style="margin-top: 11px">
+          <div class="card" style="width: 29rem;">
+              <img src="" class="card-img-top" alt="page" height="350">
+          <div class="card-body">
+            <h5 class="card-title">{{ all_page.page_name }}</h5>
+            <p class="card-text">{{ all_page.page_description }}</p>
+          </div>
+        </div>
+      </div>
+    </a>
+
+        def __init__(self, user=None, *args, **kwargs):
+            self.page_owners = Usercreatedpage.objects.filter(user=user)
+            super(Product_infoForm, self).__init__(*args, **kwargs)
+            self.fields['page_owner'].queryset = self.page_owners
+
+        super(Product_infoForm, self).__init__(*args, **kwargs)
+        if self.instance:
+            self.fields['page_owner'].queryset = Usercreatedpage.objects.filter(Userproducts=self.instance)
+
+    def __init__(self, user_id, *args, **kwargs):
+        super(Product_infoForm, self).__init__(*args, **kwargs)
+        if user_id is not None:
+            self.fields['page_owner'].widget = forms.Select(choices = Usercreatedpage.objects.filter(user=user_id).values_list
+            ('page_name', 'page_name')),
+        else:
+            self.fields['page_owner'].widget = forms.Select(choices = Usercreatedpage.objects.all().values_list
+            ('page_name', 'page_name')),
+
+        def __init__(self, user_id, *args, **kwargs):
+        super(Product_infoForm, self).__init__(*args, **kwargs)
+        if user_id is not None:
+            self.fields['page_owner'].widget = forms.Select(
+                choices=Usercreatedpage.objects.filter(user=user_id)),
+        else:
+            self.fields['page_owner'].widget = forms.Select(
+                choices=Usercreatedpage.objects.all()),
+
+         def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        user = self.kwargs.get('user')
+        if user:
+            self.fields['page_owner'].queryset = user.pet_set.all()
+
+{% url 'dashboard-page' pk=page.id %}
+
+render(request, 'Addedservicealert.html')
+
+
+
+total_price = 0
+
+            for item in cart:
+                product = item['product']
+                total_price += product.price * int(item['quantity'])
+
+            order = form.save(commit=False)
+            order.created_by = request.user
+            order.paid_amount = total_price
+            order.save()
+
+            for item in cart:
+                product = item['product']
+                quantity = int(item['quantity'])
+                price = product.price * quantity
+
+                item = OrderItem.objects.create(order=order, product=product, price=price, quantity=quantity)
+
+            cart.clear()
+
+
+    if request.method == "POST":
+        form = OrderForm(request.POST)
+
+        if form.is_valid():
+
+            total_price = 0
+
+            for item in cart:
+                product = item['product']
+                total_price = total_price + product.product_price * int(item['quantity'])
+
+            order = form.save(commit=False)
+            order.created_by = request.user
+            order.paid_amount = total_price
+            order.save()
+
+            for item in cart:
+                product = item['product']
+                quantity = int(item['quantity'])
+                price = product.product_price * quantity
+
+                item = OrderItem.objects.create(order=order, product=product, price=price, quantity=quantity,)
+
+            cart.clear()
+
+            return redirect('home')
+
+
+
+class Ordered(models.Model):
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.order.first_name
+
+
+def CreateOrder(sender, instance, created, **kwargs):
+    if created:
+        order = Ordered(page=instance)
+        order.save()
+
+post_save.connect(CreateOrder, sender=Order)
+
+
+
+def view_order(request, pk):
+    view_orders = Order.objects.get(created_by_id=pk)
+    return render(request, 'OrderHistory.html', {'view_orders': view_orders})
+
+
+
+
+def orders_history(request):
+    if request.user.is_authenticated:
+        orders = Order.objects.filter(created_by=request.user)
+        return render(request, 'OrderHistory.html', {'orders': orders})
+    else:
+        return render(request, 'OrderHistory.html', {})
+
+
+                            <a href="{% url 'orders' %}">Orders</a>
+
+
+
+    <h2>All Orders</h2>
+
+    {% if orders %}
+        {% for order in orders %}
+            <a href="{{ order.get_absolute_url }}"> {{ order }} </a>
+        {% endfor %}
+    {% endif %}
+
+
+
+    item = OrderItem.objects.create(order=order.created_by, product=product, price=price, quantity=quantity,)
+
+
+def order_items(request, pk):
+    if request.user.is_authenticated:
+        view_orders = get_object_or_404(Ordered, pk=pk)
+        items = OrderItem.objects.filter(order_from_id=pk)
+        return render(request, 'orderdetail.html', {'view_orders': view_orders, 'items': items})
+    else:
+        return render(request, 'orderdetail.html', {})
+
+ Cannot resolve keyword 'created_by' into field. Choices are: id, order, order_from, order_from_id, order_id, price, product, product_id, quantity
+
+
+
+class Ordered(models.Model):
+    order = models.OneToOneField(Order, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.order.first_name
+
+
+def CreateOrder(sender, instance, created, **kwargs):
+    if created:
+        ordered = Ordered(order=instance)
+        ordered.save()
+
+post_save.connect(CreateOrder, sender=Order)
+
+
+
+{ order.get_absolute_url }
+
+% url 'order-detail'  order_from.pk %
+
+
+   {% else %}
+        <h3><strong>No Pages</strong></h3>
+            You have not created pages yet... <a href="{% url 'wriber-page-add' %}"> Create one </a> here...
+{% else %}
+        <h3><strong>No Orders</strong></h3>
+            You have no recent orders
+
+
+
+        <h3><strong>No Pages?...</strong></h3>
+        <a href="{% url 'wriber-page-add' %}"> <strong>Create one</strong> </a> here...
+
+
+id=pk
+created_by=request.user
+
+
+def order_items(request, pk):
+    if request.user.is_authenticated:
+        view_orders = get_object_or_404(Order, id=pk)
+        items = OrderItem.objects.filter(order_from_id=pk)
+        return render(request, 'orderdetail.html', {'view_orders': view_orders, 'items': items})
+    else:
+        return render(request, 'orderdetail.html', {})
+
+def order_items(request, pk):
+    if request.user.is_authenticated:
+        view_orders = get_object_or_404(Order, id=pk)
+        items = OrderItem.objects.filter(order_from=view_orders)
+        return render(request, 'orderdetail.html', {'view_orders': view_orders, 'items': items})
+    else:
+        return render(request, 'orderdetail.html', {})
+
+
+
+
+
+def order_items(request, pk):
+    if request.user.is_authenticated:
+        view_orders = Order.objects.filter().filter()
+        items = OrderItem.objects.filter(order_from_id=pk)
+        return render(request, 'orderdetail.html', {'view_orders': view_orders, 'items': items})
+    else:
+        return render(request, 'orderdetail.html', {})
+
+
+def order_history(request):
+    if request.user.is_authenticated:
+        orders = Order.objects.filter(created_by=request.user)
+        return render(request, 'OrderHistory.html', {'orders': orders})
+    else:
+        return render(request, 'OrderHistory.html', {})
+
+
+@login_required
+def checkout(request):
+    cart = Cart(request)
+
+    if request.method == "POST":
+        form = OrderForm(request.POST)
+
+        if form.is_valid():
+
+            total_price = 0
+
+            for item in cart:
+                product = item['product']
+                total_price = total_price + product.product_price * int(item['quantity'])
+
+            order_from = form.save(commit=False)
+            order_from.created_by = request.user
+            order_from.paid_amount = total_price
+            order_from.id = Order.merchant_id
+            order_from.save()
+
+            for item in cart:
+                product = item['product']
+                quantity = int(item['quantity'])
+                price = product.product_price * int(item['quantity'])
+
+                item = OrderItem.objects.create(order_from=order_from.created_by, product=product, price=price,
+                                                quantity=quantity, order_id=order_from.id)
+
+            cart.clear()
+
+            return redirect('home')
+    else:
+        form = OrderForm()
+
+    return render(request, 'checkout.html', {'cart': cart, 'form': form})
+
+
+            order_from = form.save(commit=False)
+            order_from.created_by = request.user
+            order_from.paid_amount = total_price
+            order_from.id = request.user.id
+            order_from.save()
+
+            for item in cart:
+                product = item['product']
+                quantity = int(item['quantity'])
+                price = product.product_price * int(item['quantity'])
+
+                item = OrderItem.objects.create(order_from=order_from.created_by, product=product, price=price,
+                                                    quantity=quantity, order_id=order_from)
+
+(created_by=request.user)
+
+
+
+ <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <a href="{{ item.get_absolute_url }}"> ODR{{ item.id }} {{ item.created_by }} {{ item.address }} {{ item.city }} {{ item.paid_amount }} {{ item.created_at }}  </a>
+        </div>
+
+
+
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+
+            {{ order_item.product.image_url }}
+            {{ order_item.order.created_by }}
+            {{ order_item.product }}
+            {{ order_item.price }}
+            {{ order_item.quantity }}
+            {{ order_item.order.created_at }}
+            This is part of: {{ order_item.order.id }}
+
+    </div>
+
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            i want {{ item.quantity }} of {{ item.product.product_name }}  for {{ item.price }}
+    </div>
+
+
+
+    display: inline-block;
+          justify-content: space-between;
+          flex-direction: column;
+
+
+          display: inline-block;
+
+
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'account-page' request.user.id %}">
+              <button class="btn btn-outline-danger">Home</button></a>
+            </li>
+            <li>
+                <a class="nav-link" href="{% url 'orders' %}">
+              <button class="btn btn-outline-danger">Orders</button></a>
+            </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wriber</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <a href="{% url 'home' %}"><h1>Wriber</h1></a>
+
+
+    <br>
+
+
+<div class="container">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <center>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                           <a href="{% url 'wriber-products-add' %}">Add Products</a>
+
+                           <a href="{% url 'wriber-services-add' %}">Add Services</a>
+
+          </div>
+
+            </center>
+    </nav>
+</div>
+{{ view_products.image_url.url }}
+
+blank=True,
+                                   null=True,
+
+
+
+
+
+class Tariffs(models.Model):
+    user = models.ForeignKey(User,
+                             related_name="tariff",
+                             on_delete=models.DO_NOTHING,
+                             default=1)
+
+
+class Tariff_query(models.Model):
+    tariff = models.OneToOneField(Tariffs, on_delete=models.CASCADE)
+
+
+class location_gambia(models.Model):
+    abuko = models.IntegerField()
+    brufut_Taf = models.IntegerField()
+    brufut_heights = models.IntegerField()
+    brikama = models.IntegerField()
+    barra = models.IntegerField()
+    banjul = models.IntegerField()
+    bakau = models.IntegerField()
+    batokunku = models.IntegerField()
+    brusubi = models.IntegerField()
+    bijilo = models.IntegerField()
+    busumbala = models.IntegerField()
+    banjulinding = models.IntegerField()
+    bundung = models.IntegerField()
+    bakoteh = models.IntegerField()
+    churchill_Town = models.IntegerField()
+    coastal_Road = models.IntegerField()
+    dippa_kunda = models.IntegerField()
+    dalaba_estate = models.IntegerField()
+    ebou_town = models.IntegerField()
+    fajara = models.IntegerField()
+    farato = models.IntegerField()
+    pipline = models.IntegerField()
+    faraba = models.IntegerField()
+    faji_kunda = models.IntegerField()
+    gunjur = models.IntegerField()
+    jabang = models.IntegerField()
+    jimpex = models.IntegerField()
+    jamburr = models.IntegerField()
+    jambanjelly = models.IntegerField()
+    kanifing = models.IntegerField()
+    kartong = models.IntegerField()
+    kotu = models.IntegerField()
+    kololi = models.IntegerField()
+    kerr_sering = models.IntegerField()
+    latriya = models.IntegerField()
+    lamin = models.IntegerField()
+    latrikunda_german = models.IntegerField()
+
+    user = models.ForeignKey(User, related_name="user_tariff", on_delete=models.DO_NOTHING, default=1)
+    tariff_owner = models.ForeignKey(Tariffs, related_name="page_tariff", on_delete=models.DO_NOTHING, blank=True,
+                                     null=True, default=1)
+
+
+
+
+#the application ordering system will never work till i make every 'orderitem' specific to every order. ITS OFFICIALLY DONE!!!!
+
+
+<ul>
+            <li style="display: inline;"><a href=""><button class="home-home-button">Home</button></a></li>
+            <li style="display: inline;"><a href="{% url 'dashboard-tariff' %}"><button class="home-product">Tariffs</button></a></li>
+    </ul>
+
+
+
+ALL_FIELDS = '__all__'
+if fields and fields != ALL_FIELDS and not instance(fields, (list, tuple)):
+    raise TypeError(
+        'The `fields` option must be a list or tuple or "__all__".'
+        'Got %s.' % type(fields).__name__
+    )
+
+
+    class   Meta:
+        model = Topping
+        extra_fields = ['pizza']
+
+    def get_field_names(self, declared_fields, info):
+        expanded_fields = super(ToppingSerializer, self).get_field_names(declared_fields, info)
+
+        if getattr(self.Meta, 'extra_fields', None):
+            return expanded_fields + self.Meta.extra_fields
+        else:
+            return expanded_fields
+
+
+
+{% include 'WriberTariffView.html' %}
+
+
+
+
+
+
+<div class="row">
+
+    {% if all_pages %}
+      {% for all_page in all_pages %}
+
+    <div class="col">
+        <div class="card h-100" style="border-color: lightsalmon;">
+        <a href="{{ all_page.get_absolute_url }}">
+            <img src="" class="card-img-top" alt="{{ all_page.page_name }}">
+        </a>
+            <div class="card-body">
+                    <a style="text-decoration: none; color: coral" href="{{ all_page.get_absolute_url }}">
+                        <h5 class="card-title">{{ all_page.page_name }}
+                        </h5>
+                    </a>
+                    <p class="card-text">{{ all_page.page_description}}</p>
+                    <p class="card-text">{{ all_page.location }}</p>
+            </div>
+        </div>
+    </div>
+
+
+      {% endfor %}
+    {% endif %}
+
+
+</div>
+
+sudo pip3 install psycopg2
+
+python setup.py install OR TRY python3 setup.py install
+
+
+
+
+{
+    "Version": "2008-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowPublicRead",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "*"
+            },
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::dili-tester-filestr1/*"
+        }
+    ]
+}
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+<CORSRule>
+    <AllowedOrigin>*</AllowedOrigin>
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedMethod>POST</AllowedMethod>
+    <AllowedMethod>PUT</AllowedMethod>
+    <AllowedHeader>*</AllowedHeader>
+</CORSRule>
+</CORSConfiguration>
+
+{
+  "Id": "Policy1631681912120",
+  "Version": "2012-10-17",
+  "Statement": [
+{
+  "Sid": "Stmt1631681911100",
+  "Action": [
+    "s3:GetObject"
+  ],
+  "Effect": "Allow",
+  "Resource": "arn:aws:s3:::your_bucket_name/*",
+  "Principal": "*"
+}
+]
+}
+
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+    )
+
+    S3_USE_SIGV4 = True
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+upload_to="images/"
+
+
+<CORSConfiguration>
+ <CORSRule>
+   <AllowedOrigin>*</AllowedOrigin>
+   <AllowedMethod>PUT</AllowedMethod>
+   <AllowedMethod>POST</AllowedMethod>
+   <AllowedMethod>GET</AllowedMethod>
+   <MaxAgeSeconds>3000</MaxAgeSeconds>
+   <AllowedHeader>*</AllowedHeader>
+ </CORSRule>
+</CORSConfiguration>
+
+
+
+ role="search" method="POST" action="{% url 'searched-pages' %}"
+
+
+ products = Product_info.objects.annotate(Q(rank=SearchRank(vector, query),)).annotate(headline=description_headline).annotate(highlight=price_headline).filter(rank__gte=0.01).order_by('-rank')
+
+
+AWS_ACCESS_KEY_ID = 'AKIAY2TFGLB53P5IZRPN'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'wriber-store'
+
+width: 281px;
+                 margin-left: 1px;
+                  top: 20%; left: 10.5%;
+
+
+
+
+
+[program:gunicorn]
+directory=/home/ubuntu/PagesaApp
+command=/home/ubuntu/env/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/PagesaApp/app.sock PagesaApp.wsgi:application
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/gunicorn/gunicorn.err.log
+stdout_logfile=/var/log/gunicorn/gunicorn.out.log
+startsecs = 0
+
+[group:guni]
+programs:gunicorn
+
+
+
+server{
+
+	listen 80;
+	server_name 13.53.103.236;
+
+
+	location / {
+
+		include proxy_params;
+		proxy_pass http://unix:/home/ubuntu/PagesaApp/app.sock;
+	}
+
+}
+
+
+
+
+Isn't root in nginx a security issue also we can change folders permission to www-data so nginx could read files or we can rename www-data with current logged in user, I feel root is not the most secure way to go.
+
+1
+
+
+Reply
+
+
+Cloud With Django
+·
+
+1 reply
+@cloudwithdjango
+@cloudwithdjango
+2 weeks ago (edited)
+Hi,
+
+Thank you for your question.
+
+Not necessarily, it all depends on your architecture and how many users you will have working on your application. Besides, the idea is to get you started with deployment. There are plenty of other things that I would've liked to cover, but it would've made for too much of a long video in one. So, if you would like to add some extra things, you will need to do some additional research on-top of this.

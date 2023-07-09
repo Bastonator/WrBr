@@ -1,0 +1,77 @@
+{% extends 'WriberAccount.html' %}
+
+<div class="container">
+    {% block content %}
+<br>
+
+    <h3>Your Orders</h3>
+
+        <ul>
+            <li style="display: inline;"><a href="{% url 'account-page' request.user.id %}"><button class="home-home-button">Home</button></a></li>
+            <li style="display: inline;"><a href="{% url 'orders' %}"><button class="home-product">Orders</button></a></li>
+            <li style="display: inline;"><a href="{% url 'dashboard-tariff' %}"><button class="home-product">Tariffs</button></a></li>
+        </ul>
+
+    <h2>All Orders</h2>
+
+    {% if order_items %}
+
+
+<div class="container mt-6">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10">
+                <div class="rounded">
+                    <div class="table-responsive table-borderless">
+                        <table class="table" style="border-color: coral;">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        <div class="toggle-btn">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </th>
+                                    <th>Order #</th>
+                                    <th>Image</th>
+                                    <th>Customer</th>
+                                    <th>Porduct Name</th>
+                                    <th>Address&City</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Date Ordered</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            {% for order_item in order_items %}
+                            <tbody class="table-body">
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                        <div class="toggle-btn">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </td>
+                                    <td>ODR{{ order_item.order.id }}</td>
+                                    <td><img src="{{ order_item.product.image_url.url }}" width="100" height="100"></td>
+                                    <td>{{ order_item.order.created_by }}</td>
+                                    <td>{{ order_item.product.product_name }}</td>
+                                    <td>{{ order_item.order.address }}{{ order_item.order.city }}</td>
+                                    <td>{{ order_item.quantity }}</td>
+                                    <td>${{ order_item.price }}</td>
+                                    <td>{{ order_item.order.created_at }}</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+    {% else %}
+    <br>
+        <h5>You have not recieved any others</h5>
+    {% endif %}
+    {% endblock %}
+</div>

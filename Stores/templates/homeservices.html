@@ -1,0 +1,35 @@
+{% include 'home.html' %}
+
+
+<div class="container">
+
+{% block content %}
+
+
+    <div class="row">
+
+{% for service in Services %}
+   {% if service.image_url %}
+<div class="col" style="margin-top: 11px">
+  <a href="{% url 'wriber-viewservices' service.id %}">
+    <div class="card h-100" style="width: 18rem;">
+      <img src="{{ service.image_url.url }}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ service.service_name }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ service.service_price }}</h6>
+        <p class="card-text">LOCATED AT {{ service.location }}</p>
+        <a href="{% url 'wriber-viewpage' request.user.id %}" class="card-link">PageName</a>
+        <a href="#" class="card-link">Buy Now</a>
+      </div>
+    </div>
+  </a>
+</div>
+
+  {% endif %}
+{% endfor %}
+    </div>
+
+
+{% endblock %}
+
+   </div>

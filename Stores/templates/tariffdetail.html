@@ -1,0 +1,189 @@
+{% extends 'WriberAccount.html' %}
+
+
+    <div class="container">
+        {% block content %}
+
+
+<br>
+
+         <h3>Your Tariffs</h3>
+
+        <ul>
+            <li style="display: inline;"><a href="{% url 'account-page' request.user.id %}"><button class="home-home-button">Home</button></a></li>
+            <li style="display: inline;"><a href="{% url 'orders' %}"><button class="home-product">Orders</button></a></li>
+            <li style="display: inline;"><a href="{% url 'dashboard-tariff' %}"><button class="home-product">Tariffs</button></a></li>
+        </ul>
+
+        {% if detail %}
+            {% for location in detail %}
+
+        <div class="container list-tariff" style="display: inline-block; float: left; width: 41%;
+            margin-left: 40px;">
+            <br>
+
+                <br>
+            <h6>Abuko: D{{ location.abuko }}</h6>
+
+            <h6>Brufut Taf:  D{{ location.brufut_Taf }}</h6>
+
+            <h6>Brufut Heights:  D{{ location.brufut_heights }}</h6>
+
+            <h6>Brikama:  D{{ location.brikama }}</h6>
+
+            <h6>Barra:  D{{ location.barra }}</h6>
+
+            <h6>Banjul:  D{{ location.banjul }}</h6>
+
+            <h6>Bakau:  D{{ location.bakau }}</h6>
+
+            <h6>Batokunku:  D{{ location.batokunku }}</h6>
+
+            <h6>Brusubi:  D{{ location.brusubi }}</h6>
+
+            <h6>Bijilo:  D{{ location.bijilo }}</h6>
+
+            <h6>Busumbala:  D{{ location.busumbala }}</h6>
+
+            <h6>Banjulinding:  D{{ location.banjulinding }}</h6>
+
+            <h6>Bundung:  D{{ location.bundung }}</h6>
+
+            <h6>Bakoteh:  D{{ location.bakoteh }}</h6>
+
+            <h6>Churchill Town:  D{{ location.churchill_Town }}</h6>
+
+            <h6>Coastal Road:  D{{ location.coastal_Road }}</h6>
+
+            <h6>Dippa Kunda:  D{{ location.dippa_kunda }}</h6>
+
+            <h6>Dalaba Estate :  D{{ location.dalaba_estate }}</h6>
+
+            <h6>Ebou Town:  D{{ location.ebou_town }}</h6>
+
+            <h6>Fajara:  D{{ location.fajara }}</h6>
+
+            <h6>Farato:  D{{ location.farato }}</h6>
+
+            <h6>Pipeline:  D{{ location.pipline }}</h6>
+
+            <h6>Faraba:  D{{ location.faraba }}</h6>
+
+            <h6>Fajikunda:  D{{ location.faji_kunda }}</h6>
+
+            <h6>Gunjur:  D{{ location.gunjur }}</h6>
+
+            <h6>Jabang:  D{{ location.jabang }}</h6>
+
+            <h6>Jimpex:  D{{ location.jimpex }}</h6>
+
+            <h6>Jamburr:  D{{ location.jamburr }}</h6>
+
+            <h6>Jambanjelly:  D{{ location.jambanjelly }}</h6>
+
+            <h6>Kanifing:  D{{ location.kanifing }}</h6>
+
+            <h6>Kartong:  D{{ location.kartong }}</h6>
+
+            <h6>Kotu:  D{{ location.kotu }}</h6>
+
+            <h6>Kololi:  D{{ location.kololi }}</h6>
+
+            <h6>Kerr Sering:  D{{ location.kerr_sering }}</h6>
+
+            <h6>Latriya:  D{{ location.latriya }}</h6>
+
+        </div>
+
+        <div class="container list-tariff" style="display: inline-block; float: left; width: 41%;
+            margin-left: 40px;">
+            <br>
+            <h6>Lamin: D{{ location.lamin }}</h6>
+
+            <h6>Latrikunda German: D{{ location.latrikunda_german }}</h6>
+
+            <h6>Latrikunda Sabigi: D{{ location.latrikunda_sabigi }}</h6>
+
+            <h6>Manjai: D{{ location.manjai }}</h6>
+
+            <h6>Mariamakunda: D{{ location.mariamakunda }}</h6>
+
+            <h6>Marakesa: D{{ location.marakesa }}</h6>
+
+            <h6>Madinabaa: D{{ location.madinabaa }}</h6>
+
+            <h6>Madinari: D{{ location.madinari }}</h6>
+
+            <h6>Madiyana: D{{ location.madiyana }}</h6>
+
+            <h6>Nema Su: D{{ location.nema_su }}</h6>
+
+            <h6>Old Jeshwang: D{{ location.old_jeshwang }}</h6>
+
+            <h6>New Jeshwang: D{{ location.new_jeshwang }}</h6>
+
+            <h6>Old Yundum: D{{ location.old_yundum }}</h6>
+
+            <h6>Paradise View: D{{ location.paradise_view }}</h6>
+
+            <h6>Paradise Estate: D{{ location.paradise_estate }}</h6>
+
+            <h6>Salaji: D{{ location.salaji }}</h6>
+
+            <h6>Sanchaba: D{{ location.sanchaba }}</h6>
+
+            <h6>Serrekunda: D{{ location.serekunda }}</h6>
+
+            <h6>Senegambia: D{{ location.senegambia }}</h6>
+
+            <h6>Sinchu: D{{ location.sinchu }}</h6>
+
+            <h6>Sukuta: D{{ location.sukuta }}</h6>
+
+            <h6>Sanyang: D{{ location.sanyang }}</h6>
+
+            <h6>TurnTable: D{{ location.turntable }}</h6>
+
+            <h6>Traffics Lights: D{{ location.traffic_lights }}</h6>
+
+            <h6>Senegambia: D{{ location.senegambia }}</h6>
+
+            <h6>Tallinding: D{{ location.tallinding }}</h6>
+
+            <h6>Tabokoto: D{{ location.tabokoto }}</h6>
+
+            <h6>Tipper Garage: D{{ location.tipper_garage }}</h6>
+
+            <h6>Tanji: D{{ location.tanji }}</h6>
+
+            <h6>Tujereng: D{{ location.tujereng }}</h6>
+
+            <h6>Wulinkama: D{{ location.wulinkama }}</h6>
+
+            <h6>Westfield: D{{ location.westfield }}</h6>
+
+            <h6>Yundum: D{{ location.yundum }}</h6>
+
+            <h6>Yuna: D{{ location.yuna }}</h6>
+
+            <h6>Yarambamba: D{{ location.yarambamba }}</h6>
+
+                <a href="{% url 'update-tariff' pk=location.pk %}">
+                    <button class="mod" style="width: 140px; height: 40px; border-radius: 9px; border-style: solid;
+                     border-color: coral; border-width: 1px; transition: 0.7s;">
+                        Modify
+                    </button>
+                </a>
+        </div>
+        <br>
+            {% endfor %}
+        {% else %}
+            <a href="{% url 'add-new-tariff' %}">
+                Add
+            </a>
+        {% endif %}
+<br>
+
+
+{% endblock %}
+    </div>

@@ -1,0 +1,1139 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Item</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col"><b>Item</b></th>
+                  <th scope="col"><b>Price</b></th>
+                  <th scope="col"><b>Quantity</b></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <th scope="row">Product Image</th>
+                  <td>{{ item.product.product_name }}</td>
+                  <td>{{ item.product.product_price }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td><a href="{% url 'remove-from-cart' pk=item.id %}">Remove from Cart</a></td>
+                </tr>
+              </tbody>
+            </table>
+
+
+
+
+        <div class="pc-4 py-4 mb-2 bg-teal-100">
+            <b>{{ item.product.product_name }}
+                <br>
+            <b>
+                {{ item.product.product_price }}
+            </b>
+                <br>
+            <b>{{ item.quantity }}
+
+                <a href="{% url 'change-quantity' pk=item.id %}?action=increase">+</a>
+                <br>
+                <a href="{% url 'change-quantity' pk=item.id %}?action=decrease">-</a>
+            <br>
+                <a href="{% url 'remove-from-cart' pk=item.id %}">Remove from Cart</a>
+        </div>
+
+
+<div class="box-element">
+    <div class="cart-row">
+        <div style="flex:2"></div>
+        <div style="flex:2"><b>Item</b></div>
+        <div style="flex:1"><b>Price</b></div>
+        <div style="flex:1"><b>Quantity</b></div>
+    </div>
+</div>
+
+
+    {% for item in cart %}
+
+
+<div class="cart-row">
+    <div style="flex:2">
+        <img class="row=image" src="">
+    </div>
+    <div style="flex:2">
+        {{ item.product.product_name }}
+    </div>
+    <div style="flex:1">
+        {{ item.product.product_price }}
+    </div>
+    <div style="flex:1">
+        <p class="quantity">
+            {{ item.quantity }}
+            <a href="{% url 'change-quantity' pk=item.id %}?action=increase">+</a>
+            <a href="{% url 'change-quantity' pk=item.id %}?action=decrease">-</a>
+        </p>
+    </div>
+
+
+
+
+</div>
+
+
+
+
+<section class="h-100" style="background-color: #eee;">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+          <div>
+            <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i
+                  class="fas fa-angle-down mt-1"></i></a></p>
+          </div>
+        </div>
+
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">Basic T-shirt</p>
+                <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="form1" min="0" name="quantity" value="2" type="number"
+                  class="form-control form-control-sm" />
+
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">$499.00</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">Basic T-shirt</p>
+                <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="form1" min="0" name="quantity" value="2" type="number"
+                  class="form-control form-control-sm" />
+
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">$499.00</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">Basic T-shirt</p>
+                <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="form1" min="0" name="quantity" value="2" type="number"
+                  class="form-control form-control-sm" />
+
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">$499.00</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">Basic T-shirt</p>
+                <p><span class="text-muted">Size: </span>M <span class="text-muted">Color: </span>Grey</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="form1" min="0" name="quantity" value="2" type="number"
+                  class="form-control form-control-sm" />
+
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">$499.00</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-body p-4 d-flex flex-row">
+            <div class="form-outline flex-fill">
+              <input type="text" id="form1" class="form-control form-control-lg" />
+              <label class="form-label" for="form1">Discound code</label>
+            </div>
+            <button type="button" class="btn btn-outline-warning btn-lg ms-3">Apply</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <button type="button" class="btn btn-warning btn-block btn-lg">Proceed to Pay</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section class="h-100" style="background-color: #eee;">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+        </div>
+
+      {% for item in cart %}
+
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">{{ item.product.product_name }}</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <a href="{% url 'change-quantity' pk=item.id %}?action=increase">
+                    <button class="btn btn-link px-2"></button>
+                </a>
+                    <p class="quantity">
+                        {{ item.quantity }}
+                    </P>
+                <a href="{% url 'change-quantity' pk=item.id %}?action=decrease">
+                    <button class="btn btn-link px-2"></button>
+                </a>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">{{ item.product.product_price }}</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                <a href="{% url 'remove-from-cart' pk=item.id %}" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+
+          <strong>Total Cost: </strong>   {{ cart.get_total_cost }}
+
+        <div class="card">
+          <div class="card-body">
+            <button type="button" class="btn btn-warning btn-block btn-lg">Check Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<h1>
+                Ur Cart
+</h1>
+
+
+    <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col"><b>Item</b></th>
+                  <th scope="col"><b>Price</b></th>
+                  <th scope="col"><b>Quantity</b></th>
+                </tr>
+              </thead>
+
+    {% for item in cart %}
+
+        <tbody>
+                <tr>
+                  <th scope="row">Product Image</th>
+                  <td>{{ item.product.product_name }}</td>
+                  <td>{{ item.product.product_price }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td><a href="{% url 'remove-from-cart' pk=item.id %}">Remove from Cart</a></td>
+                </tr>
+        </tbody>
+    </table>
+
+
+
+    {% endfor %}
+
+    <strong>Total Cost: </strong>   {{ cart.get_total_cost }}
+
+    <hr>
+
+    <a href="" class="btn btn-outline-dark"> Checkout</a>
+
+
+
+nav{
+    width: 100%;
+  }
+  .navbar{
+    float: left
+  }
+  .search{
+    float: right;
+  }
+  .clearfix{
+    clear: both;
+  }
+<div class="clearfix"></div>
+
+
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wriber</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+      nav{
+        margin-left: 10px
+      }
+      .navbar{
+        float: left
+      }
+      .search{
+        float: right;
+        width: 70%;
+        margin-top: 20px
+      }
+      .clearfix{
+        clear: both;
+      }
+  </style>
+  </head>
+  <body>
+
+{% block content %}
+
+<nav class="navbar navbar-light bg-light">
+    <a href="{% url 'home' %}"><h1> Wriber </h1></a>
+</nav>
+
+
+<div class="container">
+    <form class="d-flex" role="search" method="POST" action="{% url 'searched-pages' %}">
+      {% csrf_token %}
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched_pages">
+      <button class="btn btn-outline-dark" type="submit">Search</button>
+    </form>
+</div>
+<div class="clearfix"></div>
+
+{% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+<div class="container mt-5">
+        <div class="d-flex justify-content-center row">
+            <div class="col-md-10">
+                <div class="rounded">
+                    <div class="table-responsive table-borderless">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        <div class="toggle-btn">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </th>
+                                    <th>Order #</th>
+                                    <th>Image</th>
+                                    <th>Customer</th>
+                                    <th>Porduct Name</th>
+                                    <th>Address&City</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th>Date Ordered</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                        <div class="toggle-btn">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </td>
+                                    <td>ODR{{ order_item.order.id }}</td>
+                                    <td>{{ order_item.product.image_url }}</td>
+                                    <td>{{ order_item.order.created_by }}</td>
+                                    <td>{{ order_item.product.product_name }}</td>
+                                    <td>{{ item.address }}{{ item.city }}</td>
+                                    <td>{{ order_item.quantity }}</td>
+                                    <td>${{ order_item.price }}</td>
+                                    <td>{{ order_item.order.created_at }}</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                        <div class="toggle-btn">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </td>
+                                    <td>#SO-13453</td>
+                                    <td>Aartsen van</td>
+                                    <td><span class="badge badge-info">Confirmed</span></td>
+                                    <td>$3454.00</td>
+                                    <td>Yesterday</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                        <div class="toggle-btn">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </td>
+                                    <td>#SO-13498</td>
+                                    <td>Trashes Habard</td>
+                                    <td><span class="badge badge-danger">Partially shipped</span></td>
+                                    <td>$6274.00</td>
+                                    <td>May 12,2020</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                                <tr class="cell-1">
+                                    <td class="text-center">
+                                        <div class="toggle-btn">
+                                            <div class="inner-circle"></div>
+                                        </div>
+                                    </td>
+                                    <td>#SO-16499</td>
+                                    <td>Samban Hubart</td>
+                                    <td><span class="badge badge-success">Fullfilled</span></td>
+                                    <td>$6375.00</td>
+                                    <td>May 11,2020</td>
+                                    <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <title>
+    Argon Dashboard by Creative Tim
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../assets/css/argon-dashboard.css" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show bg-gray-100">
+
+  <h1>Hello, world!</h1>
+
+   <a style="width: 10%" href="{% url 'home' %}"><h3><strong> Wriber </strong></h3></a>
+
+
+   <div class="nav-wrapper position-relative end-0">
+       <ul class="nav nav-pills nav-fill p-1" role="tablist">
+          <li class="nav-item">
+             <a class="nav-link mb-0 px-0 py-1 active" data-bs-toggle="tab" href="{% url 'account-page' request.user.id %}" role="tab" aria-controls="home" aria-selected="true">
+             Home
+             </a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#dashboard-tabs-simple" role="tab" aria-controls="dashboard" aria-selected="false">
+             Order
+             </a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="{% url 'orders' %}" role="tab" aria-controls="dashboard" aria-selected="false">
+              PageData
+             </a>
+          </li>
+        </ul>
+   </div>
+
+
+    <div class="container">
+        {% block content %}
+<br>
+
+
+        {% if pages %}
+
+                 {% for page in pages %}
+
+                         <a href="{% url 'dashboard-page' page.id %}" >{{ page }}</a>
+
+                 {% endfor %}
+                {% else %}
+                        <h3><strong>No Pages?...</strong></h3>
+                        <a href="{% url 'wriber-page-add' %}"> <strong>Create one</strong> </a> here...
+
+                {% endif %}
+
+                <br>
+
+
+        <div class="row">
+                {% if orders %}
+
+                <h1>All recent orders</h1>
+                    {% for item in orders %}
+                    <div class="col-md-6" style="margin-top: 11px">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">ODR{{ item.id }}</h5>
+                                <p class="card-text">{{ item.address }} from {{ item.city }}</p>
+                                <p class="card-text">${{ item.paid_amount }}</p>
+                            </div>
+                            <div class="card-body">
+                                <a href="{{ item.get_absolute_url }}" class="btn btn-outline-primary">View Order</a>
+                                <h5 class="card-title">{{ item.created_at }}</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                {% endif %}
+        </div>
+
+        {% endblock %}
+    </div>
+
+    <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+
+  <!-- Plugin for the charts, full documentation here: https://www.chartjs.org/ -->
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <script src="../assets/js/plugins/Chart.extension.js"></script>
+
+  <!-- Control Center for Argon Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/argon-dashboard.min.js"></script>
+</body>
+
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <title>
+    Argon Dashboard 2 by Creative Tim
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
+</head>
+
+<body class="g-sidenav-show   bg-gray-100">
+      <div class="min-height-300 bg-primary position-absolute w-100"></div>
+      <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+        <div class="sidenav-header">
+          <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+          <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html " target="_blank">
+            <img src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+            <span class="ms-1 font-weight-bold">Argon Dashboard 2</span>
+          </a>
+        </div>
+        <hr class="horizontal dark mt-0">
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link " href="../pages/dashboard.html">
+                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="../pages/tables.html">
+                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Tables</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="../pages/billing.html">
+                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                  <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                </div>
+                <span class="nav-link-text ms-1">Billing</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+</body>
+
+
+
+<div class="btn-group">
+    <a href="{% url 'wriber-page' request.user.id %}"><button type="button" class="btn btn-light" >Action</button></a>
+  <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="visually-hidden">Toggle Dropdown</span>
+  </button>
+
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{% url 'logout-user' %}">Action</a></li>
+  </ul>
+
+
+
+
+<button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden"></span>
+                       </button>
+                       <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'logout-user' %}">Log Out</a></li>
+                       </ul>
+
+
+    <a style="text-decoration: none;" href="{% url 'wriber-page' request.user.id %}">Profile</a>
+                   <a style="text-decoration: none;" href="{% url 'logout-user' %}">Log Out</a>
+
+
+
+                        <div class="btn-group">
+                            <a href="{% url 'wriber-page' request.user.id %}"><button type="button" class="btn btn-light" >Profile</button></a>
+                              <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{% url 'logout-user' %}">Action</a></li>
+                              </ul>
+                        </div>
+
+
+
+<div class="dropdown">
+    <a href=""> <strong>Profile</strong> </a>
+    <div class="styled-select">
+        <select id="select" name="select">
+            <option value="Log Out">Log Out</option>
+        </select>
+    </div>
+</div>
+
+
+
+    <div class="dropdown">
+                       <button class="dropbtn">
+                           Dropdown
+                       </button>
+                       <div class="dropdown-content">
+                           <a href="{% url 'wriber-page' request.user.id %}">Profile</a>
+                           <a href="{% url 'logout-user' %}">Log Out</a>
+                       </div>
+                   </div>
+
+<div class="col-md-1 col-lg-1 col-xl-1">
+                <a href="{% url 'remove-from-cart' pk=item.id %}" class="text-danger">
+                </a>
+              </div>
+
+    class="login-btn"
+
+
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wriber</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <style>
+    .increase-btn{
+    border: none;
+    border-radius: 15px;
+    border-width: 0px;
+    width: 20px;
+    background-color: coral;
+    }
+    .decrease-btn{
+    border: none;
+    border-radius: 15px;
+    border-width: 0px;
+    width: 20px;
+    background-color: coral;
+    }
+  </style>
+  </head>
+  <body>
+                            {%if messages%}
+            {% for message in messages  %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+<br>
+
+{% include 'searchbarforpages.html' %}
+
+<br>
+
+
+<nav class="navbar navbar-expand-lg bg-body-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">All</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'products' %}">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'services' %}">Services</a>
+        </li>
+      </ul>
+         <div class="container" align="right" style="margin-left: 900px">
+             <nav class="navbar navbar-light bg-body-light">
+                 {% if user.is_authenticated %}
+               <div class="collapse navbar-collapse"  id="navbarSupportedContent2">
+                       <a style="margin-right: 20px; text-decoration: none;" href="{% url 'cart-view' %}">
+                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                           </svg>
+                           ({{ cart|length }})
+                       </a>
+                        <a style="text-decoration: none;" href="{% url 'wriber-page' request.user.id %}">Profile</a>
+               </div>
+                  {% else %}
+              <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'signup-user' %}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'login-user' %}">Login</a>
+                </li>
+                  {% endif %}
+              </ul>
+            </nav>
+         </div>
+        </div>
+
+</nav>
+
+
+<br>
+
+
+
+<div class="container">
+{% block content %}
+
+<section class="h-100" style="background-color: #eee;">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-10">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+        </div>
+      {% if cart|length %}
+
+      {% for item in cart %}
+
+        <div class="card rounded-3 mb-4">
+          <div class="card-body p-4">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2 col-lg-2 col-xl-2">
+                <img
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img1.webp"
+                  class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-3">
+                <p class="lead fw-normal mb-2">{{ item.product.product_name }}</p>
+              </div>
+              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <a href="{% url 'change-quantity' pk=item.id %}?action=increase">
+                  <button class="increase-btn">
+                    +
+                  </button>
+                </a>
+
+                    <p class="quantity">
+                        {{ item.quantity }}
+                    </P>
+
+                <a href="{% url 'change-quantity' pk=item.id %}?action=decrease">
+                  <button class="decrease-btn">
+                    -
+                  </button>
+                </a>
+              </div>
+              <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                <h5 class="mb-0">{{ item.product.product_price }}</h5>
+              </div>
+              <div>
+                <a href="{% url 'remove-from-cart' pk=item.id %}" class="text-danger">
+                  <h5>Del</h5>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+
+          <strong>Total Cost: </strong>   {{ cart.get_total_cost }}
+
+        <div class="card">
+          <div class="card-body">
+            <a href="{% url 'checkout' %}">Check Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  {% else %}
+  <br>
+  <div style="margin-left: 35px" class="px-6 py-6 bg-gray-300">
+    <h5><strong> No Items In Cart </strong></h5>
+  </div>  {% endif %}
+{% endblock %}
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+<div class="small-container">
+    <div class="row">
+        <div class="col-2">
+            <img src="{{ view_product.image_url.url }}" alt="{{ view_products.product_name }}">
+        </div>
+        <div class="col-2">
+            <p>Home / Product</p>
+            <h1>{{ view_products.product_name }} by {{ view_products.page_owner }}</h1>
+            <h4>{{ view_products.product_price }}</h4>
+            <a href="{% url 'add-to-cart' pk=view_products.pk %}">
+                <button class="buy-button">
+                    Add To Cart
+                </button>
+            </a>
+            <h3>Details and Description</h3>
+            <p>CONTENT I HAVE TO MAKE MANDATORY BY MODIFYING THE MODELS.PY FILE</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="header">
+    <div class="side-nav">
+        <div class="user">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="coral" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            <div>
+                <h3>{{ accountprofile.user.username }}</h3>
+                <P>{{ accountprofile.user.email }}</P>
+            </div>
+        </div>
+        <ul>
+            <li>
+                <a href="{% url 'wriber-page' request.user.id %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="coral" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <p>Home</p>
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'account-page' request.user.id %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="coral" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layout">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                </svg>
+                <p>Your Page</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="coral" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-package">
+                <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+                <p>Orders</p>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                <img src="images/setting.png">
+                <p>Settings</p>
+                </a>
+            </li>
+        </ul>
+
+
+        <ul>
+            <li>
+                <a href="{% url 'logout-user' %}">
+                <img src="images/logout.png">
+                <p>Logout</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'wriber-page' request.user.id %}">Your Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'account-page' request.user.id %}">Your Page</a>
+        </li>
+        <li style="margin-left: 950px" class="nav-item">
+          <a class="nav-link active" href="{% url 'logout-user' %}">Log Out</a>
+        </li>
+      </ul>
+    </div>
+    </nav>
+
+

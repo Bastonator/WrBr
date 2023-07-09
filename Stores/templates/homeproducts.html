@@ -1,0 +1,38 @@
+{% include 'home.html' %}
+
+
+<div class="container">
+
+
+{% block content %}
+
+    <div class="row" style="margin-left: 30px;">
+
+
+
+    {% for product in Products %}
+     {% if product.image_url  %}
+<div class="col" style="margin-top: 11px">
+        <div class="card-product">
+            <a href="{% url 'wriber-viewproducts' product.id %}">
+                <img src="{{ product.image_url.url }}" class="card-img-top" alt="{{ product.product_name }}"
+                     height="300px;">
+            </a>
+          <div class="card-body">
+            <h5 class="card-title">{{ product.product_name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ product.product_price }}</h6>
+            <p class="card-text">{{ product.stock_available }}</p>
+            <a href="{% url 'wriber-viewpage' page.id %}" class="card-link">PageName</a>
+            <a href="#" class="card-link">Buy Now</a>
+          </div>
+        </div>
+
+</div>
+      {% endif %}
+    {% endfor %}
+
+    </div>
+
+{% endblock %}
+
+    </div>

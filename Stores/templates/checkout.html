@@ -1,0 +1,45 @@
+{% extends 'home.html' %}
+
+
+<div class="container">
+{% block content %}
+<center>
+
+<div class="card" style="width: 99%; height: 42rem; margin-left: 1px; left: 4%;">
+        <div class="card-header" style="height: 5rem; background-color: coral; color: white" align="left">
+            <h1>Checkout</h1>
+        </div>
+<div class="container">
+    <form method="POST" action="">
+
+        <br>
+
+        <center>
+
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="total-price" style="display: flex; justify-content: flex-center;">
+              <table style="border-top: 3px solid coral; width: 100%; max-width: 350px;">
+                  <tr>
+                      <td>
+                          Total
+                      </td>
+                      <td>
+                          {{ cart.get_total_cost }}
+                      </td>
+                  </tr>
+              </table>
+          </div>
+
+            <input type="submit" value="Place Order" class="btn btn-outline-danger">
+
+        </center>
+
+    </form>
+</div>
+</div>
+    </center>
+
+{% endblock %}
+</div>

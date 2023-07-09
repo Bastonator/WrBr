@@ -1,0 +1,16 @@
+{% extends 'WriberAccount.html' %}
+
+
+<div class="container">
+    {% block content %}
+
+        {% if accountprofile %}
+
+            <a href="">
+                {{ accountprofile.user.username }}
+            </a>
+
+        {% endif %}
+
+    {% endblock %}
+</div>

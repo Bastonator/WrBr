@@ -1,0 +1,70 @@
+{% extends 'WriberAccount.html' %}
+
+
+    <div class="container">
+        {% block content %}
+
+
+<br>
+
+         <h3>Your Page</h3>
+
+        <ul>
+            <li style="display: inline;"><a href="{% url 'account-page' request.user.id %}"><button class="home-home-button">Home</button></a></li>
+            <li style="display: inline;"><a href="{% url 'orders' %}"><button class="home-product">Orders</button></a></li>
+            <li style="display: inline;"><a href="{% url 'dashboard-tariff' %}"><button class="home-product">Tariffs</button></a></li>
+        </ul>
+
+
+        {% if pages %}
+
+                 {% for page in pages %}
+
+                        <div class="card" style="width: 31rem; margin-top: 5px;">
+                          <div class="card-body">
+                            <a style="text-decoration: none;" href="{% url 'dashboard-page' page.id %}"><h5 class="card-title">{{ page.page_name }}</h5></a>
+                              <p class="card-text">{{ page.page_description }}</p>
+                                <a style="text-decoration: none;" href="{% url 'wriber-updatepages' pk=page.pk %}" class="card-link">Update Page</a>
+                          </div>
+                        </div>
+
+                 {% endfor %}
+                    {% else %}
+                        <h3><strong>No Pages?...</strong></h3>
+                        <a href="{% url 'wriber-page-add' %}"> <strong>Create one</strong> </a> here...
+
+                {% endif %}
+
+                <br>
+
+
+        <div class="row">
+                {% if orders %}
+
+                <h1>All recent orders</h1>
+                    {% for item in orders %}
+                    <div class="col-md-6" style="margin-top: 11px">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">ODR{{ item.id }}</h5>
+                                <p class="card-text">{{ item.address }} from {{ item.city }}</p>
+                                <p class="card-text">${{ item.paid_amount }}</p>
+                            </div>
+                            <div class="card-body">
+                                <a href="{{ item.get_absolute_url }}" class="btn btn-outline-dark">View Order</a>
+                                <h5 class="card-title">{{ item.created_at }}</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                {% endif %}
+        </div>
+
+        {% endblock %}
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </body>
+</html>

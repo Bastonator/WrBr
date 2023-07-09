@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wriber</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <style>
+      .home-button{
+          display: inline-block;
+          background-color: white;
+          border: none;
+          border-radius: 16px;
+          color: coral;
+          text-decoration: none;
+          }
+      .header{
+          width: 100%;
+          height: 100vh;
+      }
+      .side-nav{
+          line-height: 15px;
+          width: 105px;
+          height: 90%;
+          top: 0;
+          left: 0;
+          padding: 30px 15px;
+          background: white;
+          backdrop-filter: blur(5px);
+          display: inline-block;
+          float: left;
+          justify-content: space-between;
+          transition: width 0.6s;
+          justify-content: center;
+          border-color: snow;
+          border-style: solid;
+          border-radius: 3px;
+          border-width: 1px;
+          margin-top: 60px;
+          position: fixed;
+      }
+      .side-nav:hover{
+          width: 180px;
+
+      }
+      .side-nav:hover .user div{
+          display: block;
+      }
+      .side-nav:hover .user{
+          width: 100%;
+          background: moccasin;
+          backdrop-filter: blur(5px);
+      }
+      .side-nav:hover .page-ul li p{
+          display: block;
+      }
+      .side-nav:hover .page-ul li img{
+          margin-right: 10px;
+      }
+      .side-nav:hover .page-ul li{
+          justify-content: flex-start;
+      }
+      .page-ul li a:hover{
+          width: 100%;
+          background: moccasin;
+          backdrop-filter: blur(5px);
+          border-radius: 9px;
+      }
+      .container{
+          width: 100%;
+          background-color: whitesmoke;
+          display: inline-block;
+          float: left;
+          margin-left: 0px;
+      }
+      .user{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 159px;
+          font-size: 12px;
+          padding: 10px;
+          border-radius: 9px;
+          margin-left: auto;
+          margin-right: auto;
+          overflow: hidden;
+      }
+      .user div{
+          display: none;
+      }
+      ul{
+          list-style: none;
+          padding: 0 15px;
+          position: relative;
+      }
+      .page-ul li{
+          margin: 30px 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+      }
+      .page-ul li a{
+          width: 30px;
+          text-decoration: none;
+          margin-right: 40px;
+          margin-left: 25px;
+          display: inline-block;
+          align-items: center;
+          transition: width 0.6s;
+      }
+      .page-ul li a img{
+          width: 30px;
+
+      }
+      ul li p{
+          white-space: nowrap;
+          color: slategray;
+          display: flex;
+          display: none;
+      }
+      .home-home-button{
+          background-color: white;
+          color: black;
+          border: none;
+          border-color: none;
+          border-radius: 16px;
+          height: 34px;
+          width: 85px;
+          border-width: 1px;
+          transition: 0.4s;
+      }
+      .home-home-button:hover{
+          background-color: slategray;
+          color: white;
+      }
+      .home-product{
+          background-color: white;
+          color: black;
+          border: none;
+          border-color: none;
+          border-radius: 16px;
+          height: 34px;
+          width: 95px;
+          border-width: 1px;
+          transition: 0.4s;
+      }
+      .home-product:hover{
+          background-color: slategray;
+          color: white;
+      }
+      .mod:hover{
+          background-color: coral;
+      }
+      .tariff-add:hover{
+          background-color: coral;
+          border-color: indigo;
+          color: black;
+      }
+      .card{
+         box-shadow: gray;
+         max-width: 100%;
+         text-align: left;
+         margin: auto;
+         border-color: slategray;
+         border-radius: 2px;
+      }
+      .card:hover{
+         opacity: 0.9;
+         border-color: lightsalmon;
+      }
+  </style>
+  </head>
+  <body>
+  <br>
+
+  <a href="{% url 'home' %}"><button class="home-button"><h3><strong> Wriber </strong></h3></button></a>
+
+<div style="display: flex;" >
+{% include 'Profilesidenav.html' %}
+<div class="container" align="left" style="width: 7688px; border-color:
+ coral; border-style: solid; border-radius: 3px; background-color: snow;
+ border-width: 1px; margin-top: -3px;">
+        {% block content %}
+<br>
+    <div style="background-color: white; border: none; border-radius: 1px; border-width: 1px;">
+    <h3>Account Pages</h3>
+    </div>
+        <ul>
+            <li style="display: inline;"><a href="{% url 'wriber-page' request.user.id %}"><button class="home-home-button">Home</button></a></li>
+            <li style="display: inline;"><a href="{% url 'dashboard-product' user.id %}"><button class="home-product">Products</button></a></li>
+        </ul>
+
+    {% if pages %}
+
+                 {% for page in pages %}
+
+                    <div class="card" style="width: 31rem; margin-top: 5px;">
+                      <div class="card-body">
+                        <a style="text-decoration: none;" href="{{ page.get_absolute_url }}"><h5 class="card-title">{{ page.page_name }}</h5></a>
+                          <p class="card-text">{{ page.page_description }}</p>
+                            <a style="text-decoration: none;" href="{% url 'wriber-updatepages' pk=page.pk %}" class="card-link">Update Page</a>
+                      </div>
+                    </div>
+
+                 {% endfor %}
+                    {% else %}
+                            <center>
+                                <h3><strong>No Pages?...</strong></h3>
+                                <a href="{% url 'wriber-page-add' %}"> <strong>Create one</strong> </a> here...
+                            </center>
+
+                {% endif %}
+
+
+
+        {% endblock %}
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
