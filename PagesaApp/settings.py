@@ -33,6 +33,9 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
+CSRF_TRUSTED_ORIGINS = ['https://*.wrbr.xyz']
+
+
 CART_SESSION_ID = 'cart'
 SESSION_COOKIE_AGE = 86400
 
@@ -154,7 +157,7 @@ AWS_DEFAULT_ACL = None
 
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY_ID')
-AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+AWS_STORAGE_BUCKET_NAME = 'wriber-store'
 
 region = 'eu-north-1'
 
