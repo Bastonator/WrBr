@@ -155,8 +155,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY_ID')
+AWS_ACCESS_KEY_ID = os.getenv('AKIAY2TFGLB57YCEFYON')
+AWS_SECRET_ACCESS_KEY = os.getenv('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')
 AWS_STORAGE_BUCKET_NAME = 'wriber-store'
 
 region = 'eu-north-1'
