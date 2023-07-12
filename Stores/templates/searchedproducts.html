@@ -26,6 +26,7 @@
 
 
 <br>
+<br>
 
 {% include 'searchnavbar.html' %}
 
@@ -57,9 +58,9 @@
                 <div style="display: inline-block; margin-left: 1px;">
                     <p class="card-text">D{{ product.product_price }}</p>
                 </div>
-                    <P class="card-text">{{ product.product_description }}</P>
                     <p class="card-text"><strong>{{ product.stock_available }}</strong> in stock</p>
-                    <a href="{{ product.page_owner.get_absolute_url }}"><p class="card-text">{{ product.page_owner.page_name }}</p></a>
+                    <P class="card-text">{{ product.product_description }}</P>
+                    <a href="{{ product.page_owner.get_absolute_url }}"><p class="card-text">{{ product.page_owner }}</p></a>
             </div>
         </div>
 

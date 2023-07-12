@@ -1,8 +1,7 @@
 {% extends 'home.html' %}
 
 
-
-<br>
+<br xmlns="http://www.w3.org/1999/html">
 
 <div class="container">
 {% block content %}
@@ -28,9 +27,9 @@
                         </a>
                     </div>
                     <div style="display: inline-block; margin-left: 1px;">
-                        <p class="card-text">D{{ all_product.product_price }}</p>
+                        <p class="card-text"><strong>D{{ all_product.product_price }}</strong></p>
                     </div>
-                        <p class="card-text">{{ all_product.stock_available }} in Stock</p>
+                        <p class="card-text"><strong>{{ all_product.stock_available }} in Stock</strong></p>
                         <P class="card-text">{{ all_product.product_description }}</P>
                     <div class="container-fluid" style="background-color: WhiteSmoke;">
                         <a style="text-decoration: none;" href="{{ all_product.page_owner.get_absolute_url }}">
