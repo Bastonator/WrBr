@@ -87,7 +87,7 @@ class OrderForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
             'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address and house code'}),
             'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Which region do live in'}),
-            #'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Anything you want to add or tell the sellers?'}),
+            'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Anything you want to add or tell the sellers about the products you are ordering?'}),
         }
 
 

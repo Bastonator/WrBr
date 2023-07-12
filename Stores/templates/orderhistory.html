@@ -17,7 +17,7 @@
     {% if order_items %}
 
 
-<div class="container mt-6">
+<div class="mt-6">
         <div class="d-flex justify-content-center row">
             <div class="col-md-10">
                 <div class="rounded">
@@ -33,10 +33,11 @@
                                     <th>Order #</th>
                                     <th>Image</th>
                                     <th>Customer</th>
-                                    <th>Porduct Name</th>
+                                    <th>Product Name</th>
                                     <th>Address&City</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
+                                    <th>Message</th>
                                     <th>Date Ordered</th>
                                     <th></th>
                                 </tr>
@@ -56,6 +57,7 @@
                                     <td>{{ order_item.order.address }}{{ order_item.order.city }}</td>
                                     <td>{{ order_item.quantity }}</td>
                                     <td>${{ order_item.price }}</td>
+                                    <td>{{ order_item.order.message }}</td>
                                     <td>{{ order_item.order.created_at }}</td>
                                     <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
                                 </tr>
