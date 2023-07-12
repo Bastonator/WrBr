@@ -37,9 +37,8 @@ class TariffsForm(forms.ModelForm):
 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name the tariff'}),
-            'page_owner': forms.Select(attrs={'class': 'form-select', 'placeholder': 'THIS BELONGS ON WHICH PAGE'}),
+            'page_owner': forms.Select(attrs={'class': 'form-select', 'placeholder': 'This belongs on which page'}),
         }
-
 
 
 class location_gambiaForm(forms.ModelForm):
@@ -66,7 +65,7 @@ class location_gambiaForm(forms.ModelForm):
         widgets = {
             '__all__': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'price'}),
             'tariff_owner': forms.Select(attrs={'class': 'form-select', 'placeholder': 'saved to...?'}),
-            'page_owner': forms.Select(attrs={'class': 'form-select', 'placeholder': 'THIS BELONGS ON WHICH PAGE'}),
+            'page_owner': forms.Select(attrs={'class': 'form-select', 'placeholder': 'This belongs on which page'}),
         }
 
 
@@ -87,7 +86,7 @@ class OrderForm(forms.ModelForm):
             'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}),
             'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}),
             'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address and house code'}),
-            'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Which region do live'}),
+            'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Which region do live in'}),
             #'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Anything you want to add or tell the sellers?'}),
         }
 
@@ -108,11 +107,11 @@ class PageForm(forms.ModelForm):
         }
 
         widgets = {
-            'page_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': ''}),
-            'page_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': ''}),
-            'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': ''}),
-            'business_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': ''}),
-            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone N0.'}),
+            'page_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Page name'}),
+            'page_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Tell us about this page'}),
+            'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Where is the business located'}),
+            'business_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Business name'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone number.'}),
         }
 
 
@@ -132,10 +131,10 @@ class Product_infoForm(forms.ModelForm):
         }
 
         widgets = {
-            'product_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'what is the product name'},),
-            'product_price': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'how much is it'}),
-            'stock_available': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'how many do you have'}),
-            'page_owner': forms.Select(attrs={'class': 'form-select', 'placeholder': 'THIS BELONGS ON WHICH PAGE'}),
+            'product_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Product name'},),
+            'product_price': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Price'}),
+            'stock_available': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'How much available?'}),
+            'page_owner': forms.Select(attrs={'class': 'form-select', 'placeholder': 'This belongs on which page'}),
             'product_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Description'}),
         }
 

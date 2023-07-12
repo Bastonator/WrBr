@@ -659,3 +659,22 @@ Hi,
 Thank you for your question.
 
 Not necessarily, it all depends on your architecture and how many users you will have working on your application. Besides, the idea is to get you started with deployment. There are plenty of other things that I would've liked to cover, but it would've made for too much of a long video in one. So, if you would like to add some extra things, you will need to do some additional research on-top of this.
+
+
+
+ <div class="container" align="right" style="margin-left: 940px">
+
+
+
+  <ul class="navy" style="margin-left: 30px; display: flex;">
+            <li class="nav-item" style="display: inline; display: flex; margin-right: 10px;">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="justify-content: center;">
+                  Pages
+              </a>
+            </li>
+            <li class="nav-item" style="display: inline; display: flex; margin-left: 10px;">
+              <a class="nav-link" href="{% url 'products' %}" style="justify-content: center;">
+                  Products
+              </a>
+            </li>
+          </ul>
