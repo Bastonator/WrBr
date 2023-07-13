@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from decouple import config
 
 def configure():
     load_dotenv()
@@ -155,9 +156,9 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
-AWS_ACCESS_KEY_ID = 'AKIAY2TFGLB57YCEFYON'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'wriber-store'
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY_ID')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 
 region = 'eu-north-1'
 
