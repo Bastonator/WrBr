@@ -14,6 +14,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from decouple import config
 
+
 def configure():
     load_dotenv()
 
@@ -26,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ssqi5nt87rk^+*bdxsi)m=j#i#9d$6ev^u20a^3y720ph=_&f$'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -99,7 +100,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'tester_db',
         'USER': 'dili_tester',
-        'PASSWORD': config('POSTGRES_DB_PASSWRD'),
+        'PASSWORD': os.getenv('POSTGRES_DB_PASSWRD'),
         'HOST': 'database-1.cfjxkc5s0xqx.eu-north-1.rds.amazonaws.com',
         'PORT': '5432'
     }
@@ -156,9 +157,9 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY_ID')
-AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY_ID')
+AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
 
 region = 'eu-north-1'
 
