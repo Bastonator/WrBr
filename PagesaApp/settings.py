@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
-from decouple import config
+
 
 
 def configure():
@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'django-insecure-ssqi5nt87rk^+*bdxsi)m=j#i#9d$6ev^u20a^3y720ph=_&f$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
