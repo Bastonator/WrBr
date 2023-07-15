@@ -154,8 +154,8 @@ load_dotenv()
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
-AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY_ID")
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY_ID")
 AWS_STORAGE_BUCKET_NAME = 'wriber-store'
 
 region = 'eu-north-1'
