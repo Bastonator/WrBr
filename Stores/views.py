@@ -166,10 +166,10 @@ def page_dashboard(request, pk):
     if request.user.is_authenticated:
         product_page = Product_info.objects.filter(page_owner_id=pk)
         service_page = Service_info.objects.filter(page_owner_id=pk)
-        return render(request, 'Dashboardpage.html', {'product_page': product_page,
+        return render(request, 'DashBoardPage.html', {'product_page': product_page,
                                                       'service_page': service_page})
     else:
-        return render(request, 'Dashboardpage.html', {})
+        return render(request, 'DashoardPage.html', {})
 
 
 def perpage_product(request, pk):

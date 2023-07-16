@@ -82,6 +82,7 @@
 {% include 'searchbarforpages.html' %}
 
 <br>
+                            <br>
 
 <div style="display: flex;">
           <ul class="navy" style="margin-left: 30px; display: flex;">
@@ -137,9 +138,9 @@
 <div class="container" style="width: 99%;">
 {% block content %}
 
-
+{% if view_page %}
 <div class="container-fluid" style="width: 99%; height: 2px; margin-left: 25px;">
-                    {% if view_page %}
+
 
         <div class="card mb-3 border-light">
               <img src="{{ view_page.theme_photo.url }}" class="card-img-top" style="height: 300px;" alt="{{ view_page.page.page_name }}">
@@ -195,7 +196,7 @@
             </a>
         {% endfor %}
     {% else %}
-        <h4 style="font-size: 20px;">This User Has No Tariffs</h4>
+        <h4 style="font-size: 20px;">This User Has No Tariffs, we advise not to order from this site, to avoid future complications.</h4>
     {% endif %}
 
 </div>

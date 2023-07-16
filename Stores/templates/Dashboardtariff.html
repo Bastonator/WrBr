@@ -22,12 +22,14 @@
     {% if tariff_page %}
         {% for tariff in tariff_page %}
 
-        <a href="{{ tariff.get_absolute_url }}">
-            {{ tariff.name }}
+        <a style="text-decoration: none;" href="{{ tariff.get_absolute_url }}">
+            <h6>{{ tariff.name }}</h6>
         </a>
 
         <a href="{% url 'modify-tariff' pk=tariff.pk %}">
-            Update
+            <button class="btn btn-outline-primary">
+                Update
+            </button>
         </a>
 
         {% endfor %}
