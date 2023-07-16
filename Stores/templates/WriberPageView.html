@@ -215,7 +215,7 @@
                     width="281px;">
                   </a>
                   <div class="card-body">
-                    <h5 class="card-title">{{ view.product_name }}</h5>
+                    <h5 style="color: coral;" class="card-title">{{ view.product_name }}</h5>
                     <p class="card-text"><strong>D{{ view.product_price }}</strong></p>
                     <p class="card-text">{{ view.stock_available }} in stock</p>
                         <a href="{% url 'add-to-cart' pk=view.pk %}">
