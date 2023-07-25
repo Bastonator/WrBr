@@ -72,14 +72,15 @@ class location_gambiaForm(forms.ModelForm):
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ('first_name', 'last_name', 'address', 'city')
+        fields = ('first_name', 'last_name', 'address', 'city', 'message', 'phone_number')
 
         labels = {
             'first_name': '',
             'last_name': '',
             'address': '',
             'city': '',
-            #'message': '',
+            'message': '',
+            'phone_number': '',
         }
 
         widgets = {
@@ -88,6 +89,7 @@ class OrderForm(forms.ModelForm):
             'address': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Address and house code'}),
             'city': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Which region do live in'}),
             'message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Anything you want to add or tell the sellers about the products you are ordering?'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Phone number'}),
         }
 
 

@@ -38,6 +38,7 @@
                                     <th>Quantity</th>
                                     <th>Total</th>
                                     <th>Message</th>
+                                    <th>Phone</th>
                                     <th>Date Ordered</th>
                                     <th></th>
                                 </tr>
@@ -58,6 +59,7 @@
                                     <td>{{ order_item.quantity }}</td>
                                     <td>${{ order_item.price }}</td>
                                     <td>{{ order_item.order.message }}</td>
+                                    <td>{{ order_item.order.phone_number }}</td>
                                     <td>{{ order_item.order.created_at }}</td>
                                     <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
                                 </tr>
