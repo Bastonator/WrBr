@@ -54,6 +54,9 @@
       .nav-signup{
          float: right;
          display: inline-block;
+         align-items: center;
+         justify-content: center;
+         margin-left: 71%;
       }
       .nav-sign{
          left: 10;
@@ -68,12 +71,20 @@
         width: 30px;
         height: 30px;
       }
+      .small-img-row{
+        display: flex;
+        justify-content: space-between;
+      }
+      .small-img-col{
+        flex-basis: 24%;
+        cursor: pointer;
+      }
   </style>
   </head>
   <body>
   <br>
 
-{% include 'searchbarforpages.html' %}
+{% include 'searchbarforproducts.html' %}
 
 <br>
 <br>
@@ -95,46 +106,56 @@
 
 
                  {% if user.is_authenticated %}
- <div class="nav-cart" align="right">
+ <div style="display: flex;">
                        <a style="margin-right: 20px; text-decoration: none;" href="{% url 'cart-view' %}">
                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                            </svg>
                            ({{ cart|length }})
                        </a>
-                        <a style="text-decoration: none; " href="{% url 'wriber-page' request.user.id %}">Profile</a>
- </div>
+                        <a style="text-decoration: none; " href="{% url 'wriber-page' request.user.id %}">
+                            <button style="border: none; border-radius: 10px; background-color: maroon; color: white; border-style: solid;
+                                            padding: 10px 10px;">
+                                Profile
+                            </button>
+                        </a>
+
                   {% else %}
 
-    <div class="nav-sign" align="right">
-                            <ul class="nav-signup" style="display: flex;">
+
+              <ul class="nav-signup" style="display: flex;">
                 <li class="nav-item" style="display: inline; display: flex;">
                     <a class="nav-link active" href="{% url 'signup-user' %}" style="background-color: maroon; color: white;
                      border-color: white; border-style: solid; width: 85px; height: 35px; padding: 5px 9px; border-radius: 7px;">
                         Sign Up
                     </a>
                 </li>
-                <li class="nav-item" style="display: inline; display: flex;">
-                    <a class="nav-link active" href="{% url 'login-user' %}" style="background-color: maroon; color: white;
-                     border-color: white; border-style: solid; width: 55px; height: 35px; padding: 5px 5px; border-radius: 7px;">
-                        Login
-                    </a>
-                </li>
                   {% endif %}
-                            </ul>
-    </div>
+              </ul>
+          </div>
 </div>
 
 
 {% block content %}
 
      {% if view_products %}
-
+      
 
 <div class="small-container single-product" style="width: 98%; margin: auto; text-align: center">
     <div class="row">
         <div class="col-2" style="width: 380px;">
-            <img src="{{ view_products.image_url.url }}" alt="{{ view_products.product_name }}" width="100%">
+            <img src="{{ view_products.image_url.url }}" alt="{{ view_products.product_name }}" width="100%" id="ProductImg">
+            <div class="small-img-row">
+                <div class="small-img-col">
+                    <img src="#" width="100%" class="small-img">
+                </div>
+                <div class="small-img-col">
+                    <img src="#" width="100%" class="small-img">
+                </div>
+                <div class="small-img-col">
+                    <img src="#" width="100%" class="small-img">
+                </div>
+            </div>
         </div>
         <div class="col-2" style="width: 380px; margin-left: 15px; margin-right: 15px;">
             <p>Home / {{ view_products.product_name }}</p>
@@ -156,11 +177,29 @@
         </div>
     </div>
 </div>
-
+  
      {% endif %}
 
 {% endblock %}
 
+  <script>
+      var ProductImg = document.getElementId("ProductImg");
+        var SmallImg = document.getElementByClassName("small-img");
+
+            SmallImg[0].onclick = function()
+             {
+                ProductImg.src = SmallImg[0].src;
+             }
+            SmallImg[1].onclick = function()
+             {
+                ProductImg.src = SmallImg[1].src;
+             }
+            SmallImg[2].onclick = function()
+             {
+                ProductImg.src = SmallImg[2].src;
+             }
+
+  </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>

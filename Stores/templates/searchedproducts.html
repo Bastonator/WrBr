@@ -59,7 +59,7 @@
                     <p class="card-text">D{{ product.product_price }}</p>
                 </div>
                     <p class="card-text"><strong>{{ product.stock_available }}</strong> in stock</p>
-                    <P class="card-text">{{ product.product_description }}</P>
+                    <small class="card-text">{{ product.product_description }}</small>
                     <a href="{{ product.page_owner.get_absolute_url }}"><p class="card-text">{{ product.page_owner }}</p></a>
             </div>
         </div>

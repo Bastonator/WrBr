@@ -30,7 +30,7 @@
 
 <br>
 
-<div class="container">
+
 {% block content %}
 
 
@@ -40,10 +40,10 @@
 {% if pages %}
     {% for page in pages %}
      <div class="col">
-        <div class="card" style="width: 450px; margin-bottom: 10px; border-radius: 2px;">
+        <div class="card" style="width: 48%; margin-bottom: 10px; border-radius: 2px;">
             <a href="{% url 'wriber' page.id %}">
                 <img src="{{ page.theme_photo.url }}" class="card-img-top" alt="{{ page.page_name }}"
-                 height="300px;">
+                 height="225px;">
             </a>
             <div class="card-body">
                 <a style="text-decoration: none; color: coral" href="{% url 'wriber' page.id %}">
@@ -52,13 +52,12 @@
                     </h5>
                 </a>
                     <p class="card-text">{{ page.headline|safe }}</p>
-                    <p class="card-text">{{ page.highlight|safe }}</p>
+                    <small class="card-text">{{ page.highlight|safe }}</small>
             </div>
         </div>
      </div>
 
     {% endfor %}
-</div>
 
 {% else %}
 

@@ -40,13 +40,14 @@
 <center>
        <br>
 
-    <div class="card" style="width: 41rem; height: 40rem">
-        <div class="card-header" style="height: 5rem; background-color: coral; color: white" align="left">
-            <h1>Sign Up</h1>
-        </div>
+
         <div class="container">
             <form action="{% url 'signup-user' %}" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
+<div class="card" style="width: 41rem; height: 40rem">
+        <div class="card-header" style="height: 5rem; background-color: coral; color: white" align="left">
+            <h1>Sign Up</h1>
+        </div>
 <center>
 <br>
                 {{form.first_name}}
@@ -73,10 +74,14 @@
 
 </center>
                 <br>
+    <center>
               <input type="submit" value="Sign Up" class="btn btn-outline-dark" style="padding: 10px 40px; width: 200px;">
-
+    </center>
+    Already have an account? Log In <a href="{% url 'login-user' %}">here...</a>
+</div>
             </form>
-        </div>
+
+
     </div>
 
 
