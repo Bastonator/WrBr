@@ -33,11 +33,11 @@
        }
        .single-product .col-2 img{
           padding: 0;
-          margin-left: 15px;
+          margin-left: 25px;
           margin-right: 15px;
        }
        .single-product .col-2{
-          padding: 20px;
+          padding: 20px 0;
        }
        .single-product  h6{
           margin: 20px 0;
@@ -173,7 +173,7 @@
             <h4>{{ view_products.product_name }}</h4><p><small>by {{ view_products.page_owner }}, {{ view_products.user.username }}</small></p>
             <br>
             <br>
-            <h6><strong>D{{ view_products.product_price }}</strong></h6>
+            <h3><strong>D{{ view_products.product_price }}</strong></h3>
             <br>
             <a href="{% url 'add-to-cart' pk=view_products.pk %}">
                 <button class="buy-button">

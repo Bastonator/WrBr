@@ -38,7 +38,8 @@
       }
       .product{
        width: 281px;
-       margin-left: 1px;
+       margin-left: 12px;
+       margin-right: 1px;
        top: 20%;
        left: 10.5%;
        border-color: gold;
@@ -73,6 +74,9 @@
              display: inline-block;
              align-items: center;
              justify-content: center;
+        }
+        .page{
+             margin: auto;
         }
       }
   </style>
@@ -149,10 +153,10 @@
 {% block content %}
 
 {% if view_page %}
-<div class="container-fluid" style="width: 99%; height: 2px; margin-left: 25px;">
+<div class="container-fluid" style="width: 99%; height: 2px; margin-left: 1px; margin-right: 1px;">
 
 
-        <div class="card mb-3 border-light">
+        <div class="card mb-3 border-light page">
               <img src="{{ view_page.page.theme_photo.url }}" class="card-img-top" style="height: 300px;" alt="{{ view_page.page.page_name }}">
               <div class="card-body">
                 <h5 style="color: coral;" class="card-title">{{ view_page.page.page_name }}</h5>
@@ -192,7 +196,7 @@
     <br>
     <br>
 
-<div align="right">
+<div align="left">
 
 <br>
 
