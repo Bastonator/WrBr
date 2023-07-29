@@ -59,6 +59,9 @@ class Product_info(models.Model):
     product_price = models.FloatField()
     stock_available = models.IntegerField()
     image_url = models.ImageField(null=True, blank=True)
+    image_url2 = models.ImageField(null=True, blank=True, default='no-photo.png')
+    image_url3 = models.ImageField(null=True, blank=True, default='no-photo.png')
+    image_url4 = models.ImageField(null=True, blank=True, default='no-photo.png')
     product_description = models.TextField(null=True, max_length=2600)
     user = models.ForeignKey(User, related_name="products", on_delete=models.DO_NOTHING, default=1)
     page_owner = models.ForeignKey(Usercreatedpage,

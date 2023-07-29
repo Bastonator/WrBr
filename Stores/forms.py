@@ -120,7 +120,7 @@ class PageForm(forms.ModelForm):
 class Product_infoForm(forms.ModelForm):
     class Meta:
         model = Product_info
-        fields = ('product_name', 'product_price', 'stock_available', 'image_url', 'page_owner', 'product_description')
+        fields = ('product_name', 'product_price', 'stock_available', 'image_url', 'image_url2', 'image_url3', 'image_url4', 'page_owner', 'product_description')
         exclude = ['user']
 
         labels = {
@@ -128,6 +128,9 @@ class Product_infoForm(forms.ModelForm):
             'product_price': '',
             'stock_available': '',
             'image_url': '',
+            'image_url2': '',
+            'image_url3': '',
+            'image_url4': '',
             'product_description': '',
             'page_owner': '',
         }
