@@ -155,7 +155,7 @@
             <img src="{{ view_products.image_url.url }}" alt="{{ view_products.product_name }}" width="100%" id="ProductImg">
             <div class="small-img-row">
                 <div class="small-img-col">
-                    <img src="#" width="100%" class="small-img">
+                    <img src="{{ view_products.image_url.url }}" width="100%" class="small-img">
                 </div>
                 <div class="small-img-col">
                     <img src="#" width="100%" class="small-img">
@@ -193,9 +193,9 @@
 
 {% endblock %}
 
-  <script>
-      var ProductImg = document.getElementId("ProductImg");
-        var SmallImg = document.getElementByClassName("small-img");
+  <script type="text/javascript">
+      var ProductImg = document.getElementById("ProductImg");
+      var SmallImg = document.getElementsByClassName("small-img");
 
             SmallImg[0].onclick = function()
              {
@@ -206,8 +206,12 @@
                 ProductImg.src = SmallImg[1].src;
              }
             SmallImg[2].onclick = function()
-             {
+            {
                 ProductImg.src = SmallImg[2].src;
+             }
+            SmallImg[3].onclick = function()
+            {
+                ProductImg.src = SmallImg[3].src;
              }
 
   </script>
