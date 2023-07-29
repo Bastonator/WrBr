@@ -79,6 +79,14 @@
         flex-basis: 24%;
         cursor: pointer;
       }
+      @media only screen and (max-width:945px) {
+        .nav-signup{
+             margin-left: 16%;
+             display: inline-block;
+             align-items: center;
+             justify-content: center;
+        }
+      }
   </style>
   </head>
   <body>
@@ -146,6 +154,9 @@
         <div class="col-2" style="width: 380px;">
             <img src="{{ view_products.image_url.url }}" alt="{{ view_products.product_name }}" width="100%" id="ProductImg">
             <div class="small-img-row">
+                <div class="small-img-col">
+                    <img src="#" width="100%" class="small-img">
+                </div>
                 <div class="small-img-col">
                     <img src="#" width="100%" class="small-img">
                 </div>
