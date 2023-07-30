@@ -12,14 +12,14 @@
          border-height: 25px;
          padding: 6px 6px;
       }
-      .card{
-         max-width: 100%;
+      .product{
+         width: 260px;
          text-align: left;
          margin: auto;
          border-color: slategray;
          border-radius: 2px;
       }
-      .card:hover{
+      .product:hover{
          opacity: 0.9s;
          border-color: coral;
       }
@@ -49,8 +49,8 @@
              align-items: center;
              justify-content: center;
         }
-        .card{
-             max-width: 100%;
+        .product{
+             width: 335px;
              text-align: left;
              border-color: slategray;
              border-radius: 2px;
@@ -106,7 +106,7 @@
                            </svg>
                            ({{ cart|length }})
                        </a>
-                        <a style="text-decoration: none; " href="{% url 'wriber-page' request.user.id %}">
+                        <a style="text-decoration: none;" href="{% url 'wriber-page' request.user.id %}">
                             <button style="border: none; border-radius: 10px; background-color: maroon; color: white; border-style: solid;
                                             padding: 10px 10px;">
                                 Profile
@@ -147,16 +147,16 @@
 {% block content %}
 
 
-<div class="row" style="margin-left: 19px; margin-right: 1px;">
+<div class="row" style="margin-left: 1px; margin-right: 1px;">
 
     {% if all_products %}
       {% for all_product in all_products %}
 
-    <div class="col" style="margin-top: 10px;">
-        <div class="card" style="width: 260px; border-radius: 2px;">
+    <div class="col" style="margin-top: 5px;">
+        <div class="card product" style="border-radius: 2px;">
             <a href="{{ all_product.get_absolute_url }}">
                 <img src="{{ all_product.image_url.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="245px;" width="260px;">
+                height="230px;">
             </a>
                 <div class="card-body">
                     <div style="display: inline-block;">

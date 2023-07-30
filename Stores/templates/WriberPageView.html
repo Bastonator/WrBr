@@ -28,7 +28,7 @@
          color: white;
       }
       .list-tariff {
-         background-color:  indigo;;
+         background-color:  indigo;
       }
       .list-tariff h6{
          color: white;
@@ -37,15 +37,13 @@
          opacity: 0.7;
       }
       .product{
-       width: 281px;
-       margin-left: 10px;
-       margin-right: 1px;
-       top: 20%;
-       left: 9%;
-       border-color: gold;
+       width: 290px;
+       text-align: left;
+       margin: auto;
+       border-color: slategray;
        border-radius: 2px;
       }
-      .card:hover{
+      .product:hover{
         border-color: salmon;
       }
       .nav-signup{
@@ -68,7 +66,7 @@
         width: 30px;
         height: 30px;
       }
-      @media only screen and (max-width:945px) {
+      @media only screen and (max-width:1000px) {
         .nav-signup{
              margin-left: 16%;
              display: inline-block;
@@ -76,7 +74,8 @@
              justify-content: center;
         }
         .page{
-             margin: auto;
+             margin-left: 1px;
+             margin-right: 1px;
         }
         .for-cart{
              margin-left: 16%;
@@ -84,7 +83,27 @@
              align-items: center;
              justify-content: center;
         }
+        .product{
+             width: 335px;
+             text-align: left;
+             border-color: slategray;
+             border-radius: 2px;
+        }
+        .list-tariff {
+             background-color:  indigo;
+             display: inline-block;
+             display: flex;
+             width: 150px;
+        }
+        .tariff-div{
+             display: flex;
+             display: inline-block;
+        }
+        .buy-button{
+             width: 260px;
+        }
       }
+
   </style>
   </head>
   <body>
@@ -124,13 +143,13 @@
 
                  {% if user.is_authenticated %}
  <div class="nav-signup" style="display: flex;">
-                       <a style="margin-left: 600px; text-decoration: none;" href="{% url 'cart-view' %}">
+                       <a style="margin-right: 20px; text-decoration: none;" href="{% url 'cart-view' %}">
                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                            </svg>
                            ({{ cart|length }})
                        </a>
-                        <a style="text-decoration: none; margin-left: 600px;" href="{% url 'wriber-page' request.user.id %}">
+                        <a style="text-decoration: none;" href="{% url 'wriber-page' request.user.id %}">
                             <button style="border: none; border-radius: 10px; background-color: maroon; color: white; border-style: solid;
                                             padding: 10px 10px;">
                                 Profile
@@ -155,15 +174,15 @@
 
 <br>
 
-<div class="container" style="width: 99%;">
+<div class="container" style="width: 100%;">
 {% block content %}
 
 {% if view_page %}
-<div class="container-fluid" style="width: 99%; height: 2px; margin-left: 1px; margin-right: 1px;">
+<div class="container-fluid" style="width: 100%; height: 2px; margin-left: 1px; margin-right: 1px;">
 
 
         <div class="card mb-3 border-light page">
-              <img src="{{ view_page.page.theme_photo.url }}" class="card-img-top" style="height: 300px;" alt="{{ view_page.page.page_name }}">
+              <img src="{{ view_page.page.theme_photo.url }}" class="card-img-top" style="height: 245px;" alt="{{ view_page.page.page_name }}">
               <div class="card-body">
                 <h5 style="color: coral;" class="card-title">{{ view_page.page.page_name }}</h5>
                 <p class="card-text">{{ view_page.page.page_description }}</p>
@@ -192,13 +211,15 @@
     <br>
     <br>
     <br>
-    <br>
+
     <br>
 
 
     <br>
     <br>
 
+    <br>
+    <br>
     <br>
     <br>
 
@@ -221,6 +242,8 @@
 
 </div>
 
+    <br>
+    <br>
 
     <div class="row">
 
@@ -228,7 +251,7 @@
         {% for view in product_forpage %}
 
 
-              <div class="col" style="margin-top: 11px">
+              <div class="col" style="margin-top: 5px">
                 <div class="card product" style="border-color: Gainsboro; border-radius: 2px;">
                   <a href="{{ view.get_absolute_url }}">
                     <img src="{{ view.image_url.url }}" class="card-img-top" alt="{{ view.product_name }}" height="250px;"
