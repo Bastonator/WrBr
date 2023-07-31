@@ -1,0 +1,25 @@
+{% extends 'home.html' %}
+
+
+<div class="container">
+{% block content %}
+
+<br>
+<br>
+<br>
+
+<center>
+<div class="order-link" style="border-color: coral;">
+        <h4 style="color: midnightblue">
+            Order has been submitted...
+        </h4>
+
+        <button class="btn btn-outline-dark" style="padding: 10px 40px; width: 150px; height: 80px;">
+            <a style="text-decoration:solid; color: black;" href="{% url 'orders-from-you' %}">
+                View Order
+            </a>
+        </button>
+</div>
+</center>
+{% endblock %}
+</div>

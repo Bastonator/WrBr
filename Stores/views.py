@@ -334,7 +334,7 @@ def checkout(request):
 
             cart.clear()
 
-            return redirect('home')
+            return render(request, 'ConfirmOrder.html')
     else:
         form = OrderForm()
 
@@ -466,8 +466,6 @@ def update_account_profile(request, pk):
         return render(request, 'WriberAccountUpdate.html', {'accountprofile': accountprofile, 'form': form})
     else:
         return render(request, 'WriberAccountUpdate.html', {})
-
-
 
 # allow users to be able to view and see all there products on one page and allow them to be able to add products to the database without having a page
 
