@@ -29,10 +29,10 @@
                 <p class="card-text">D{{ view.product_price }}</p>
                 <p class="card-text">{{ view.product_description }}</p>
                 <p class="card-text">{{ view.stock_available }}</p>
-                <a href="{% url 'wriber-updateproducts' pk=view.pk %}" class="btn btn-primary">
+                <a href="{% url 'wriber-updateproducts' pk=view.pk %}" class="btn btn-outline-primary">
                     Edit
                 </a>
-                <a href="{% url 'delete-wriber-products' pk=view.pk %}" class="btn btn-danger">
+                <a href="{% url 'delete-wriber-products-onpagemanage' pk=view.pk %}" class="btn btn-danger">
                     Delete
                 </a>
               </div>

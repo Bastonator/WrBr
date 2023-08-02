@@ -169,12 +169,26 @@
          opacity: 0.9;
          border-color: lightsalmon;
       }
+      .Wriber img{
+            width: 200px;
+            height: 120px;
+        }  
+          @media only screen and (max-width:945px) {
+          .Wriber img{
+            width: 150px;
+            height: 95px;
+        }  
+        }
   </style>
   </head>
   <body>
   <br>
 
-  <a href="{% url 'home' %}"><button class="home-button"><h3><strong> Wriber </strong></h3></button></a>
+  {% load static %}
+
+    <a class="Wriber" href="{% url 'home' %}">
+      <img src="{% static 'images/Wriber.png' %}">
+    </a>
 
 <div style="display: flex;" >
 {% include 'Profilesidenav.html' %}

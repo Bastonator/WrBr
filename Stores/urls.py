@@ -31,6 +31,7 @@ urlpatterns = [
     path('wriber_updatepage/<int:pk>', views.update_page, name="wriber-updatepages"),
     path('delete_products/<int:pk>', views.delete_wriber_products, name="delete-wriber-products"),
     path('delete_services/<int:pk>', views.delete_wriber_services, name="delete-wriber-services"),
+    path('delete_products_pagemanage/<int:pk>', views.delete_wriber_products_onpagemanage, name="delete-wriber-products-onpagemanage"),
     path('add_to_cart/<int:pk>', views.add_to_cart, name="add-to-cart"),
     path('view_cart/', views.cart_view, name="cart-view"),
     path('remove_from_cart/<int:pk>', views.remove_from_cart, name="remove-from-cart"),

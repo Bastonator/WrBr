@@ -261,16 +261,22 @@ def update_page(request, pk):
     return render(request, 'WriberPageUpdate.html', {'view_page': view_page, 'form': form})
 
 
-def delete_wriber_products(request, pk):
+def delete_wriber_products_ondash(request, pk):
     show_products = Product_info.objects.get(id=pk)
     show_products.delete()
-    return redirect()
+    return render(request, 'DashboardProduct.html')
 
 
 def delete_wriber_services(request, pk):
     show_services = Service_info.objects.get(id=pk)
     show_services.delete()
     return redirect()
+
+
+def delete_wriber_products_onpagemanage(request, pk):
+    show_products = Product_info.objects.get(id=pk)
+    show_products.delete()
+    return render(request, 'DashBoardPage.html')
 
 
 def add_to_cart(request, pk):
