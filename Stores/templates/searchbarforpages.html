@@ -32,12 +32,25 @@
            background-color: coral;
            color: white
           }
+          .Wriber img{
+            width: 200px;
+            height: 120px;
+          }  
+          @media only screen and (max-width:945px) {
+          .Wriber img{
+            width: 150px;
+            height: 95px;
+          }  
+          }
       </style>
   </head>
 
   <body>
+    {% load static %}
 
-    <a href="{% url 'home' %}"><button class="home-button"><h3><strong> Wriber </strong></h3></button></a>
+    <a class="Wriber" href="{% url 'home' %}">
+      <img src="{% static 'images/Wriber.png' %}">
+    </a>
             <div class="container" style="width: 100%">
                 <form class="d-flex" action="{% url 'searched-pages' %}">
                   {% csrf_token %}

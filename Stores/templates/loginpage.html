@@ -21,6 +21,14 @@
       background-color: coral;
       color: white;
       }
+      .card{
+        width: 25rem;
+      }
+      @media only screen and (max-width:945px) {
+        .card{
+            width: auto;
+        }
+      }      
   </style>
   </head>
   <body>
@@ -48,7 +56,7 @@
 
                <form action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-<div class="card" style="width: 25rem;">
+<div class="card">
   <div class="card-header" style="height: 5rem; background-color: coral; color: white " align="left">
     <h1>Login</h1>
   </div>
