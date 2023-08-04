@@ -12,8 +12,16 @@
          border-height: 25px;
          padding: 6px 6px;
       }
+      .product-container{
+         padding: 1em;
+         display: grid;
+         grid-gap: 1em;
+         margin: auto;
+         margin-top: 1px;
+         grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+      }
       .product{
-         width: 260px;
+         width: 300px;
          text-align: left;
          margin: auto;
          border-color: slategray;
@@ -48,16 +56,6 @@
              display: inline-block;
              align-items: center;
              justify-content: center;
-        }
-        .product{
-             width: 335px;
-             text-align: left;
-             border-color: slategray;
-             border-radius: 2px;
-        }
-        .row{
-             margin-left: 2px;
-             margin-right: 2px;
         }
       }
   </style>
@@ -141,17 +139,16 @@
 
 <br xmlns="http://www.w3.org/1999/html">
 
-<div class="container">
+
 {% block content %}
 
-
-<div class="row" style="margin-left: 1px; margin-right: 1px;">
+    <div class="row">
 
     {% if all_products %}
       {% for all_product in all_products %}
 
-    <div class="col" style="margin-top: 5px;">
-        <div class="card product" style="border-radius: 2px;">
+    <div class="col product-container">
+        <div class="card product">
             <a href="{{ all_product.get_absolute_url }}">
                 <img src="{{ all_product.image_url.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
                 height="230px;">
@@ -168,7 +165,7 @@
                         <p class="card-text"><strong>D{{ all_product.product_price }}</strong></p>
                     </div>
                         <p class="card-text"><strong>{{ all_product.stock_available }} in Stock</strong></p>
-                    <div class="container-fluid" style="background-color: WhiteSmoke;">
+                    <div class="container-fluid" style="background-color: White;">
                         <a style="text-decoration: none;" href="{{ all_product.page_owner.get_absolute_url }}">
                             <small>
                             {{ all_product.page_owner }}
@@ -182,13 +179,9 @@
 
       {% endfor %}
     {% endif %}
-
-
 </div>
-
 
 
 
 
 {% endblock %}
-</div>

@@ -140,7 +140,7 @@
                 <li class="nav-item" style="display: inline; display: flex;">
                     <a class="nav-link active" href="{% url 'signup-user' %}" style="background-color: maroon; color: white;
                      border-color: white; border-style: solid; width: 85px; height: 35px; padding: 5px 9px; border-radius: 7px;">
-                        Sign Up
+                        Sign In
                     </a>
                 </li>
                   {% endif %}
@@ -148,7 +148,7 @@
           </div>
 </div>
 
-
+<div class="container">
 {% block content %}
 
      {% if view_products %}
@@ -197,6 +197,8 @@
      {% endif %}
 
 {% endblock %}
+</div>
+
 
   <script type="text/javascript">
       var ProductImg = document.getElementById("ProductImg");
