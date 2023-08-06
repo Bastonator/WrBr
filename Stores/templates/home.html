@@ -169,7 +169,6 @@
             {% if all_page.theme_photo %}
             <img src="{{ all_page.theme_photo.url }}" class="card-img-top" alt="{{ all_page.page_name }}" height="225px;">
             {% endif %}
-        </a>
             <div class="card-body">
                     <a style="text-decoration: none; color: coral" href="{{ all_page.get_absolute_url }}">
                         <h5 class="card-title">{{ all_page.page_name }}
@@ -178,6 +177,7 @@
                     <p class="card-text">{{ all_page.page_description}}</p>
                     <small class="card-text">{{ all_page.location }}</small>
             </div>
+        </a>
         </div>
     </div>
 
