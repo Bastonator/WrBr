@@ -23,7 +23,7 @@ post_save.connect(CreateUserProfile, sender=User)
 class Usercreatedpage(models.Model):
     page_name = models.CharField(max_length=255, unique=True)
     page_description = models.TextField(blank=True)
-    theme_photo = models.ImageField(null=True, blank=True)
+    theme_photo = models.ImageField(null=True, blank=True, default='static/images/no_image.jpg')
     location = models.CharField(max_length=255)
     user = models.ForeignKey(User,
                              related_name="pages",
