@@ -124,8 +124,9 @@
 
 {% include 'searchbarforpages.html' %}
 
-<br>
-                            <br>
+<div class="container-fluid">
+<hr>
+</div>
 
 <div style="display: flex;">
           <ul class="navy" style="margin-left: 30px; display: flex;">
@@ -175,12 +176,9 @@
 </div>
 
 
-<br>
-
-
 {% block content %}
 
-{% if view_page %}
+{% if view_page.page.theme_photo %}
 <div class="container-fluid" style="width: 100%; height: 2px; margin-left: 1px; margin-right: 1px;">
 
 
@@ -199,7 +197,7 @@
                 </div>
               </div>
          </div>
-                     {% endif %}
+
 </div>
 
     <br>
@@ -225,6 +223,9 @@
     <br>
     <br>
     <br>
+                            {% else %}
+                              {% endif %}
+
 
 <div align="left" style="margin-left: 10px;">
 
