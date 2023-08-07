@@ -8,7 +8,7 @@
   <style>
     .card{
         width: 41rem;
-        height: 40rem;
+        height: 46rem;
     }
     @media only screen and (max-width:945px) {
         .card{
@@ -57,7 +57,7 @@
                 <h1>Sign Up</h1>
             </div>
             <div class="container">
-            <form action="{% url 'signup-user' %}" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
 <center>
 <br>
@@ -77,19 +77,28 @@
                 {{form.password1.label}}
                 {{form.password1}}
     <div align="left">
-        <small style="color: darkslateblue;">Keep it safe, it will be used to access the profile dashboard!</small>
+        <small style="color: darkslateblue;">Make sure your password is not similar to your username!</small>
+        <br>
+        <small style="color: maroon;">Make sure you password is more than 8 characters long and doesn't only contain numbers!</small>
+        <br>
+        <small style="color: darkslateblue;">Make sure you password is more unique and something only you can remember!</small>
+        <br>
+        <small style="color: maroon;">Make sure your details meets all the above criteria or you will not be allowed to sign up!</small>
     </div>
 <br>
                 {{form.password2.label}}
                 {{form.password2}}
-
+    <div align="left">
+    <small style="color: darkslateblue;">Keep it safe, it will be used to access the profile dashboard!</small>
+    </div>
 </center>
                 <br>
     <center>
               <input type="submit" value="Sign Up" class="btn btn-outline-dark" style="padding: 10px 40px; width: 200px;">
     </center>
+                <br>
     Already have an account? <a href="{% url 'login-user' %}">Log In here...</a>
-
+<br>
             </form>
 </div>
 
