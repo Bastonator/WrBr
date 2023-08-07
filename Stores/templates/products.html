@@ -150,9 +150,19 @@
     <div class="col product-container">
         <div class="card product">
             <a href="{{ all_product.get_absolute_url }}">
+                {% if all_product.image_url %}
                 <img src="{{ all_product.image_url.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
                 height="230px;">
-            </a>
+                {% elif all_product.image_url2 %}
+                <img src="{{ all_product.image_url2.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
+                height="230px;">
+                {% elif all_product.image_url3 %}
+                <img src="{{ all_product.image_url3.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
+                height="230px;">
+                {% elif all_product.image_url4 %}
+                <img src="{{ all_product.image_url4.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
+                height="230px;">
+                {% endif %}
                 <div class="card-body">
                     <div style="display: inline-block;">
                         <a style="text-decoration: none; color: coral" href="{{ all_product.get_absolute_url }}">
@@ -173,6 +183,7 @@
                         </a>
                     </div>
                 </div>
+            </a>
         </div>
     </div>
 

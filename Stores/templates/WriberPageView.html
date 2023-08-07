@@ -178,13 +178,15 @@
 
 {% block content %}
 
-{% if view_page.page.theme_photo %}
+{% if view_page %}
 <div class="container-fluid" style="width: 100%; height: 2px; margin-left: 1px; margin-right: 1px;">
 
 
         <div class="card mb-3 border-light page">
+            {% if view_page.page.theme_photo %}
               <img src="{{ view_page.page.theme_photo.url }}" class="card-img-top" style="height: 275px;" alt="{{ view_page.page.page_name }}">
-              <div class="card-body">
+            {% endif %}
+            <div class="card-body">
                 <h5 style="color: coral;" class="card-title">{{ view_page.page.page_name }}</h5>
                 <p class="card-text">{{ view_page.page.page_description }}</p>
                 <div align="right">

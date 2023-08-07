@@ -160,7 +160,9 @@
 <div class="small-container single-product" style="width: 98%; margin: auto; text-align: center">
     <div class="row">
         <div class="col-2" style="width: 380px;">
+            {% if view_products.image_url %}
             <img src="{{ view_products.image_url.url }}" alt="{{ view_products.product_name }}" width="100%" id="ProductImg">
+            {% endif %}
             <div class="small-img-row">
                 <div class="small-img-col">
                     <img src="{{ view_products.image_url.url }}" width="100%" class="small-img">
