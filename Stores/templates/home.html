@@ -159,13 +159,13 @@
 {% block content %}
 
 
-<div class="row" style="margin-left: 2px; margin-right: 2px;">
+<div class="row" style="margin-right: 2px;">
 
     {% if all_pages %}
       {% for all_page in all_pages %}
 
     <div class="col card-page-container">
-        <div class="card card-page"  style="margin-bottom: 5px; border-radius: 2px;">
+        <div class="card card-page">
         <a href="{{ all_page.get_absolute_url }}">
             {% if all_page.theme_photo %}
                 <img src="{{ all_page.theme_photo.url }}" class="card-img-top" alt="{{ all_page.page_name }}" height="225px;">
