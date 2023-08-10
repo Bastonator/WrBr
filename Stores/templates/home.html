@@ -12,12 +12,20 @@
          border-height: 25px;
          padding: 6px 6px;
       }
+      .card-page-container{
+         padding: 1em;
+         display: grid;
+         margin: auto;
+         grid-template-rows: repeat(auto-fit, minmax(100%, 1fr));
+      }
       .card-page{
-         max-width: 45%;
+         width: 670px;
          text-align: left;
+         display: grid;
          margin: auto;
          border-color: slategray;
          border-radius: 2px;
+         grid-template-rows: repeat(auto-fit, minmax(100%, 1fr));
       }
       .card-page:hover{
          opacity: 0.9s;
@@ -59,18 +67,7 @@
              justify-content: center;
         }
         .card-page{
-             max-width: 100%;
-             text-align: left;
-             border-color: slategray;
-             border-radius: 2px;
-        }
-      }
-      @media only screen and (max-width:945px) {
-        .card-page{
-             max-width: 100%;
-             text-align: left;
-             border-color: slategray;
-             border-radius: 2px;
+             width: 378px;
         }
       }
   </style>
@@ -163,7 +160,7 @@
     {% if all_pages %}
       {% for all_page in all_pages %}
 
-    <div class="col">
+    <div class="col card-page-container">
         <div class="card card-page"  style="margin-bottom: 5px; border-radius: 2px;">
         <a href="{{ all_page.get_absolute_url }}">
             {% if all_page.theme_photo %}

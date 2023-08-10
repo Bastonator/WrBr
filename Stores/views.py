@@ -429,7 +429,8 @@ def addnew_tariff_location(request):
                 return redirect(locations.get_absolute_url())
         else:
             form.fields["page_owner"].queryset = Usercreatedpage.objects.filter(user=request.user)
-        return render(request, 'Dashboardtariff.html', {'form': form})
+            form.fields["tariff_owner"].queryset = Tariffs.objects.filter(user=request.user)
+        return render(request, 'WriberTariffmodify.html', {'form': form})
     else:
         return render(request, 'WriberTariffmodify.html', {})
 
