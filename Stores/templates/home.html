@@ -13,15 +13,12 @@
          padding: 6px 6px;
       }
       .card-page-container{
-         padding: 1em;
          margin: auto;
-         margin-left: 1px;
-         margin-right: 1px;
          display: grid;
-         grid-template-columns: repeat(auto-fit, minmax(width: 98%;, 1fr));
+         grid-gap: 2em;
+         grid-template-columns: repeat(auto-fit, minmax(407px, 1fr));
       }
       .card-page{
-         width: 99%;
          text-align: left;
          margin: auto;
          border-color: slategray;
@@ -33,9 +30,10 @@
       }
       .nav-signup{
         float: right;
+        align: right;
         display: inline-block;
         align-items: center;
-        justify-content: center;
+        justify-content: right;
         margin-left: 71%;
       }
       .nav-sign{
@@ -46,7 +44,6 @@
       .nav-cart{
          float: right;
          margin-left: 65%;
-
       }
       .nav-cart a svg{
         width: 30px;
@@ -59,6 +56,16 @@
         background-color: white;
         border-color: coral;
       }
+      .rowed-container{
+        margin: auto;
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: repeat(auto-fit, minmax(407px, 1fr));
+        margin: 0;
+      }
+      .something{
+        margin: auto;
+      }
       @media only screen and (max-width:945px) {
         .nav-signup{
              margin-left: 16%;
@@ -66,15 +73,14 @@
              align-items: center;
              justify-content: center;
         }
-        .card-page-container{
-         padding: 1em;
-         display: grid;
-         margin: auto;
-         grid-gap: 1em;
-         grid-template-columns: repeat(auto-fit, minmax(width: 360px;, 1fr));
       }
-      .card-page{
-            width: 360px;
+      @media only screen and (max-width:845px) {
+        .nav-signup{
+             margin-left: 19%;
+             display: inline-block;
+             align-items: center;
+             justify-content: center;
+        }
       }
   </style>
   </head>
@@ -134,9 +140,9 @@
     
               <ul class="nav-signup" style="display: flex;">
                 <li class="nav-item" style="display: inline; display: flex;">
-                    <a class="nav-link active" href="{% url 'signup-user' %}" style="background-color: maroon; color: white;
+                    <a class="nav-link active" href="{% url 'signup-user' %}" style="background-color: blue; color: white;
                      border-color: white; border-style: solid; width: 85px; height: 35px; padding: 5px 9px; border-radius: 7px;">
-                        Sign In
+                        <strong>Sign In</strong>
                     </a>
                 </li>
                   {% endif %}
@@ -157,11 +163,10 @@
 
 <br>
 
-
 {% block content %}
 
 
-<div class="row">
+<div class="rowed-container">
 
     {% if all_pages %}
       {% for all_page in all_pages %}
@@ -184,6 +189,7 @@
         </a>
         </div>
     </div>
+
 
 
       {% endfor %}

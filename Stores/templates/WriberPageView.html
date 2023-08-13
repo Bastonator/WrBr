@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,15 +38,14 @@
          opacity: 0.7;
       }
       .product-container{
-         padding: 1em;
+         padding: 10px;
          display: grid;
-         grid-gap: 1em;
          margin: auto;
          margin-top: 1px;
-         grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+         grid-template-rows: repeat(auto-fit, minmax(315px, 1fr));
       }
       .product{
-         width: 300px;
+         width: 315px;
          text-align: left;
          margin: auto;
          border-color: slategray;
@@ -165,9 +165,9 @@
 
               <ul class="nav-signup" style="display: flex;">
                 <li class="nav-item" style="display: inline; display: flex;">
-                    <a class="nav-link active" href="{% url 'signup-user' %}" style="background-color: maroon; color: white;
+                    <a class="nav-link active" href="{% url 'signup-user' %}" style="background-color: blue; color: white;
                      border-color: white; border-style: solid; width: 85px; height: 35px; padding: 5px 9px; border-radius: 7px;">
-                        Sign Up
+                        <strong>Sign In</strong>
                     </a>
                 </li>
                   {% endif %}
