@@ -42,7 +42,7 @@
          display: grid;
          margin: auto;
          margin-top: 1px;
-         grid-template-rows: repeat(auto-fit, minmax(315px, 1fr));
+         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       }
       .product{
          width: 315px;
@@ -53,14 +53,21 @@
       }
       .product:hover{
          opacity: 0.9s;
-         border-color: salmon;
+         border-color: coral;
+      }
+      .rowed-container{
+        margin: auto;
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
+        margin: 0;
       }
       .nav-signup{
          float: right;
          display: inline-block;
          align-items: center;
          justify-content: center;
-         margin-left: 71%;
+         margin-left: 75%;
       }
       .nav-sign{
          left: 10;
@@ -75,9 +82,9 @@
         width: 30px;
         height: 30px;
       }
-      @media only screen and (max-width:1000px) {
+      @media only screen and (max-width:945px) {
         .nav-signup{
-             margin-left: 16%;
+             margin-left: 10%;
              display: inline-block;
              align-items: center;
              justify-content: center;
@@ -105,8 +112,58 @@
         .buy-button{
              width: 250px;
         }
+        .product{
+         width: 300px;
+         text-align: left;
+         margin: auto;
+         border-color: slategray;
+         border-radius: 2px;
       }
-
+        .product-container{
+         padding: 10px;
+         display: grid;
+         margin: auto;
+         margin-top: 1px;
+         width: 100%;
+         grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      }
+      .rowed-container{
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+        margin: 0;
+      }
+      }
+      @media only screen and (max-height:545px) {
+        .nav-signup{
+             margin-left: 56%;
+             display: inline-block;
+             align-items: center;
+             justify-content: center;
+        }
+        .product{
+         width: 323px;
+         text-align: left;
+         margin: auto;
+         border-color: slategray;
+         border-radius: 2px;
+      }
+        .product-container{
+         padding: 10px;
+         display: grid;
+         margin: auto;
+         margin-top: 1px;
+         width: 100%;
+         grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+      }
+      .rowed-container{
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+        margin: 0;
+        margin-left: 15px;
+      }
+     }
   </style>
   </head>
   <body>
@@ -128,7 +185,7 @@
 <hr>
 </div>
 
-<div style="display: flex;">
+                            <div style="display: flex;">
           <ul class="navy" style="margin-left: 30px; display: flex;">
             <li class="nav-item" style="display: inline; display: flex; margin-right: 10px;">
               <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="border: none;
@@ -153,7 +210,7 @@
                            </svg>
                            ({{ cart|length }})
                        </a>
-                        <a style="text-decoration: none;" href="{% url 'wriber-page' request.user.id %}">
+                        <a style="text-decoration: none; " href="{% url 'wriber-page' request.user.id %}">
                             <button style="border: none; border-radius: 10px; background-color: maroon; color: white; border-style: solid;
                                             padding: 10px 10px;">
                                 Profile
@@ -161,7 +218,6 @@
                         </a>
 
                   {% else %}
-
 
               <ul class="nav-signup" style="display: flex;">
                 <li class="nav-item" style="display: inline; display: flex;">
@@ -252,7 +308,7 @@
     <br>
     <br>
 
-    <div class="row">
+    <div class="rowed-container">
 
 {% if product_forpage %}
         {% for view in product_forpage %}
@@ -307,10 +363,8 @@
      {% endif %}
 
 
-
-
-
     </div>
+
 <br>
 
 {% endblock %}

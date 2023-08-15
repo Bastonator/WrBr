@@ -1209,3 +1209,157 @@ width: 281px;
          grid-gap: 1em;
          grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
          }
+
+
+
+
+
+
+<div style="display: flex;">
+          <ul class="navy" style="margin-left: 30px; display: flex;">
+            <li class="nav-item" style="display: inline; display: flex; margin-right: 10px;">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="border: none;
+                            border-height: 20px; transition: 0.5s;">
+                  Pages
+              </a>
+            </li>
+            <li class="nav-item" style="display: inline; display: flex; margin-left: 10px;">
+              <a class="nav-link" href="{% url 'products' %}" style="border: none; border-width: 90px;
+                            border-height: 20px; transition: 0.5s;">
+                  Products
+              </a>
+            </li>
+          </ul>
+
+
+                 {% if user.is_authenticated %}
+ <div class="nav-signup" style="display: flex;">
+                       <a style="margin-right: 20px; text-decoration: none;" href="{% url 'cart-view' %}">
+                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                           </svg>
+                           ({{ cart|length }})
+                       </a>
+                        <a style="text-decoration: none;" href="{% url 'wriber-page' request.user.id %}">
+                            <button style="border: none; border-radius: 10px; background-color: maroon; color: white; border-style: solid;
+                                            padding: 10px 10px;">
+                                Profile
+                            </button>
+                        </a>
+
+                  {% else %}
+
+
+              <ul class="nav-signup" style="display: flex;">
+                <li class="nav-item" style="display: inline; display: flex;">
+                    <a class="nav-link active" href="{% url 'signup-user' %}" style="background-color: blue; color: white;
+                     border-color: white; border-style: solid; width: 85px; height: 35px; padding: 5px 9px; border-radius: 7px;">
+                        <strong>Sign In</strong>
+                    </a>
+                </li>
+                  {% endif %}
+              </ul>
+          </div>
+</div>
+
+    @media only screen and (max-height:545px) {
+        .nav-signup{
+             margin-left: 56%;
+             display: inline-block;
+             align-items: center;
+             justify-content: center;
+        }
+        .product{
+         width: 320px;
+         text-align: left;
+         margin: auto;
+         border-color: slategray;
+         border-radius: 2px;
+      }
+        .product-container{
+         padding: 10px;
+         display: grid;
+         margin: auto;
+         margin-top: 1px;
+         width: 320px;
+         grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+      }
+      .rowed-container{
+        margin: auto;
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+        margin: 0;
+      }
+     }
+
+
+@media only screen and (max-width:1195px) {
+        .nav-signup{
+             margin-left: 20%;
+             display: inline-block;
+             align-items: center;
+             justify-content: center;
+        }
+        .product-container{
+         padding: 10px;
+         display: grid;
+         margin: auto;
+         margin-top: 1px;
+         width: 100%;
+         grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+      }
+      .rowed-container{
+        margin: auto;
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+        margin: 0;
+      }
+    @media only screen and (max-width:1195px) {
+        .nav-signup{
+             margin-left: 60%;
+             display: inline-block;
+             align-items: center;
+             justify-content: center;
+        }
+        .product-container{
+         padding: 10px;
+         display: grid;
+         margin: auto;
+         margin-top: 1px;
+         width: 100%;
+         grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+      }
+      .rowed-container{
+        margin: auto;
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+        margin: 0;
+      }
+      }
+
+
+    @media only screen and (min-height:545px) {
+        .nav-signup{
+             margin-left: 56%;
+             display: inline-block;
+             align-items: center;
+             justify-content: center;
+        }
+        .product-container{
+         display: grid;
+         margin: auto;
+         margin-top: 1px;
+         width: 100%;
+         grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
+      }
+      .rowed-container{
+        margin: auto;
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
+        margin: 0;
+      }
+     }

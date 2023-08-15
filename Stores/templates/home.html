@@ -16,7 +16,7 @@
          margin: auto;
          display: grid;
          grid-gap: 2em;
-         grid-template-columns: repeat(auto-fit, minmax(407px, 1fr));
+         grid-template-columns: repeat(auto-fit, minmax(48.5%, 1fr));
       }
       .card-page{
          text-align: left;
@@ -60,7 +60,7 @@
         margin: auto;
         display: grid;
         grid-gap: 2em;
-        grid-template-columns: repeat(auto-fit, minmax(407px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(48.5%, 1fr));
         margin: 0;
       }
       .something{
@@ -73,6 +73,20 @@
              align-items: center;
              justify-content: center;
         }
+        .card-page-container{
+         margin: auto;
+         display: grid;
+         grid-gap: 2em;
+         grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+         margin: 1px;
+      }
+      .rowed-container{
+        margin: auto;
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+        margin: 1px;
+      }
       }
       @media only screen and (max-width:845px) {
         .nav-signup{
@@ -171,6 +185,78 @@
     {% if all_pages %}
       {% for all_page in all_pages %}
 
+    <div class="col card-page-container">
+        <div class="card card-page">
+        <a href="{{ all_page.get_absolute_url }}">
+            {% if all_page.theme_photo %}
+                <img src="{{ all_page.theme_photo.url }}" class="card-img-top" alt="{{ all_page.page_name }}" height="230px;">
+            {% else %}
+            {% endif %}
+            <div class="card-body">
+                    <a style="text-decoration: none; color: coral" href="{{ all_page.get_absolute_url }}">
+                        <h5 class="card-title">{{ all_page.page_name }}
+                        </h5>
+                    </a>
+                    <p class="card-text">{{ all_page.page_description}}</p>
+                    <small class="card-text">{{ all_page.location }}</small>
+            </div>
+        </a>
+        </div>
+    </div>
+    <div class="col card-page-container">
+        <div class="card card-page">
+        <a href="{{ all_page.get_absolute_url }}">
+            {% if all_page.theme_photo %}
+                <img src="{{ all_page.theme_photo.url }}" class="card-img-top" alt="{{ all_page.page_name }}" height="230px;">
+            {% else %}
+            {% endif %}
+            <div class="card-body">
+                    <a style="text-decoration: none; color: coral" href="{{ all_page.get_absolute_url }}">
+                        <h5 class="card-title">{{ all_page.page_name }}
+                        </h5>
+                    </a>
+                    <p class="card-text">{{ all_page.page_description}}</p>
+                    <small class="card-text">{{ all_page.location }}</small>
+            </div>
+        </a>
+        </div>
+    </div>
+    <div class="col card-page-container">
+        <div class="card card-page">
+        <a href="{{ all_page.get_absolute_url }}">
+            {% if all_page.theme_photo %}
+                <img src="{{ all_page.theme_photo.url }}" class="card-img-top" alt="{{ all_page.page_name }}" height="230px;">
+            {% else %}
+            {% endif %}
+            <div class="card-body">
+                    <a style="text-decoration: none; color: coral" href="{{ all_page.get_absolute_url }}">
+                        <h5 class="card-title">{{ all_page.page_name }}
+                        </h5>
+                    </a>
+                    <p class="card-text">{{ all_page.page_description}}</p>
+                    <small class="card-text">{{ all_page.location }}</small>
+            </div>
+        </a>
+        </div>
+    </div>
+    <div class="col card-page-container">
+        <div class="card card-page">
+        <a href="{{ all_page.get_absolute_url }}">
+            {% if all_page.theme_photo %}
+                <img src="{{ all_page.theme_photo.url }}" class="card-img-top" alt="{{ all_page.page_name }}" height="230px;">
+            {% else %}
+            {% endif %}
+            <div class="card-body">
+                    <a style="text-decoration: none; color: coral" href="{{ all_page.get_absolute_url }}">
+                        <h5 class="card-title">{{ all_page.page_name }}
+                        </h5>
+                    </a>
+                    <p class="card-text">{{ all_page.page_description}}</p>
+                    <small class="card-text">{{ all_page.location }}</small>
+            </div>
+        </a>
+        </div>
+    </div>
     <div class="col card-page-container">
         <div class="card card-page">
         <a href="{{ all_page.get_absolute_url }}">

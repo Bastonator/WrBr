@@ -17,10 +17,9 @@
          display: grid;
          margin: auto;
          margin-top: 1px;
-         grid-template-rows: repeat(auto-fit, minmax(320px, 1fr));
+         grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
       }
       .product{
-         width: 320px;
          text-align: left;
          margin: auto;
          border-color: slategray;
@@ -49,14 +48,64 @@
         width: 30px;
         height: 30px;
       }
+      .rowed-container{
+        padding: 2em;
+        margin: auto;
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: repeat(auto-fit, minmax(23%, 1fr));
+        margin: 0;
+      }
       @media only screen and (max-width:945px) {
-        .nav-signup{
-             margin-left: 20%;
+         .nav-signup{
+             margin-left: 16%;
              display: inline-block;
              align-items: center;
              justify-content: center;
         }
+        .product-container{
+         padding: 10px;
+         display: grid;
+         margin: auto;
+         margin-top: 1px;
+         grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+         width: 100%;
       }
+      .product{
+         text-align: left;
+         margin: auto;
+         border-color: slategray;
+         border-radius: 2px;
+      }
+      .product:hover{
+         opacity: 0.9s;
+         border-color: coral;
+      }
+      .rowed-container{
+        margin: auto;
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+        margin: 0;
+      }
+      }
+     @media only screen and (max-height:545px) {
+        .product-container{
+         padding: 10px;
+         display: grid;
+         margin: auto;
+         margin-top: 1px;
+         width: 100%;
+         grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+      }
+      .rowed-container{
+        margin: auto;
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: repeat(auto-fit, minmax(35%, 1fr));
+        margin: 0;
+      }
+     }
   </style>
   </head>
   <body>
@@ -141,7 +190,7 @@
 
 {% block content %}
 
-    <div class="row">
+    <div class="rowed-container">
 
     {% if all_products %}
       {% for all_product in all_products %}

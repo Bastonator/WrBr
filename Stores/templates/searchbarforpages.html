@@ -51,7 +51,7 @@
     <a class="Wriber" href="{% url 'home' %}">
       <img src="{% static 'images/Wriber.png' %}">
     </a>
-            <div class="container" style="width: 100%">
+            <div class="container" style="width: 100%;">
                 <form class="d-flex" action="{% url 'searched-pages' %}">
                   {% csrf_token %}
                   <input class="form-control me-2" style="border-radius: 18px;" type="text" placeholder="Search" name="q">

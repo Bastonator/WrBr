@@ -10,7 +10,7 @@
          margin: auto;
          display: grid;
          grid-gap: 2em;
-         grid-template-columns: repeat(auto-fit, minmax(407px, 1fr));
+         grid-template-columns: repeat(auto-fit, minmax(48.5%, 1fr));
       }
       .card-page{
          text-align: left;
@@ -26,8 +26,24 @@
         margin: auto;
         display: grid;
         grid-gap: 2em;
-        grid-template-columns: repeat(auto-fit, minmax(407px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(48.5%, 1fr));
         margin: 0;
+      }
+      @media only screen and (max-width:945px) {
+        .card-page-container{
+         margin: auto;
+         display: grid;
+         grid-gap: 2em;
+         grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+         margin: 1px;
+      }
+      .rowed-container{
+        margin: auto;
+        display: grid;
+        grid-gap: 2em;
+        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+        margin: 1px;
+      }
       }
     </style>
   </head>
