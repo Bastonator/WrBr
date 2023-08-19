@@ -4,8 +4,10 @@
 <div class="container">
 {% block content %}
 
-    Your product has been updated..
-    <a href="{{ get_absolute_url }}">Check it out</a>
+<h5>
+    Your page has been updated..
+    <a href="{% url 'wriber-page' request.user.id %}">Check it out</a>
+</h5>
 
 {% endblock %}
 </div>

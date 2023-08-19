@@ -51,7 +51,11 @@
                                             <div class="inner-circle"></div>
                                         </div>
                                     </td>
-                                    <td>ODR{{ order_item.order.id }}</td>
+                                    <td>ODR{{ order_item.order.id }}
+                                        <a href="{{ order_item.order.get_absolute_url }}" style="text-decoration: none; color: coral;">
+                                            View
+                                        </a>
+                                    </td>
                                     <td><img src="{{ order_item.product.image_url.url }}" width="100" height="100"></td>
                                     <td>{{ order_item.order.created_by }}</td>
                                     <td>{{ order_item.product.product_name }}</td>
