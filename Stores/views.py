@@ -13,6 +13,7 @@ from .cart import Cart
 from django.core.mail import send_mail
 from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank, SearchHeadline
 from django.db.models import Q
+from django.contrib.auth.models import User
 
 
 from django import forms
@@ -463,16 +464,19 @@ def settings_dashboard(request, pk):
         return render(request, 'Settings.html', {})
 
 
-def update_account_profile(request, pk):
+def update_account_profile(request):
     if request.user.is_authenticated:
-        accountprofile = UserProfile.objects.get(user_id=pk)
-        form = Service_infoForm(request.POST or None, request.FILES or None, instance=accountprofile)
+        accountprofile = User.objects.get(id=request.user.id)
+        form = SignupForm(request.POST or None, request.FILES or None, instance=accountprofile)
         if form.is_valid():
             form.save()
-            return render(request, 'Settings.html')
+            login(request, accountprofile)
+            messages.success(request, ("Congratulations, your profile is updated"))
+            return render(request, 'accountupdatedalert.html')
         return render(request, 'WriberAccountUpdate.html', {'accountprofile': accountprofile, 'form': form})
     else:
         return render(request, 'WriberAccountUpdate.html', {})
+
 
 # allow users to be able to view and see all there products on one page and allow them to be able to add products to the database without having a page
 

@@ -1,10 +1,59 @@
 {% extends 'WriberAccount.html' %}
 
 
-<div class="container">
     {% block content %}
+<br>
 
+<br>
+
+<div class="card" style="border-radius: 4px;">
+    <div class="card-header" style="height: 5rem; background-color: coral; color: white" align="left">
+        <h1>Edit Profile</h1>
+    </div>
+    <div class="container">
+    <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+<center>
+<br>
+        {{form.first_name}}
+
+<br>
+        {{form.last_name}}
+<br>
+        {{form.username.label}}
+        {{form.username}}
+<br>
+        {{form.email}}
+<div align="left">
+<small style="color: darkslateblue;">Make sure you choose a valid email address, or you will face problems along the way!</small>
+</div>
+        {{form.password1.label}}
+        {{form.password1}}
+        <div align="left">
+        <small style="color: darkslateblue;">Make sure your password is not similar to your username!</small>
+        <br>
+        <small style="color: maroon;">Make sure you password is more than 8 characters long and doesn't only contain numbers!</small>
+        <br>
+        <small style="color: darkslateblue;">Make sure you password is more unique and something only you can remember!</small>
+        <br>
+        <small style="color: maroon;">Make sure your details meets all the above criteria or you will not be allowed to sign up!</small>
+        </div>
+        <br>
+        {{form.password2.label}}
+        {{form.password2}}
+        <div align="left">
+        <small style="color: darkslateblue;">Keep it safe, it will be used to access the profile dashboard!</small>
+        </div>
+<hr>
+<center>
+          <input type="submit" value="Update Profile" class="btn btn-outline-dark" style="padding: 10px 40px; width: 200px;">
+</center>
+
+
+        </form>
+<br>
+</div>
+    </div>
 
 
     {% endblock %}
-</div>
