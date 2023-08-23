@@ -339,6 +339,11 @@ def checkout(request):
 
                 item = OrderItem.objects.create(order=order, product=product, price=price, quantity=quantity)
 
+                product = Product_info.objects.get(id=item.product.id)
+
+                product.stock_available = product.stock_available - item.quantity
+                product.save()
+
             cart.clear()
 
             return render(request, 'ConfirmOrder.html')
