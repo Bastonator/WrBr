@@ -1,0 +1,14 @@
+{% extends 'home.html' %}
+
+
+{% block content %}
+<center>
+
+<h5>    
+    The quantity you are ordering is greater than what is available, remove the item or reduce the quantity.
+    <a href="{% url 'cart-view' %}">
+        Go back
+    </a>
+</h5>
+</center>
+{% endblock %}    

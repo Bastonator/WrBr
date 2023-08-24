@@ -327,26 +327,29 @@ def checkout(request):
                 product = item['product']
                 total_price = total_price + product.product_price * int(item['quantity'])
 
-            order = form.save(commit=False)
-            order.created_by = request.user
-            order.paid_amount = total_price
-            order.save()
+                if item['quantity'] > product.stock_available:
+                    return render(request, 'checkoutfailed.html')
+                else:
+                    order = form.save(commit=False)
+                    order.created_by = request.user
+                    order.paid_amount = total_price
+                    order.save()
 
-            for item in cart:
-                product = item['product']
-                quantity = int(item['quantity'])
-                price = product.product_price * int(item['quantity'])
+                    for item in cart:
+                        product = item['product']
+                        quantity = int(item['quantity'])
+                        price = product.product_price * int(item['quantity'])
 
-                item = OrderItem.objects.create(order=order, product=product, price=price, quantity=quantity)
+                        item = OrderItem.objects.create(order=order, product=product, price=price, quantity=quantity)
 
-                product = Product_info.objects.get(id=item.product.id)
+                        product = Product_info.objects.get(id=item.product.id)
 
-                product.stock_available = product.stock_available - item.quantity
-                product.save()
+                        product.stock_available = product.stock_available - item.quantity
+                        product.save()
 
-            cart.clear()
+                    cart.clear()
 
-            return render(request, 'ConfirmOrder.html')
+                    return render(request, 'ConfirmOrder.html')
     else:
         form = OrderForm()
 
