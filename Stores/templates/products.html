@@ -56,6 +56,21 @@
         grid-template-columns: repeat(auto-fit, minmax(23%, 1fr));
         margin: 0;
       }
+      .sign-in-button{
+        background-color: white;
+        color: maroon;
+        border-color: maroon;
+        border-style: solid;
+        width: 85px;
+        height: 45px;
+        padding: 8px 10px;
+        border-radius: 20px;
+        transition: 0.2s;
+      }
+      .sign-in-button:hover{
+        background-color: maroon;
+        color: white;
+      }
       @media only screen and (max-width:945px) {
          .nav-signup{
              margin-left: 16%;
@@ -164,10 +179,11 @@
 
               <ul class="nav-signup" style="display: flex;">
                 <li class="nav-item" style="display: inline; display: flex;">
-                    <a class="nav-link active" href="{% url 'signup-user' %}" style="background-color: blue; color: white;
-                     border-color: white; border-style: solid; width: 85px; height: 35px; padding: 5px 9px; border-radius: 7px;">
+                    <div class="sign-in-button">
+                    <a class="nav-link" href="{% url 'signup-user' %}">
                         <strong>Sign In</strong>
                     </a>
+                    </div>
                 </li>
                   {% endif %}
               </ul>

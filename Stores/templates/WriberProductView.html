@@ -79,6 +79,21 @@
         flex-basis: 24%;
         cursor: pointer;
       }
+      .sign-in-button{
+        background-color: white;
+        color: maroon;
+        border-color: maroon;
+        border-style: solid;
+        width: 85px;
+        height: 45px;
+        padding: 8px 10px;
+        border-radius: 20px;
+        transition: 0.2s;
+      }
+      .sign-in-button:hover{
+        background-color: maroon;
+        color: white;
+      }
       @media only screen and (max-width:945px) {
         .nav-signup{
              margin-left: 16%;
@@ -94,7 +109,7 @@
       }
       @media only screen and (max-height:945px) {
         .nav-signup{
-             margin-left: 56%;
+             margin-left: 100px;
              display: inline-block;
              align-items: center;
              justify-content: center;
@@ -149,10 +164,11 @@
 
               <ul class="nav-signup" style="display: flex;">
                 <li class="nav-item" style="display: inline; display: flex;">
-                    <a class="nav-link active" href="{% url 'signup-user' %}" style="background-color: blue; color: white;
-                     border-color: white; border-style: solid; width: 85px; height: 35px; padding: 5px 9px; border-radius: 7px;">
+                    <div class="sign-in-button">
+                    <a class="nav-link" href="{% url 'signup-user' %}">
                         <strong>Sign In</strong>
                     </a>
+                    </div>
                 </li>
                   {% endif %}
               </ul>
@@ -186,7 +202,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-2" style="width: 380px; margin-left: 24px; margin-right: 24px;">
+        <div class="col-2" style="width: 380px; margin-left: 38px; margin-right: 24px;">
             <p>Home / {{ view_products.product_name }}</p>
             <h4>{{ view_products.product_name }}</h4><p><small>by {{ view_products.page_owner }}, {{ view_products.user.username }}</small></p>
             <br>
