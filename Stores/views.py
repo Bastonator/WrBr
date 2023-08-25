@@ -284,7 +284,7 @@ def add_to_cart(request, pk):
     cart = Cart(request)
     cart.add(pk)
 
-    return redirect('home')
+    return redirect('cart-view')
 
 
 def cart_view(request):
@@ -416,7 +416,7 @@ def addnew_tariff(request):
                 tariff = form.save(commit=False)
                 tariff.user = request.user
                 tariff.save()
-                return redirect(tariff.get_absolute_url())
+                return render(request, 'Dashboardtariff.html')
         else:
             form.fields["page_owner"].queryset = Usercreatedpage.objects.filter(user=request.user)
         return render(request, 'WriberTariffAdd.html', {'form': form})
