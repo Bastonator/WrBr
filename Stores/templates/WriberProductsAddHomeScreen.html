@@ -1,13 +1,19 @@
 {% extends 'products.html' %}
 
+
+
+<div class="container">
 {% block content %}
-<center>
-    <div style="width: 78%; height: 75%; border-radius: 3px; border-width: 2px; border-color: maroon; background-color: snow;">
-        <center>
-            <h3 align="left">Add a new product</h3>
-        <br/><br/>
-            <div class="container" style="width: 800px; margin-left: 130px; justify-content: center;
-                        background-color: moccasin;">
+
+
+    <center>
+            <br><br/>
+    <div class="card-add" style="border-color: slategray;">
+        <div class="card-header" style="height: 5rem" align="left">
+            <h1>Add New Product</h1>
+        </div>
+        <br>
+        <div class="container">
                 <form action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <br>
@@ -39,8 +45,8 @@
                         <input type="submit" value="Upload" class="btn btn-outline-dark">
                      </div>
                 </form>
-            </div>
-        </center>
+        </div>
     </div>
 </center>
 {% endblock %}
+</div>

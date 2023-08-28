@@ -1,24 +1,26 @@
 {% extends 'home.html' %}
 
+<div class="container">
 {% block content %}
 <center>
-    <div style="width: 70%; height: 75%; border-color: maroon; border-radius: 10px; border-width: 2px;">
-        <center>
-            <h3 align="left">Add a new product</h3>
-        <br/><br/>
-            <div class="container" style="width: 800px; margin-left: 130px; justify-content: center;
-                        background-color: snow;">
-                <form action="" method="POST" enctype="multipart/form-data">
+    <div class="card">
+            <div class="card-header" style="height: 5rem;" align="left">
+                <h1>Create a page</h1>
+            </div>
+            <div class="container">
+            <form action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
+<center>
                         <br>
                         {{ form.as_p }}
+</center>
                 <hr>             
                      <div align="right">
                         <input type="submit" value="Create Page" class="btn btn-outline-dark">
                      </div>
                 </form>
-            </div>
-        </center>
+ </div>
     </div>
 </center>
 {% endblock %}
+</div>
