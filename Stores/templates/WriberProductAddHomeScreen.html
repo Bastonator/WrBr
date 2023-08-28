@@ -1,0 +1,46 @@
+{% extends 'products.html' %}
+
+{% block content %}
+<center>
+    <div style="width: 78%; height: 75%; border-radius: 3px; border-width: 2px; border-color: maroon; background-color: snow;">
+        <center>
+            <h3 align="left">Add a new product</h3>
+        <br/><br/>
+            <div class="container" style="width: 800px; margin-left: 130px; justify-content: center;
+                        background-color: moccasin;">
+                <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <br>
+                {{form.product_name}}
+                <br>
+                {{form.product_price}}
+                <br>
+                {{form.stock_available}}
+                <br>
+                <div align="left">
+                    <p> Add different pics showing different angles of the product. </p>
+                </div> 
+                {{form.image_url}}
+                <br>
+                {{form.image_url2}}
+                <br>
+                {{form.image_url3}}
+                <br>
+                {{form.image_url4}}
+                <br>
+                {{form.product_description}}
+                <br>
+                <div align="left">
+                    <p> Which page should this product be allocated to? Leave blank if you have no page. </p>
+                </div>    
+                {{form.page_owner}}   
+                <hr>             
+                     <div align="right">
+                        <input type="submit" value="Upload" class="btn btn-outline-dark">
+                     </div>
+                </form>
+            </div>
+        </center>
+    </div>
+</center>
+{% endblock %}

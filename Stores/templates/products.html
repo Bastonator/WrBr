@@ -71,6 +71,20 @@
         background-color: maroon;
         color: white;
       }
+      .upload-button{
+        width: 300px;
+        height: 55px;
+        color: maroon;
+        background-color: white;
+        border-color: Tomato;
+        border-radius: 40px;
+        transition: 0.4s;
+        border-width: 2px;
+      }
+      .upload-button:hover{
+        background-color: Tomato;
+        color: white;
+      }
       @media only screen and (max-width:945px) {
          .nav-signup{
              margin-left: 16%;
@@ -145,7 +159,7 @@
 <div style="display: flex; align-items: center; justify-content: space-between;">
           <ul class="navy" style="margin-left: 30px; display: flex; align-items: center;">
             <li class="nav-item" style="display: inline; display: flex; margin-right: 10px;">
-              <a class="nav-link active" aria-current="page" href="{% url 'home' %}" style="border: none;
+              <a class="nav-link active" aria-current="page" href="{% url 'pages' %}" style="border: none;
                             border-height: 20px; transition: 0.5s;">
                   Pages
               </a>
@@ -193,13 +207,18 @@
 
 <br>
 <center>
-      <h3 style="color: Tomato;">
-          Welcome To Wriber, a community for buyers and sellers.
-          Buy whatever, whenever and get it delivered right to your door.
-      </h3>
-      <h5 style="color: midnightblue;">Sign Up or Log In to view your cart and place orders.</h5>
+    <h4 style="color: midnightblue">
+        Upload your first product here:
+    </h4>
+</center>
 
-  </center>
+<center>
+<a href="{% url 'wriber-products-add-homescreen' %}">
+    <button class="upload-button">
+        <strong>Upload Now!!!</strong>
+    </button>
+</a>
+</center>
 
 <br xmlns="http://www.w3.org/1999/html">
 

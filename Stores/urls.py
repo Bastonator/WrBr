@@ -6,7 +6,8 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.homeproducts, name='home'),
+    path('pages', views.home, name='pages'),
     path('products', views.homeproducts, name='products'),
     path('services', views.homeservices, name='services'),
     path('searched_pages', views.Search_page, name='searched-pages'),
@@ -24,7 +25,9 @@ urlpatterns = [
     path('dashboard_page/<int:pk>', views.page_dashboard, name="dashboard-page"),
     path('dashboard_product/<int:pk>', views.perpage_product, name="dashboard-product"),
     path('wriber_add_page', views.addnew_page, name="wriber-page-add"),
+    path('wriber_add_page_homescreen', views.addnew_page_homescreen, name="wriber-page-add-homescreen"),
     path('wriber_add_products', views.addnew_product, name="wriber-products-add"),
+    path('wriber_add_products_homescreen', views.addnew_product_homescreen, name="wriber-products-add-homescreen"),
     path('wriber_add_services', views.addnew_service, name="wriber-services-add"),
     path('wriber_updateproducts/<int:pk>', views.update_products, name="wriber-updateproducts"),
     path('wriber_updateservices/<int:pk>', views.update_services, name="wriber-updateservices"),

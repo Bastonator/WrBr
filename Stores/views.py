@@ -216,6 +216,43 @@ def addnew_product(request):
         return render(request, 'WriberProductsAdd.html', {})
 
 
+@login_required
+def addnew_product_homescreen(request):
+    if request.user.is_authenticated:
+        page = Product_info.objects.filter(user=request.user)
+        form = Product_infoForm(request.POST or None, request.FILES or None)
+        if request.method == "POST":
+            print(form)
+            if form.is_valid():
+                product = form.save(commit=False)
+                product.user = request.user
+                product.save()
+                return redirect(product.get_absolute_url())
+        else:
+            form.fields["page_owner"].queryset = Usercreatedpage.objects.filter(user=request.user)
+        return render(request, 'WriberProductsAddHomeScreen.html', {'form': form})
+    else:
+        return render(request, 'WriberProductsAddHomeScreen.html', {})
+
+
+@login_required
+def addnew_page_homescreen(request):
+    if request.user.is_authenticated:
+        form = PageForm(request.POST or None, request.FILES or None)
+        if request.method == "POST":
+            if form.is_valid():
+                page = form.save(commit=False)
+                page.user = request.user
+                page.save()
+                messages.success(request, ('Your page has been created successfully!!'))
+                return redirect(page.get_absolute_url())
+
+        else:
+            return render(request, 'WriberPageAddHomeScreen.html', {'form': form})
+    else:
+        return render(request, 'WriberPageAddHomeScreen.html', {})
+
+
 def addnew_service(request):
     if request.user.is_authenticated:
         page = Service_info.objects.filter(user=request.user)
