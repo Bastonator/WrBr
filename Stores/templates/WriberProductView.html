@@ -213,7 +213,7 @@
         </div>
         <div class="col-2" style="width: 380px; margin-left: 38px; margin-right: 24px;">
             <p>Home / {{ view_products.product_name }}</p>
-            <h4>{{ view_products.product_name }}</h4><p><small>by {{ view_products.page_owner }}, {{ view_products.user.username }}</small></p>
+            <h4>{{ view_products.product_name }}</h4><p><small>by {{ view_products.user.username }}</small></p>
             <br>
             <br>
             <h3><strong>D{{ view_products.product_price }}</strong></h3>
@@ -223,6 +223,21 @@
                     Add To Cart
                 </button>
             </a>
+            {% if request.user.id == profile.user.id %}
+            <a href="{% url 'wriber-updateproducts' pk=view_products.pk %}">
+                <button class="edit-button">
+                    Edit Product
+                </button>
+            </a>
+            {% endif %}
+            <hr>
+            {% if request.user.id == view_products.user.id %}
+            <a href="{% url 'wriber-updateproducts' pk=view_products.pk %}">
+                <button class="edit-button" style="width: 200px; height: 38px; background-color: blue; color: white; border-style: solid; border-radius: 41px; border: none;">
+                    Edit Product
+                </button>
+            </a>
+            {% endif %}
             <br>
 
             <br>

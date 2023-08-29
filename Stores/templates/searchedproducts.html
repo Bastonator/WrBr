@@ -124,11 +124,13 @@
                     <p class="card-text">D{{ product.product_price }}</p>
                 </div>
                 <p class="card-text"><strong>{{ product.stock_available }}</strong> in stock</p>
+                {% if product.page_owner %}
                     <a style="text-decoration: none;" href="{{ product.page_owner.get_absolute_url }}">
                       <p class="card-text">
                         {{ product.page_owner }}
                       </p>
                     </a>
+                {% endif %}
             </div>
         </div>
 
