@@ -223,13 +223,6 @@
                     Add To Cart
                 </button>
             </a>
-            {% if request.user.id == profile.user.id %}
-            <a href="{% url 'wriber-updateproducts' pk=view_products.pk %}">
-                <button class="edit-button">
-                    Edit Product
-                </button>
-            </a>
-            {% endif %}
             <hr>
             {% if request.user.id == view_products.user.id %}
             <a href="{% url 'wriber-updateproducts' pk=view_products.pk %}">
