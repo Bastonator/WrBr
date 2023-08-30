@@ -38,10 +38,10 @@
          color: white;
       }
       .list-tariff {
-         background-color:  indigo;
+         background-color: whitesmoke;
       }
       .list-tariff h6{
-         color: white;
+         color: black;
       }
       .tariff:hover{
          opacity: 0.7;
@@ -106,6 +106,9 @@
         background-color: maroon;
         color: white;
       }
+      .mod:hover{
+          background-color: coral;
+      }
       @media only screen and (max-width:945px) {
         .nav-signup{
              margin-left: 10%;
@@ -124,7 +127,7 @@
              justify-content: center;
         }
         .list-tariff {
-             background-color:  indigo;
+             background-color:  whitesmoke;
              display: inline-block;
              display: flex;
              width: 150px;
@@ -326,6 +329,13 @@
         {% endfor %}
     {% else %}
         <h4 style="font-size: 20px;">This User Has No Tariffs, we advise not to order from this site, to avoid future complications.</h4>
+        {% if request.user.id == tariff_button.user.id %}
+            <a href="{% url 'add-tariff' %}">
+                <button class="edit-button" style="width: 200px; height: 38px; background-color: blue; color: white; border-style: solid; border-radius: 41px; border: none;">
+                    Add Tariff
+                </button>
+            </a>
+        {% endif %}
     {% endif %}
 
 </div>
