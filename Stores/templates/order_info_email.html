@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <body>
+            {% if orders %}
+            {% for item in orders %}
+            <h3>
+                {% if item.first_name %}
+                This order is from {{ item.first_name }}.
+                {% endif %}
+            </h3>
+                <h3>
+                    The username is {{ item.created_by }} and the order was made at {{ item.created_at }}
+<br>
+                    {% if item.phone_number %}
+                    The phone number is
+                        {{ item.phone_number }}
+                    {% else %}
+                    <h3> This user has no phone number <h3>
+                    {% endif %}
+                    and the location for the delivery is {{ item.address }} and at {{ item.city }}
+<hr>
+                    The buyer sent amessage: <h6> {{ item.message }} </h6>
+                </h3>
+            {% endfor %}
+            {% endif %}
+            <br>
+
+            {% if items|length %}
+                {% for item in items %}
+                    The buyer ordered for <strong>{{ item.quantity }}<strong> {{ item.product.product_name }}, that has a price of <strong>D{{ item.product.product_price }}</strong> each.
+                    Here is the pic:
+                    <hr>
+                    {% if item.product.image_url %}
+                        <img src="{{ item.product.image_url.url }}" alt="" width="120" height="90">
+                    {% else %}
+                        Hmm?...No pic available
+                    {% endif %}
+                    <hr>
+                    The order was made from this page;
+                    <h3>
+                    {% if item.product.page_owner %}
+                    <a href="{{ item.product.page_owner.get_absolute_url }}">
+                        {{ item.product.page_owner.page_name }}, click here to see the tariff prices they set.
+                    </a>
+                    {% else %}
+                        <h3>
+                            This seller does not have a page, try calling the seller directly
+                        </h3>
+                    {% endif %}
+                    <h3>
+                    <br>
+                    The phone number of the seller is
+                    {% if item.product.page_owner.phone_number %}
+                        {{ item.product.page_owner.phone_number }}
+                    {% else %}
+                        <h3>No number available</h3>
+                    {% endif %}
+                    <br>
+                    {% if item.product.user.phone_number %}
+                     or you can try
+                      {{ item.product.user.phone_number }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+                <h3>
+                    The total cost of the ordered products is D{{ cart.get_total_cost }} + the price of the delivery of the buyers location.
+                </h3>
+        </body>
+    </head>
+</html>

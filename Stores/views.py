@@ -14,10 +14,13 @@ from django.core.mail import send_mail
 from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank, SearchHeadline
 from django.db.models import Q
 from django.contrib.auth.models import User
+from django.conf import settings
 
 
 from django import forms
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import get_template
+
 
 
 def home(request):
@@ -385,6 +388,26 @@ def checkout(request):
                         product.save()
 
                     cart.clear()
+
+                    orders = Order.objects.filter(created_by=request.user)
+
+                    items = OrderItem.objects.filter(product__user=request.user)
+
+                    subject = "An order was made!!!"
+                    from_email = settings.EMAIL_HOST_USER
+                    to_email = [settings.EMAIL_RECIEVER]
+                    stuff = settings.BASE_DIR
+                    fullpath = stuff.joinpath("Stores/templates/order_info_email.html")
+                    fullpath = stuff / ("Stores/templates/order_info_email.html")
+                    with open(fullpath) as f:
+                        # with open(settings.BASE_DIR + "/Stores/templates/order_info_email.html") as f:
+                        order_message = f.read()
+                    order_message = EmailMultiAlternatives(subject=subject, body=order_message, from_email=from_email, to=to_email)
+                    html_template = get_template('order_info_email.html').render({'orders': orders, 'items': items, 'cart': cart})
+                    order_message.attach_alternative(html_template, "text/html")
+                    order_message.send()
+                    # order_message = """This is the order info"""
+                    # send_mail(subject=subject, from_email=from_email, recipient_list=to_email, message=order_message, fail_silently=False)
 
                     return render(request, 'ConfirmOrder.html')
     else:

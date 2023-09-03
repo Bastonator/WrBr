@@ -20,12 +20,15 @@
 
             <div class="col" style="margin-top: 11px; display: flex;" >
                 <div class="card" style="width: 260px;">
-                  <a href="{{ product.get_absolute_url }}">
-                  <img src="{{ product.image_url.url }}" class="card-img-top" alt="{{ product.product_name }}"
-                  height="250px;" width="260px;">
-                  </a>
+                  {% if product.image_url %}
+                      <img src="{{ product.image_url.url }}" class="card-img-top" alt="{{ product.product_name }}"
+                      height="250px;" width="260px;">
+                  {% else %}
+                  {% endif %}
                   <div class="card-body">
+                    <a href="{{ product.get_absolute_url }}">
                     <h5 class="card-title">{{ product.product_name }}</h5>
+                    </a>
                     <p class="card-text">D{{ product.product_price }}</p>
                     <p class="card-text">{{ product.product_description }}</p>
                     <p class="card-text">{{ product.stock_available }}</p>
