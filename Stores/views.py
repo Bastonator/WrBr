@@ -391,7 +391,7 @@ def checkout(request):
 
                     orders = Order.objects.filter(created_by=request.user)
 
-                    items = OrderItem.objects.filter(product__user=request.user)
+                    items = OrderItem.objects.filter(order=order)
 
                     subject = "An order was made!!!"
                     from_email = settings.EMAIL_HOST_USER

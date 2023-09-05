@@ -19,7 +19,7 @@
                     {% endif %}
                     and the location for the delivery is {{ item.address }} and at {{ item.city }}
 <hr>
-                    The buyer sent amessage: <h6> {{ item.message }} </h6>
+                    The buyer sent a message: <h5> {{ item.message }} </h5>
                 </h3>
             {% endfor %}
             {% endif %}
@@ -27,11 +27,11 @@
 
             {% if items|length %}
                 {% for item in items %}
-                    The buyer ordered for <strong>{{ item.quantity }}<strong> {{ item.product.product_name }}, that has a price of <strong>D{{ item.product.product_price }}</strong> each.
+                    The buyer ordered for <strong>{{ item.quantity }} {{ item.product.product_name }}</strong> , that has a price of <strong>D{{ item.product.product_price }}</strong> each.
                     Here is the pic:
                     <hr>
                     {% if item.product.image_url %}
-                        <img src="{{ item.product.image_url.url }}" alt="" width="120" height="90">
+                        <img src="{{ item.product.image_url.url }}" alt="" width="170" height="120">
                     {% else %}
                         Hmm?...No pic available
                     {% endif %}
@@ -63,7 +63,7 @@
                 {% endfor %}
             {% endif %}
                 <h3>
-                    The total cost of the ordered products is D{{ cart.get_total_cost }} + the price of the delivery of the buyers location.
+                    The total cost of the ordered products is D{{ cart.get_total_cost }}. Don't forgetto add the price of the delivery of the buyers location.
                 </h3>
         </body>
     </head>

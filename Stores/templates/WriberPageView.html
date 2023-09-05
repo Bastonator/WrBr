@@ -129,7 +129,7 @@
              background-color:  whitesmoke;
              display: inline-block;
              display: flex;
-             width: 150px;
+             width: 41%;
         }
         .tariff-div{
              display: flex;
@@ -237,7 +237,7 @@
                    ({{ cart|length }})
                </a>
           {% if user.is_authenticated %}
-                <a style="margin-left: 4px; text-decoration: none;" href="{% url 'wriber-page' request.user.id %}">
+                <a style="margin-left: 16px; text-decoration: none;" href="{% url 'wriber-page' request.user.id %}">
                     <button style="border: none; border-radius: 20px; background-color: maroon; color: white; border-style: solid;
                                     padding: 10px 10px;">
                         Profile
@@ -281,8 +281,6 @@
                 {{ view_page.page.business_name }} at
                 {{ view_page.page.user.email }}
                 </strong></small>
-                <P>Contact me at {{ view_page.page.phone_number }}
-                </p>
                 </div>
               </div>
          </div>
