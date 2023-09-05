@@ -8,7 +8,162 @@
     <h3 align="left">Update Your Tariff</h3>
                  <form action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {{ form.as_p }}
+                        <div class="container list-tariff" style="display: inline-block; float: left; width: 41%;
+            margin-left: 40px;">
+            <br>
+
+            <h6>Abuko: D{{ form.abuko }}</h6>
+
+            <h6>Brufut Taf:  D{{ form.brufut_Taf }}</h6>
+
+            <h6>Brufut Heights:  D{{ form.brufut_heights }}</h6>
+
+            <h6>Brikama:  D{{ form.brikama }}</h6>
+
+            <h6>Barra:  D{{ form.barra }}</h6>
+
+            <h6>Banjul:  D{{ form.banjul }}</h6>
+
+            <h6>Bakau:  D{{ form.bakau }}</h6>
+
+            <h6>Batokunku:  D{{ form.batokunku }}</h6>
+
+            <h6>Brusubi:  D{{ form.brusubi }}</h6>
+
+            <h6>Bijilo:  D{{ form.bijilo }}</h6>
+
+            <h6>Busumbala:  D{{ form.busumbala }}</h6>
+
+            <h6>Banjulinding:  D{{ form.banjulinding }}</h6>
+
+            <h6>Bundung:  D{{ form.bundung }}</h6>
+
+            <h6>Bakoteh:  D{{ form.bakoteh }}</h6>
+
+            <h6>Churchill Town:  D{{ form.churchill_Town }}</h6>
+
+            <h6>Coastal Road:  D{{ form.coastal_Road }}</h6>
+
+            <h6>Dippa Kunda:  D{{ form.dippa_kunda }}</h6>
+
+            <h6>Dalaba Estate :  D{{ form.dalaba_estate }}</h6>
+
+            <h6>Ebou Town:  D{{ form.ebou_town }}</h6>
+
+            <h6>Fajara:  D{{ form.fajara }}</h6>
+
+            <h6>Farato:  D{{ form.farato }}</h6>
+
+            <h6>Pipeline:  D{{ form.pipline }}</h6>
+
+            <h6>Faraba:  D{{ form.faraba }}</h6>
+
+            <h6>Fajikunda:  D{{ form.faji_kunda }}</h6>
+
+            <h6>Gunjur:  D{{ form.gunjur }}</h6>
+
+            <h6>Jabang:  D{{ form.jabang }}</h6>
+
+            <h6>Jimpex:  D{{ form.jimpex }}</h6>
+
+            <h6>Jamburr:  D{{ form.jamburr }}</h6>
+
+            <h6>Jambanjelly:  D{{ form.jambanjelly }}</h6>
+
+            <h6>Kanifing:  D{{ form.kanifing }}</h6>
+
+            <h6>Kartong:  D{{ form.kartong }}</h6>
+
+            <h6>Kotu:  D{{ form.kotu }}</h6>
+
+            <h6>Kololi:  D{{ form.kololi }}</h6>
+
+            <h6>Kerr Sering:  D{{ form.kerr_sering }}</h6>
+
+            <h6>Latriya:  D{{ form.latriya }}</h6>
+
+</div>
+
+<div class="container list-tariff" style="display: inline-block; float: left; width: 41%;
+            margin-left: 40px;">
+            <br>
+            <h6>Lamin: D{{ form.lamin }}</h6>
+
+            <h6>Latrikunda German: D{{ form.latrikunda_german }}</h6>
+
+            <h6>Latrikunda Sabigi: D{{ form.latrikunda_sabigi }}</h6>
+
+            <h6>Manjai: D{{ form.manjai }}</h6>
+
+            <h6>Mariamakunda: D{{ form.mariamakunda }}</h6>
+
+            <h6>Marakesa: D{{ form.marakesa }}</h6>
+
+            <h6>Madinabaa: D{{ form.madinabaa }}</h6>
+
+            <h6>Madinari: D{{ form.madinari }}</h6>
+
+            <h6>Madiyana: D{{ form.madiyana }}</h6>
+
+            <h6>Nema Su: D{{ form.nema_su }}</h6>
+
+            <h6>Old Jeshwang: D{{ form.old_jeshwang }}</h6>
+
+            <h6>New Jeshwang: D{{ form.new_jeshwang }}</h6>
+
+            <h6>Old Yundum: D{{ form.old_yundum }}</h6>
+
+            <h6>Paradise View: D{{ form.paradise_view }}</h6>
+
+            <h6>Paradise Estate: D{{ form.paradise_estate }}</h6>
+
+            <h6>Salaji: D{{ form.salaji }}</h6>
+
+            <h6>Sanchaba: D{{ form.sanchaba }}</h6>
+
+            <h6>Serrekunda: D{{ form.serekunda }}</h6>
+
+            <h6>Senegambia: D{{ form.senegambia }}</h6>
+
+            <h6>Sinchu: D{{ form.sinchu }}</h6>
+
+            <h6>Sukuta: D{{ form.sukuta }}</h6>
+
+            <h6>Sanyang: D{{ form.sanyang }}</h6>
+
+            <h6>TurnTable: D{{ form.turntable }}</h6>
+
+            <h6>Traffics Lights: D{{ form.traffic_lights }}</h6>
+
+            <h6>Senegambia: D{{ form.senegambia }}</h6>
+
+            <h6>Tallinding: D{{ form.tallinding }}</h6>
+
+            <h6>Tabokoto: D{{ form.tabokoto }}</h6>
+
+            <h6>Tipper Garage: D{{ form.tipper_garage }}</h6>
+
+            <h6>Tanji: D{{ form.tanji }}</h6>
+
+            <h6>Tujereng: D{{ form.tujereng }}</h6>
+
+            <h6>Wulinkama: D{{ form.wulinkama }}</h6>
+
+            <h6>Westfield: D{{ form.westfield }}</h6>
+
+            <h6>Yundum: D{{ form.yundum }}</h6>
+
+            <h6>Yuna: D{{ form.yuna }}</h6>
+
+            <h6>Yarambamba: D{{ form.yarambamba }}</h6>
+
+</div>
+                        <center>
+                            {{ form.tariff_owner }}
+                            <br>
+                            {{ form.page_owner }}
+                        </center>
+<hr>
                      <div align="right">
                         <input type="submit" value="Update" class="btn btn-outline-dark">
                      </div>
