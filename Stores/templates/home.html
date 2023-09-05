@@ -132,14 +132,6 @@
             height: auto;
         }
       }
-      @media only screen and (max-width:845px) {
-        .nav-signup{
-             margin-left: 19%;
-             display: inline-block;
-             align-items: center;
-             justify-content: center;
-        }
-      }
   </style>
   </head>
   <body>
@@ -187,7 +179,7 @@
                    ({{ cart|length }})
                </a>
           {% if user.is_authenticated %}
-                <a style="margin-left: 3px; text-decoration: none;" href="{% url 'wriber-page' request.user.id %}">
+                <a style="text-decoration: none;" href="{% url 'wriber-page' request.user.id %}">
                     <button style="border: none; border-radius: 20px; background-color: maroon; color: white; border-style: solid;
                                     padding: 10px 10px;">
                         Profile
