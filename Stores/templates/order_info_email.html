@@ -39,7 +39,7 @@
                     The order was made from this page;
                     <h3>
                     {% if item.product.page_owner %}
-                    <a href="{% url 'wriber' pk=item.product.page_owner.pk %}">
+                    <a href="https://www.wrbr.xyz/{{ item.product.page_owner.get_absolute_url}}">
                         {{ item.product.page_owner.page_name }}, click here to see the tariff prices they set.
                     </a>
                     {% else %}
