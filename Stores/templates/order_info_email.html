@@ -39,7 +39,7 @@
                     The order was made from this page;
                     <h3>
                     {% if item.product.page_owner %}
-                    <a href="https://www.wrbr.xyz/{{ item.product.page_owner.get_absolute_url}}">
+                    <a href="https://www.wrbr.xyz{{ item.product.page_owner.get_absolute_url}}">
                         {{ item.product.page_owner.page_name }}, click here to see the tariff prices they set.
                     </a>
                     {% else %}
@@ -63,7 +63,7 @@
                 {% endfor %}
             {% endif %}
                 <h3>
-                    The total cost of the ordered products is D{{ cart.get_total_cost }}. Don't forgetto add the price of the delivery of the buyers location.
+                    The total cost of the ordered products is D{{ cart.get_total_cost }}. Don't forget to add the price of the delivery of the buyers location.
                 </h3>
         </body>
     </head>
