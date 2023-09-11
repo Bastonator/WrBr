@@ -393,9 +393,13 @@ def checkout(request):
 
                     items = OrderItem.objects.filter(order=order)
 
+                    item_user = OrderItem.objects.get(order=order)
+
+                    user_email = item_user.product.user.email
+
                     subject = "An order was made!!!"
                     from_email = settings.EMAIL_HOST_USER
-                    to_email = [settings.EMAIL_RECIEVER]
+                    to_email = [settings.EMAIL_RECIEVER, user_email]
                     stuff = settings.BASE_DIR
                     fullpath = stuff.joinpath("Stores/templates/order_info_email.html")
                     fullpath = stuff / ("Stores/templates/order_info_email.html")
