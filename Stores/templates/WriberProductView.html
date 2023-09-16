@@ -223,7 +223,11 @@
         <div class="col-2" style="width: 380px; margin-left: 38px; margin-right: 24px;">
             <p>Home / {{ view_products.product_name }}</p>
             <h4>{{ view_products.product_name }}</h4><p><small>by {{ view_products.user.username }}</small></p>
-            <br>
+            <h7>
+                From<a style="color: coral; text-decoration: none;" href="{{ view_products.page_owner.get_absolute_url }}">
+                        {{ view_products.page_owner.page_name }}
+                    </a>
+            </h7>
             <br>
             <h3><strong>D{{ view_products.product_price }}</strong></h3>
             <br>
@@ -248,7 +252,6 @@
         </div>
     </div>
 </div>
-  
      {% endif %}
 
 {% endblock %}
