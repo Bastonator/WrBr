@@ -21,6 +21,20 @@
          border-height: 25px;
          padding: 6px 6px;
       }
+      .buy-button{
+          background-color: white;
+          color: coral;
+          border-radius: 20px;
+          border-width: 1px;
+          height: 37px;
+          border-color: coral;
+          width: 250px;
+          transition: 0.6s;
+          }
+       .buy-button:hover{
+          background-color: tomato;
+          color: white;
+          }
       .product-container{
          padding: 10px;
          display: grid;
@@ -279,6 +293,11 @@
                     </div>
                         <p class="card-text"><strong>{{ all_product.stock_available }} in Stock</strong></p>
                     {% if all_product.page_owner %}
+                    <a href="{% url 'add-to-cart' pk=all_product.pk %}">
+                        <button class="buy-button">
+                            Add To Cart
+                        </button>
+                    </a>
                     <div class="container-fluid" style="background-color: White;">
                         From<a style="text-decoration: none;" href="{{ all_product.page_owner.get_absolute_url }}">
                             <p>

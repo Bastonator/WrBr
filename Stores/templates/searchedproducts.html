@@ -23,6 +23,20 @@
          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
          width: 350px;
       }
+      .buy-button{
+          background-color: white;
+          color: coral;
+          border-radius: 20px;
+          border-width: 1px;
+          height: 37px;
+          border-color: coral;
+          width: 250px;
+          transition: 0.6s;
+          }
+       .buy-button:hover{
+          background-color: tomato;
+          color: white;
+          }
       .product{
          text-align: left;
          margin: auto;
@@ -125,11 +139,18 @@
                 </div>
                 <p class="card-text"><strong>{{ product.stock_available }}</strong> in stock</p>
                 {% if product.page_owner %}
-                    <a style="text-decoration: none;" href="{{ product.page_owner.get_absolute_url }}">
-                      <p class="card-text">
-                        {{ product.page_owner }}
-                      </p>
-                    </a>
+                <a href="{% url 'add-to-cart' pk=product.pk %}">
+                        <button class="buy-button">
+                            Add To Cart
+                        </button>
+                </a>
+                <div class="container-fluid" style="background-color: White;">
+                        From<a style="text-decoration: none;" href="{{ product.page_owner.get_absolute_url }}">
+                            <p>
+                            {{ product.page_owner }}
+                            </p>
+                        </a>
+                </div>
                 {% endif %}
             </div>
         </div>
