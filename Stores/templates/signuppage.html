@@ -17,7 +17,7 @@
   <style>
     .card{
         width: 41rem;
-        height: 48rem;
+        height: 54rem;
     }
     @media only screen and (max-width:945px) {
         .card{
@@ -48,7 +48,7 @@
 
 {% if form.errors %}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    The data you entered was invalid
+    Make sure your password and username is reaching the proper criteria for a secure sign up, read below the password field to see the criteria!!
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
     </button>
@@ -86,15 +86,11 @@
                 {{form.password1.label}}
                 {{form.password1}}
     <div align="left">
-        <small style="color: darkslateblue;">Make sure your password is not similar to your username!</small>
-        <br>
-        <small style="color: maroon;">Make sure you password is more than 8 characters long and doesn't only contain numbers!</small>
-        <br>
-        <small style="color: darkslateblue;">Make sure you password is more unique and something only you can remember!</small>
-        <br>
-        <small style="color: maroon;">Make sure your details meets all the above criteria or you will not be allowed to sign up!</small>
+        <p style="color: darkslateblue;">Make sure your password is not similar to your username!</p>
+        <p style="color: maroon;">Make sure you password is more than 8 characters long and doesn't only contain numbers!</p>
+        <p style="color: darkslateblue;">Make sure you password is more unique and something only you can remember!</p>
+        <p style="color: maroon;">Make sure your details meets all the above criteria or you will not be allowed to sign up!</p>
     </div>
-<br>
                 {{form.password2.label}}
                 {{form.password2}}
     <div align="left">
