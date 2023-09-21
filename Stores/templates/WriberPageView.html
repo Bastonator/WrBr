@@ -332,12 +332,14 @@
         {% endfor %}
     {% else %}
         <h4 style="font-size: 20px;">This User Has No Tariffs, we advise not to order from this site, to avoid future complications.</h4>
-        {% if request.user.id == tariff_button.user.id %}
-            <a href="{% url 'add-tariff' %}">
-                <button class="edit-button" style="width: 200px; height: 38px; background-color: blue; color: white; border-style: solid; border-radius: 41px; border: none;">
-                    Add Tariff
-                </button>
-            </a>
+        {% if tariff_button  %}
+            {% if request.user.id == tariff_button.user.id %}
+                <a href="{% url 'add-tariff' %}">
+                    <button class="edit-button" style="width: 200px; height: 38px; background-color: blue; color: white; border-style: solid; border-radius: 41px; border: none;">
+                        Add Tariff
+                    </button>
+                </a>
+            {% endif %}
         {% endif %}
     {% endif %}
 
