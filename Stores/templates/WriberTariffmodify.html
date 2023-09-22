@@ -5,11 +5,7 @@
 {% block content %}
 
 <br>
-
-
-                <h3 align="left">Tariff</h3>
-            <br/><br/>
-                <div style="display: flex; margin-left: 10px;">
+                <h3 align="left">Add A Location Tariffs</h3>
                     <form action="" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
 <div class="container list-tariff" style="display: inline-block; float: left; width: 41%;
@@ -162,6 +158,7 @@
             <h6>Yarambamba: D{{ form.yarambamba }}</h6>
 
 </div>
+                        <hr>
                         <center>
                             {{ form.tariff_owner }}
                             <br>
@@ -172,7 +169,7 @@
                             <input type="submit" value="Add New Locations" class="btn btn-outline-dark">
                         </div>
                     </form>
-                </div>
+
 
 
 <br>

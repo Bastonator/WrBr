@@ -23,7 +23,7 @@
         {% for tariff in tariff_page %}
 
         <a style="text-decoration: none;" href="{{ tariff.get_absolute_url }}">
-            <h6>{{ tariff.name }}</h6>
+            <h5>{{ tariff.name }}</h5>
         </a>
 
         <a href="{% url 'modify-tariff' pk=tariff.pk %}">

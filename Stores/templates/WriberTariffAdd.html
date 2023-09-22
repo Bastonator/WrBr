@@ -9,11 +9,14 @@
                 <h3 align="left">Tariff</h3>
             <br/><br/>
                 <div style="display: flex; margin-left: 10px; border-color: indigo; border-style: solid;
-                 border-radius: 5px; width: 350px; border-width: 1.2px; padding: 13px; ">
+                 border-radius: 5px; width: 450px; border-width: 1.2px; padding: 13px; ">
                     <form action="" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
-                            {{ form.as_p }}
-                            <input type="submit" value="Add" class="btn btn-outline-primary">
+                            {{ form.name }}
+                        <hr>
+                        Which page should this tariff be allocated to?
+                            {{ form.page_owner }}
+                            <input type="submit" value="Add" class="btn btn-outline-dark">
                     </form>
                 </div>
 
