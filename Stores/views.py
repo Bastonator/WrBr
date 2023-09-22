@@ -512,6 +512,7 @@ def update_location(request, pk):
     locations = location_gambia.objects.get(id=pk)
     form = location_gambiaForm(request.POST or None, request.FILES or None, instance=locations)
     form.fields["page_owner"].queryset = Usercreatedpage.objects.filter(user=request.user)
+    form.fields["tariff_owner"].queryset = Tariffs.objects.filter(user=request.user)
     if form.is_valid():
         form.save()
         return render(request, 'Dashboardtariff.html')
