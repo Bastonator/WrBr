@@ -17,7 +17,7 @@
   <style>
     .card{
         width: 41rem;
-        height: 53rem;
+        height: auto;
     }
     @media only screen and (max-width:945px) {
         .card{
@@ -56,11 +56,12 @@
 {% block content %}
 
 {% if form.errors %}
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    Make sure your password is completely different from your username!!
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="container">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Incorrect Password!</strong> Make sure your password is completely different from your username.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 </div>
-
 
 {% endif %}
 <center>
@@ -93,10 +94,25 @@
                 {{form.password1.label}}
                 {{form.password1}}
     <div align="left">
-        <p style="color: darkslateblue;">Make sure your password is not similar to your username!</p>
-        <p style="color: maroon;">Make sure you password is more than 8 characters long and doesn't only contain numbers!</p>
-        <p style="color: darkslateblue;">Make sure you password is more unique and something only you can remember!</p>
-        <p style="color: maroon;">Make sure your details meets all the above criteria or you will not be allowed to sign up!</p>
+        <br>
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+          <div>
+                Make sure your password is not similar to your username!
+          </div>
+        </div>
+         <div class="alert alert-danger d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+          <div>
+                Make sure you password is more than 8 characters long and doesn't only contain numbers!
+          </div>
+        </div>
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+          <div>
+                Have a unique password that cannot be easily replicated or guessed!
+          </div>
+        </div>
     </div>
                 {{form.password2.label}}
                 {{form.password2}}
