@@ -246,7 +246,7 @@
               </td>
               <td>
                   <div class="product-price">
-                      <h5>{{ item.product.product_price }}</h5>
+                      <h5>D{{ item.product.product_price }}</h5>
                   </div>
               </td>
           </tr>
@@ -260,7 +260,9 @@
                       Total
                   </td>
                   <td>
-                      {{ cart.get_total_cost }}
+                      <strong>
+                          D{{ cart.get_total_cost }}
+                      </strong>
                   </td>
               </tr>
           </table>
