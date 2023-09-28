@@ -1378,3 +1378,14 @@ width: 281px;
 
 
     {{ form.as_p }}
+
+
+
+
+    {% if request.user.id == tariff_button.user.id %}
+                    <a href="{% url 'add-tariff' %}">
+                        <button class="edit-button" style="width: 200px; height: 38px; background-color: blue; color: white; border-style: solid; border-radius: 41px; border: none;">
+                            Add Tariff
+                        </button>
+                    </a>
+    {% endif %}
