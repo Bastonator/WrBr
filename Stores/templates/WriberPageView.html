@@ -108,6 +108,21 @@
       .mod:hover{
           background-color: coral;
       }
+      .add-prod-button{
+        width: 265px;
+        height: 84px;
+        background-color: coral;
+        color: white;
+        border-style: solid;
+        border-radius: 10px;
+        border-width: 4px;
+        transition: 0.4s;
+        border-color: coral;
+      }
+      .add-prod-button:hover{
+        background-color: white;
+        color: coral;
+      }
       @media only screen and (max-width:945px) {
         .nav-signup{
             float: right;
@@ -367,10 +382,28 @@
                                 <hr>
                             </div>
 
+{% if view_page %}
+  {% if request.user.id == view_page.page.user.id %}
+  <a href="{% url 'wriber-products-add-homescreen' %}">
+  <div class="container">
+    <button class="add-prod-button">
+        <h7 style="font-size: 18px;">
+            Add New Product
+        </h7>
+    </button>
+  </div>
+  </a>
+  <br>
+  <br>
+  {% endif %}
+{% endif %}
+
+
 
     <div class="rowed-container">
 
 {% if product_forpage %}
+
         {% for view in product_forpage %}
 
 
