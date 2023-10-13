@@ -29,7 +29,7 @@ def home(request):
 
 
 def homeproducts(request):
-    all_products = Product_info.objects.all()
+    all_products = Product_info.objects.all().order_by('-id')
     return render(request, 'products.html', {'all_products': all_products})
 
 
