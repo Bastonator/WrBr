@@ -19,11 +19,10 @@
          margin: auto;
          display: grid;
          grid-gap: 2em;
-         grid-template-columns: repeat(auto-fit, minmax(70%, 1fr));
+         grid-template-columns: repeat(auto-fit, minmax(900px, 1fr));
       }
       .card-page{
          text-align: left;
-         margin: auto;
          border-color: slategray;
          border-radius: 2px;
       }
@@ -32,10 +31,9 @@
          border-color: lightsalmon;
       }
       .rowed-container{
-        margin: auto;
         display: grid;
         grid-gap: 2em;
-        grid-template-columns: repeat(auto-fit, minmax(70%, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(900px, 1fr));
         margin: 0;
       }
       @media only screen and (max-width:945px) {
@@ -53,6 +51,10 @@
         grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
         margin: 1px;
       }
+      .card{
+            width: auto;
+            height: auto;
+        }
       }
     </style>
   </head>
@@ -84,7 +86,7 @@
             <a href="{% url 'wriber' page.id %}">
                 {% if page.theme_photo %}
                 <img src="{{ page.theme_photo.url }}" class="card-img-top" alt="{{ page.page_name }}"
-                 height="225px;">
+                 height="242px;">
                 {% endif %}
             <div class="card-body">
                 <a style="text-decoration: none; color: coral" href="{% url 'wriber' page.id %}">
@@ -103,7 +105,7 @@
 
 {% else %}
 
-    Didn't quite catch that, can you repeat it, or try searching it on <strong>product</strong> section.
+    Didn't quite catch that, can you repeat it, or try searching it on product section.
 
 
 {% endif %}

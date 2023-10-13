@@ -24,7 +24,7 @@ from django.template.loader import get_template
 
 
 def home(request):
-    all_pages = Usercreatedpage.objects.all()
+    all_pages = Usercreatedpage.objects.all().order_by('-id')
     return render(request, 'home.html', {'all_pages': all_pages})
 
 
