@@ -15,6 +15,35 @@
       gtag('config', 'G-BET5CFDC3Z');
     </script>
   <style>
+      .home-button{
+              display: inline-block;
+              background-color: white;
+              border: none;
+              border-radius: 16px;
+              color: coral
+              }
+              .container{
+                display: inline-block;
+                border-radius: 16px;
+               }
+              .search-button{
+              background-color: white;
+              border: none;
+              border-color: white;
+              border-radius: 16px;
+              border-style: solid;
+              border-width: 0.5px
+              width: 70px;
+              height: 42px;
+              }
+              .search-button:hover{
+               background-color: coral;
+               color: white;
+              }
+              .Wriber img{
+                width: 200px;
+                height: 120px;
+              }
       .navy li a:hover{
          background-color: moccasin;
          border-radius: 6px;
@@ -41,12 +70,13 @@
          margin: auto;
          margin-top: 1px;
          grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+         border-radius: 20px;
       }
       .product{
          text-align: left;
          margin: auto;
          border-color: slategray;
-         border-radius: 2px;
+         border-radius: 20px;
       }
       .product:hover{
          opacity: 0.9s;
@@ -55,6 +85,7 @@
       .rowed-container .product-container .card{
         width: 309px;
         height: auto:
+        border-radius: 20px;
       }
       .nav-signup{
         float: right;
@@ -82,6 +113,7 @@
         grid-gap: 2em;
         grid-template-columns: repeat(auto-fit, minmax(23%, 1fr));
         margin: 0;
+        border-radius: 19px;
       }
       .sign-in-button{
         background-color: white;
@@ -120,7 +152,7 @@
     }
     .card{
         width: 960px;
-        height: 600px;
+        height: 535px;
     }
       @media only screen and (max-width:945px) {
          .nav-signup{
@@ -141,7 +173,7 @@
          text-align: left;
          margin: auto;
          border-color: slategray;
-         border-radius: 2px;
+         border-radius: 20px;
       }
       .product:hover{
          opacity: 0.9s;
@@ -160,8 +192,12 @@
         }
       .card{
         width: auto;
-        height: auto;
+        height: 525px;
     }
+    .Wriber img{
+            width: 150px;
+            height: 95px;
+          }
       }
      @media only screen and (max-height:545px) {
         .product-container{
@@ -178,11 +214,16 @@
         grid-gap: 2em;
         grid-template-columns: repeat(auto-fit, minmax(35%, 1fr));
         margin: 0;
+        border-radius: 19px;
       }
       .card{
         width: auto;
-        height: auto;
+        height: 525px;
     }
+    .Wriber img{
+            width: 150px;
+            height: 95px;
+          }
      }
   </style>
   </head>
@@ -211,7 +252,18 @@
         {% endif %}
 <br>
 
-{% include 'searchbarforproducts.html' %}
+{% load static %}
+
+    <a class="Wriber" href="{% url 'home' %}">
+      <img src="{% static 'images/Wriber.png' %}">
+    </a>
+    <div class="container" style="width: 100%">
+    <form class="d-flex" action="{% url 'searched-products' %}">
+      {% csrf_token %}
+      <input class="form-control me-2" style="border-radius: 18px;" type="text" placeholder="Search"  name="p">
+      <button class="search-button" type="submit">Search</button>
+    </form>
+    </div>
 
 <div class="container-fluid">
 <hr>
@@ -297,16 +349,16 @@
             <a href="{{ all_product.get_absolute_url }}">
                 {% if all_product.image_url %}
                 <img src="{{ all_product.image_url.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="242px;">
+                height="242px;" style="border-radius: 20px;">
                 {% elif all_product.image_url2 %}
                 <img src="{{ all_product.image_url2.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="242px;">
+                height="242px;" style="border-radius: 20px;">
                 {% elif all_product.image_url3 %}
                 <img src="{{ all_product.image_url3.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="242px;">
+                height="242px;" style="border-radius: 20px;">
                 {% elif all_product.image_url4 %}
                 <img src="{{ all_product.image_url4.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="242px;">
+                height="242px;" style="border-radius: 20px;">
                 {% endif %}
                 <div class="card-body">
                     <div style="display: inline-block;">
@@ -319,7 +371,7 @@
                     <div style="display: inline; margin-left: 1px;">
                         <p class="card-text"><strong>D{{ all_product.product_price }}</strong></p>
                     </div>
-                        <p class="card-text"><strong>{{ all_product.stock_available }} in Stock</strong></p>
+                        <p class="card-text"><strong style="color: coral;">{{ all_product.stock_available }}</strong> in Stock</p>
                     {% if all_product.page_owner %}
                     <a href="{% url 'add-to-cart' pk=all_product.pk %}">
                         <button class="buy-button">

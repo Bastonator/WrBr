@@ -24,7 +24,7 @@
     </div>
 </div>
 
-<div class="card" style="width: 90%; height: 42rem; margin-left: 1px;">
+<div class="card" style="width: 90%; height: 59rem; margin-left: 1px;">
         <div class="card-header" style="height: 5rem; background-color: coral; color: white" align="left">
             <h1>Checkout</h1>
         </div>
@@ -37,6 +37,12 @@
 
             {% csrf_token %}
             {{ form.as_p }}
+            <div class="alert alert-danger d-flex align-items-center" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+              <div>
+                    <h5><strong>Please</strong> Make sure you are very specific with your location!! It will make the delivery easier.</h5>
+              </div>
+            </div>
 
             <div class="total-price" style="display: flex; justify-content: flex-center;">
               <table style="border-top: 3px solid coral; width: 100%; max-width: 350px;">
