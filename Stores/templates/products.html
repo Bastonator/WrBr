@@ -64,28 +64,22 @@
           background-color: tomato;
           color: white;
           }
-      .product-container{
-         padding: 10px;
-         display: grid;
-         margin: auto;
-         margin-top: 1px;
-         grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-         border-radius: 20px;
+      .basic-grid{
+        display: grid;
+        gap: 7px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(321px, 1fr));
       }
-      .product{
+      .card{
          text-align: left;
          margin: auto;
-         border-color: slategray;
+         border-color: PapayaWhip;
          border-radius: 20px;
+         width: 328px;
       }
-      .product:hover{
+      .card:hover{
          opacity: 0.9s;
          border-color: coral;
-      }
-      .rowed-container .product-container .card{
-        width: 335px;
-        height: auto:
-        border-radius: 20px;
       }
       .nav-signup{
         float: right;
@@ -105,15 +99,6 @@
       .nav-cart a svg{
         width: 30px;
         height: 30px;
-      }
-      .rowed-container{
-        padding: 2em;
-        margin: auto;
-        display: grid;
-        grid-gap: 2em;
-        grid-template-columns: repeat(auto-fit, minmax(23%, 1fr));
-        margin: 0;
-        border-radius: 19px;
       }
       .sign-in-button{
         background-color: white;
@@ -150,10 +135,6 @@
         border-color: black;
         border-width: 1px;
     }
-    .card{
-        width: 960px;
-        height: 535px;
-    }
       @media only screen and (max-width:945px) {
          .nav-signup{
             float: right;
@@ -161,65 +142,12 @@
             align-items: center;
             justify-content: right;
       }
-        .product-container{
-         padding: 10px;
-         display: grid;
-         margin: auto;
-         margin-top: 1px;
-         grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-         width: 100%;
-      }
-      .product{
-         text-align: left;
-         margin: auto;
-         border-color: slategray;
-         border-radius: 20px;
-      }
-      .product:hover{
-         opacity: 0.9s;
-         border-color: coral;
-      }
-      .rowed-container{
-        margin: auto;
-        display: grid;
-        grid-gap: 2em;
-        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-        margin: 0;
-      }
-      .card-add{
-            width: auto;
-            height: auto;
-        }
-      .card{
-        width: auto;
-        height: 525px;
-    }
     .Wriber img{
             width: 150px;
             height: 95px;
           }
       }
      @media only screen and (max-height:545px) {
-        .product-container{
-         padding: 10px;
-         display: grid;
-         margin: auto;
-         margin-top: 1px;
-         width: 100%;
-         grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
-      }
-      .rowed-container{
-        margin: auto;
-        display: grid;
-        grid-gap: 2em;
-        grid-template-columns: repeat(auto-fit, minmax(35%, 1fr));
-        margin: 0;
-        border-radius: 19px;
-      }
-      .card{
-        width: auto;
-        height: 525px;
-    }
     .Wriber img{
             width: 150px;
             height: 95px;
@@ -339,7 +267,64 @@
 
 {% block content %}
 
-    <div class="rowed-container">
+
+
+<section class="basic-grid">
+    {% if all_products %}
+      {% for all_product in all_products %}
+    <div class="card">
+        <a href="{{ all_product.get_absolute_url }}">
+                {% if all_product.image_url %}
+                <img src="{{ all_product.image_url.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
+                height="245px;" style="border-radius: 20px;">
+                {% elif all_product.image_url2 %}
+                <img src="{{ all_product.image_url2.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
+                height="245px;" style="border-radius: 20px;">
+                {% elif all_product.image_url3 %}
+                <img src="{{ all_product.image_url3.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
+                height="245px;" style="border-radius: 20px;">
+                {% elif all_product.image_url4 %}
+                <img src="{{ all_product.image_url4.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
+                height="245px;" style="border-radius: 20px;">
+                {% endif %}
+                <div class="card-body">
+                    <div style="margin-bottom: -25px;">
+                        <a style="text-decoration: none; color: coral" href="{{ all_product.get_absolute_url }}">
+                            <h5 class="card-title">
+                                {{ all_product.product_name }}
+                            </h5>
+                        </a>
+                    </div>
+                    <div style="display: inline; margin-left: 1px;">
+                        <p class="card-text"><strong>D{{ all_product.product_price }}</strong></p>
+                    </div>
+                        <p class="card-text"><strong style="color: coral;">{{ all_product.stock_available }}</strong> in Stock</p>
+                    {% if all_product.page_owner %}
+                    <a href="{% url 'add-to-cart' pk=all_product.pk %}">
+                        <button class="buy-button">
+                            Add To Cart
+                        </button>
+                    </a>
+                    <hr>
+                    <div style="background-color: White; display: flex; margin-bottom: -10px;">
+                        From&nbsp; &nbsp;<a style="text-decoration: none;" href="{{ all_product.page_owner.get_absolute_url }}">
+                            <p>
+                            {{ all_product.page_owner }}
+                            </p>
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </a>
+    </div>
+    {% endfor %}
+    {% endif %}
+</section>
+
+
+
+
+    <!--<div class="rowed-container">
 
     {% if all_products %}
       {% for all_product in all_products %}
@@ -395,9 +380,6 @@
 
       {% endfor %}
     {% endif %}
-</div>
-
-
-
+</div>-->
 
 {% endblock %}

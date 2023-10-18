@@ -84,13 +84,22 @@
                 width: 200px;
                 height: 120px;
               }
-      .product-container{
-         padding: 10px;
-         display: grid;
+      .basic-grid{
+        display: grid;
+        gap: 7px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(321px, 1fr));
+      }
+      .card{
+         text-align: left;
          margin: auto;
-         margin-top: 1px;
-         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-         width: 350px;
+         border-color: PapayaWhip;
+         border-radius: 20px;
+         width: 328px;
+      }
+      .card:hover{
+         opacity: 0.9s;
+         border-color: coral;
       }
       .buy-button{
           background-color: white;
@@ -106,29 +115,6 @@
           background-color: tomato;
           color: white;
           }
-      .product{
-         text-align: left;
-         margin: auto;
-         border-color: slategray;
-         border-radius: 20px;
-      }
-      .product:hover{
-         opacity: 0.9s;
-         border-color: coral;
-      }
-      .rowed-container{
-        margin: auto;
-        display: grid;
-        grid-gap: 2em;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        margin: 0;
-      }
-      .card{
-        width: 335px;
-        height: 525px;
-        border-radius: 20px;
-
-    }
       @media only screen and (max-width:945px) {
       .nav-signup{
             float: right;
@@ -136,26 +122,6 @@
             align-items: center;
             justify-content: right;
       }
-        .product-container{
-         padding: 10px;
-         display: grid;
-         margin: auto;
-         margin-top: 1px;
-         width: 100%;
-         grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-      }
-      .rowed-container{
-        margin: auto;
-        display: grid;
-        grid-gap: 2em;
-        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-        margin: 0;
-      }
-      .card{
-        width: auto;
-        height: 525px;
-        border-radius: 20px;
-    }
     .Wriber img{
             width: 150px;
             height: 95px;
@@ -168,26 +134,6 @@
             align-items: center;
             justify-content: right;
       }
-        .product-container{
-         padding: 10px;
-         display: grid;
-         margin: auto;
-         margin-top: 1px;
-         width: 100%;
-         grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
-      }
-      .rowed-container{
-        margin: auto;
-        display: grid;
-        grid-gap: 2em;
-        grid-template-columns: repeat(auto-fit, minmax(35%, 1fr));
-        margin: 0;
-      }
-      .card{
-        width: auto;
-        height: 525px;
-        border-radius: 20px;
-    }
     .Wriber img{
             width: 150px;
             height: 95px;
@@ -272,13 +218,12 @@
 {% block content %}
 
 
-<div class="rowed-container">
+<section class="basic-grid">
 
 
 {% if products %}
     {% for product in products %}
-  <div class="col product-container">
-        <div class="card product">
+    <div class="card">
             <a href="{% url 'wriber-viewproducts' product.id %}">
                 {% if product.image_url %}
                 <img src="{{ product.image_url.url }}" class="card-img-top" alt="{{ product.product_name }}"
@@ -295,7 +240,7 @@
                 {% endif %}
             </a>
             <div class="card-body">
-                <div style="display: inline-block;">
+                <div style="margin-bottom: -25px;">
                 <a style="text-decoration: none; color: coral" href="{% url 'wriber-viewproducts' product.id %}">
                     <h5 class="card-title">
                         {{ product.product_name }}
@@ -313,7 +258,7 @@
                         </button>
                 </a>
                 <hr>
-                <div class="container-fluid" style="background-color: White; display: flex;">
+                <div class="container-fluid" style="margin-bottom: -10px; background-color: White; display: flex;">
                         From&nbsp; &nbsp;<a style="text-decoration: none;" href="{{ product.page_owner.get_absolute_url }}">
                             <p>
                             {{ product.page_owner }}
@@ -322,12 +267,9 @@
                 </div>
                 {% endif %}
             </div>
-        </div>
-
- </div>
+    </div>
     {% endfor %}
 
-</div>
 
 {% else %}
 
@@ -336,7 +278,7 @@
 
 {% endif %}
 
-
+</section>
 
 {% endblock %}
 
