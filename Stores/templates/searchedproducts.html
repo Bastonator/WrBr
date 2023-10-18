@@ -124,7 +124,7 @@
         margin: 0;
       }
       .card{
-        width: 310;
+        width: 335px;
         height: 525px;
         border-radius: 20px;
 
@@ -282,16 +282,16 @@
             <a href="{% url 'wriber-viewproducts' product.id %}">
                 {% if product.image_url %}
                 <img src="{{ product.image_url.url }}" class="card-img-top" alt="{{ product.product_name }}"
-                height="242px;" style="border-radius: 20px;">
+                height="245px;" style="border-radius: 20px;">
                 {% elif product.image_url2 %}
                 <img src="{{ product.image_url2.url }}" class="card-img-top" alt="{{ product.product_name }}"
-                height="242px;" style="border-radius: 20px;">
+                height="245px;" style="border-radius: 20px;">
                 {% elif product.image_url3 %}
                 <img src="{{ product.image_url3.url }}" class="card-img-top" alt="{{ product.product_name }}"
-                height="242px;" style="border-radius: 20px;">
+                height="245px;" style="border-radius: 20px;">
                 {% elif product.image_url4 %}
                 <img src="{{ product.image_url4.url }}" class="card-img-top" alt="{{ product.product_name }}"
-                height="242px;" style="border-radius: 20px;">
+                height="245px;" style="border-radius: 20px;">
                 {% endif %}
             </a>
             <div class="card-body">
