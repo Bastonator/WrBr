@@ -14,6 +14,7 @@ from django.core.mail import send_mail
 from django.contrib.postgres.search import SearchQuery, SearchVector, SearchRank, SearchHeadline
 from django.db.models import Q
 from django.contrib.auth.models import User
+from django.core.paginator import Paginator
 from django.conf import settings
 
 
@@ -29,8 +30,9 @@ def home(request):
 
 
 def homeproducts(request):
-    all_products = Product_info.objects.all().order_by('-id')
-    return render(request, 'products.html', {'all_products': all_products})
+    all_products = Product_info.objects.all()[20:50]
+    new_products = Product_info.objects.all().order_by('-id')[:10]
+    return render(request, 'products.html', {'all_products': all_products, 'new_products': new_products})
 
 
 def homeservices(request):

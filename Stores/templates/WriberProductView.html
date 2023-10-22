@@ -14,6 +14,7 @@
 
       gtag('config', 'G-BET5CFDC3Z');
     </script>
+      {% load static %}
   <style>
        .home-button{
           display: inline-block;
@@ -127,7 +128,7 @@
   </head>
   <body>
   <br>
-
+{% load static %}
 {% include 'searchbarforproducts.html' %}
 
 
@@ -191,36 +192,38 @@
      {% if view_products %}
       
 
-<div class="small-container single-product" style="width: 98%; margin: auto; text-align: center">
+<div class="small-container single-product" style="width: 100%; margin: auto; text-align: center">
     <div class="row">
-        <div class="col-2" style="width: 380px;">
+        <div class="col-2" style="width: 378px;">
             {% if view_products.image_url %}
-            <img src="{{ view_products.image_url.url }}" alt="{{ view_products.product_name }}" width="100%" id="ProductImg">
+            <img src="{{ view_products.image_url.url }}" alt="{{ view_products.product_name }}" width="100%" id="ProductImg" style="border-radius: 10px;">
             {% endif %}
+            <br>
+            <br>
             <div class="small-img-row">
                 <div class="small-img-col">
                     {% if view_products.image_url %}
-                    <img src="{{ view_products.image_url.url }}" width="100%" class="small-img">
+                    <img src="{{ view_products.image_url.url }}" width="100%" class="small-img" style="border-radius: 3px;">
                     {% endif %}
                 </div>
                 <div class="small-img-col">
                     {% if view_products.image_url2 %}
-                    <img src="{{ view_products.image_url2.url }}" width="100%" class="small-img">
+                    <img src="{{ view_products.image_url2.url }}" width="100%" class="small-img" style="border-radius: 3px;">
                     {% endif %}
                 </div>
                 <div class="small-img-col">
                     {% if view_products.image_url3 %}
-                    <img src="{{ view_products.image_url3.url }}" width="100%" class="small-img">
+                    <img src="{{ view_products.image_url3.url }}" width="100%" class="small-img" style="border-radius: 3px;">
                     {% endif %}
                 </div>
                 <div class="small-img-col">
                     {% if view_products.image_url4 %}
-                    <img src="{{ view_products.image_url4.url }}" width="100%" class="small-img">
+                    <img src="{{ view_products.image_url4.url }}" width="100%" class="small-img" style="border-radius: 3px;">
                     {% endif %}
                 </div>
             </div>
         </div>
-        <div class="col-2" style="width: 380px; margin-left: 38px; margin-right: 24px;">
+        <div class="col-2" style="width: 380px; margin-left: 38px; margin-right: 25px;">
             <p>Home / {{ view_products.product_name }}</p>
             <h4>{{ view_products.product_name }}</h4><p><small>by {{ view_products.user.username }}</small></p>
             <h7>
@@ -229,14 +232,16 @@
                     </a>
             </h7>
             <br>
-            <h3><strong>D{{ view_products.product_price }}</strong></h3>
+            <h3 style="font-family: verdana"><strong>D{{ view_products.product_price }}</strong></h3>
             <br>
             <a href="{% url 'add-to-cart' pk=view_products.pk %}">
                 <button class="buy-button">
                     Add To Cart
                 </button>
             </a>
+            <div class="container-fluid" style="margin-left: -20px;">
             <hr>
+            </div>
             {% if request.user.id == view_products.user.id %}
             <a href="{% url 'wriber-updateproducts' pk=view_products.pk %}">
                 <button class="edit-button" style="width: 200px; height: 38px; background-color: blue; color: white; border-style: solid; border-radius: 41px; border: none;">
@@ -244,11 +249,10 @@
                 </button>
             </a>
             {% endif %}
-            <br>
-
-            <br>
-            <h6><strong>Details and Description</strong></h6>
-            <p>{{ view_products.product_description }}</p>
+            <div class="container-fluid" style="margin-left: -20px;">
+                <h6><strong>Details and Description</strong></h6>
+                <p>{{ view_products.product_description }}</p>
+            </div>
         </div>
     </div>
 </div>

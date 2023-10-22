@@ -87,15 +87,13 @@
       .basic-grid{
         display: grid;
         gap: 7px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-columns: repeat(auto-fit, minmax(321px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
       }
       .card{
          text-align: left;
-         margin: auto;
          border-color: PapayaWhip;
          border-radius: 20px;
-         width: 328px;
+         transition: 0.4s;
       }
       .card:hover{
          opacity: 0.9s;
@@ -115,12 +113,23 @@
           background-color: tomato;
           color: white;
           }
-      @media only screen and (max-width:945px) {
+      @media only screen and (max-width:545px) and (min-width: 272px){
       .nav-signup{
             float: right;
             align: right;
             align-items: center;
             justify-content: right;
+      }
+      .basic-grid{
+        display: grid;
+        gap: 7px;
+        grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      }
+      .card{
+         text-align: left;
+         border-color: PapayaWhip;
+         border-radius: 20px;
+         transition: 0.4s;
       }
     .Wriber img{
             width: 150px;
@@ -227,32 +236,32 @@
             <a href="{% url 'wriber-viewproducts' product.id %}">
                 {% if product.image_url %}
                 <img src="{{ product.image_url.url }}" class="card-img-top" alt="{{ product.product_name }}"
-                height="245px;" style="border-radius: 20px;">
+                height="240px;" style="border-radius: 20px;">
                 {% elif product.image_url2 %}
                 <img src="{{ product.image_url2.url }}" class="card-img-top" alt="{{ product.product_name }}"
-                height="245px;" style="border-radius: 20px;">
+                height="240px;" style="border-radius: 20px;">
                 {% elif product.image_url3 %}
                 <img src="{{ product.image_url3.url }}" class="card-img-top" alt="{{ product.product_name }}"
-                height="245px;" style="border-radius: 20px;">
+                height="240px;" style="border-radius: 20px;">
                 {% elif product.image_url4 %}
                 <img src="{{ product.image_url4.url }}" class="card-img-top" alt="{{ product.product_name }}"
-                height="245px;" style="border-radius: 20px;">
+                height="240px;" style="border-radius: 20px;">
                 {% endif %}
             </a>
             <div class="card-body">
                 <div style="margin-bottom: -25px;">
-                <a style="text-decoration: none; color: coral" href="{% url 'wriber-viewproducts' product.id %}">
+                <a style="text-decoration: none; color: coral font-family: helvetica;" href="{% url 'wriber-viewproducts' product.id %}">
                     <h5 class="card-title">
                         {{ product.product_name }}
                     </h5>
                 </a>
                 </div>
                 <div style="display: inline; margin-left: 1px;">
-                    <p class="card-text">D{{ product.product_price }}</p>
+                    <p class="card-text" style="font-family: Courier New; font-size: 20px;"><strong>D{{ product.product_price }}</strong></p>
                 </div>
-                <p class="card-text"><strong style="color: coral;">{{ product.stock_available }}</strong> in stock</p>
+                <!--<p class="card-text"><strong style="color: coral;">{{ product.stock_available }}</strong> in stock</p>-->
                 {% if product.page_owner %}
-                <a href="{% url 'add-to-cart' pk=product.pk %}">
+                <!--<a href="{% url 'add-to-cart' pk=product.pk %}">
                         <button class="buy-button">
                             Add To Cart
                         </button>
@@ -264,7 +273,7 @@
                             {{ product.page_owner }}
                             </p>
                         </a>
-                </div>
+                </div>-->
                 {% endif %}
             </div>
     </div>

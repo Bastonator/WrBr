@@ -57,7 +57,7 @@
           border-width: 1px;
           height: 37px;
           border-color: coral;
-          width: 250px;
+          width: auto;
           transition: 0.6s;
           }
        .buy-button:hover{
@@ -67,15 +67,13 @@
       .basic-grid{
         display: grid;
         gap: 7px;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-columns: repeat(auto-fit, minmax(321px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
       }
       .card{
          text-align: left;
-         margin: auto;
          border-color: PapayaWhip;
          border-radius: 20px;
-         width: 328px;
+         transition: 0.4s;
       }
       .card:hover{
          opacity: 0.9s;
@@ -135,12 +133,53 @@
         border-color: black;
         border-width: 1px;
     }
-      @media only screen and (max-width:945px) {
+    .product-add-home{
+        width: 960px;
+        height: auto;
+    }
+    .wrapper{
+        max-height: 323px;
+        border-color: white;
+        border-style: solid;
+        border-width: 1px;
+        display: grid;
+        grid-template-columns: repeat(10, minmax(235px, 1fr));
+        overflow-x: auto;
+        border-radius: 3px;
+        margin-left: 3px;
+        margin-right: 3px;
+        justify-content: space-between;
+    }
+    .wrapper::-webkit-scrollbar{
+        width: 0;
+    }
+    .wrapper new-products{
+        width: 250px;
+        line-height: 222px;
+        text-align: center;
+        justify-content: space-between;
+    }
+      @media only screen and (max-width:545px) and (min-width: 272px){
          .nav-signup{
             float: right;
             align: right;
             align-items: center;
             justify-content: right;
+      }
+      .product-add-home{
+        width: auto;
+        height: auto;
+    }
+    .basic-grid{
+        display: grid;
+        gap: 7px;
+        grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      }
+      .card{
+         text-align: left;
+         border-color: PapayaWhip;
+         border-radius: 20px;
+         transition: 0.4s;
       }
     .Wriber img{
             width: 150px;
@@ -152,6 +191,10 @@
             width: 150px;
             height: 95px;
           }
+    .product-add-home{
+        width: auto;
+        height: auto;
+    }
      }
   </style>
   </head>
@@ -266,9 +309,49 @@
 
 
 {% block content %}
+<h2 style="font-family: tahoma; margin-left: 10px; color: DarkSlateGray;">
+    Latest Products
+</h2>
+<div class="wrapper">
+    {% if new_products %}
+      {% for new_product in new_products %}
+    <div class="new-products">
+        <a href="{{ new_product.get_absolute_url }}">
+                {% if new_product.image_url %}
+                <img src="{{ new_product.image_url.url }}" class="card-img-top" alt="{{ new_product.product_name }}"
+                height="225px;" style="border-radius: 3px;">
+                {% elif new_product.image_url2 %}
+                <img src="{{ new_product.image_url2.url }}" class="card-img-top" alt="{{ new_product.product_name }}"
+                height="225px;" style="border-radius: 3px;">
+                {% elif new_product.image_url3 %}
+                <img src="{{ new_product.image_url3.url }}" class="card-img-top" alt="{{ new_product.product_name }}"
+                height="225px;" style="border-radius: 3px;">
+                {% elif new_product.image_url4 %}
+                <img src="{{ new_product.image_url4.url }}" class="card-img-top" alt="{{ new_product.product_name }}"
+                height="225px;" style="border-radius: 3px;">
+                {% endif %}
+                <div class="card-body">
+                    <div style="margin-bottom: -25px;">
+                        <a style="text-decoration: none; color: coral; font-family: helvetica;" href="{{ new_product.get_absolute_url }}">
+                            <h5 class="card-title">
+                                {{ new_product.product_name }}
+                            </h5>
+                        </a>
+                    </div>
+                    <div style="display: inline; margin-left: 1px;">
+                        <p class="card-text" style="font-family: Courier New; font-size: 20px;"><strong>D{{ new_product.product_price }}</strong></p>
+                    </div>
+                </div>
+        </a>
+    </div>
+    {% endfor %}
+{% endif %}
+</div>
 
-
-
+<br>
+<h2 style="font-family: tahoma; margin-left: 10px; color: DarkSlateGray;">
+    Featured Products
+</h2>
 <section class="basic-grid">
     {% if all_products %}
       {% for all_product in all_products %}
@@ -276,35 +359,35 @@
         <a href="{{ all_product.get_absolute_url }}">
                 {% if all_product.image_url %}
                 <img src="{{ all_product.image_url.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="245px;" style="border-radius: 20px;">
+                height="235px;" style="border-radius: 20px;">
                 {% elif all_product.image_url2 %}
                 <img src="{{ all_product.image_url2.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="245px;" style="border-radius: 20px;">
+                height="235px;" style="border-radius: 20px;">
                 {% elif all_product.image_url3 %}
                 <img src="{{ all_product.image_url3.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="245px;" style="border-radius: 20px;">
+                height="235px;" style="border-radius: 20px;">
                 {% elif all_product.image_url4 %}
                 <img src="{{ all_product.image_url4.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="245px;" style="border-radius: 20px;">
+                height="235px;" style="border-radius: 20px;">
                 {% endif %}
                 <div class="card-body">
                     <div style="margin-bottom: -25px;">
-                        <a style="text-decoration: none; color: coral" href="{{ all_product.get_absolute_url }}">
+                        <a style="text-decoration: none; color: coral; font-family: helvetica;" href="{{ all_product.get_absolute_url }}">
                             <h5 class="card-title">
                                 {{ all_product.product_name }}
                             </h5>
                         </a>
                     </div>
                     <div style="display: inline; margin-left: 1px;">
-                        <p class="card-text"><strong>D{{ all_product.product_price }}</strong></p>
+                        <p class="card-text" style="font-family: Courier New; font-size: 20px;"><strong>D{{ all_product.product_price }}</strong></p>
                     </div>
-                        <p class="card-text"><strong style="color: coral;">{{ all_product.stock_available }}</strong> in Stock</p>
+                        <!--<p class="card-text"><strong style="color: coral;">{{ all_product.stock_available }}</strong> in Stock</p>-->
                     {% if all_product.page_owner %}
-                    <a href="{% url 'add-to-cart' pk=all_product.pk %}">
+                    <!--<a href="{% url 'add-to-cart' pk=all_product.pk %}">
                         <button class="buy-button">
                             Add To Cart
                         </button>
-                    </a>
+                    </a>-->
                     <hr>
                     <div style="background-color: White; display: flex; margin-bottom: -10px;">
                         From&nbsp; &nbsp;<a style="text-decoration: none;" href="{{ all_product.page_owner.get_absolute_url }}">

@@ -46,30 +46,22 @@
       .tariff:hover{
          opacity: 0.7;
       }
-      .product-container{
-         padding: 10px;
-         display: grid;
-         margin: auto;
-         margin-top: 1px;
-         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      .basic-grid{
+        display: grid;
+        gap: 7px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       }
-      .product{
-         width: 315px;
+      .card{
          text-align: left;
-         margin: auto;
-         border-color: slategray;
-         border-radius: 2px;
+         margin-left: 5px;
+         margin-right: 5px;
+         border-color: PapayaWhip;
+         border-radius: 6px;
+         transition: 0.4s;
       }
-      .product:hover{
+      .card:hover{
          opacity: 0.9s;
          border-color: coral;
-      }
-      .rowed-container{
-        margin: auto;
-        display: grid;
-        grid-gap: 2em;
-        grid-template-columns: repeat(auto-fit, minmax(10%, 1fr));
-        margin: 0;
       }
       .nav-signup{
             float: right;
@@ -123,12 +115,25 @@
         background-color: white;
         color: coral;
       }
-      @media only screen and (max-width:945px) {
+      @media only screen and (max-width:545px) and (min-width: 272px){
         .nav-signup{
             float: right;
             align: right;
             align-items: center;
             justify-content: right;
+      }
+      .basic-grid{
+        display: grid;
+        gap: 7px;
+        grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      }
+      .card{
+         text-align: left;
+         margin-left: 0px;
+         margin-right: 0px;
+         border-color: PapayaWhip;
+         border-radius: 6px;
+         transition: 0.4s;
       }
         .page{
              margin-left: 1px;
@@ -151,29 +156,8 @@
              display: inline-block;
         }
         .buy-button{
-             width: 250px;
+             width: 150px;
         }
-        .product{
-         width: 310px;
-         text-align: left;
-         margin: auto;
-         border-color: slategray;
-         border-radius: 2px;
-      }
-        .product-container{
-         padding: 10px;
-         display: grid;
-         margin: auto;
-         margin-top: 1px;
-         width: 100%;
-         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      }
-      .rowed-container{
-        margin: auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
-        margin: 0;
-      }
       }
       @media only screen and (max-height:545px) {
         .nav-signup{
@@ -181,28 +165,6 @@
             align: right;
             align-items: center;
             justify-content: right;
-      }
-        .product{
-         width: 323px;
-         text-align: left;
-         margin: auto;
-         border-color: slategray;
-         border-radius: 2px;
-      }
-        .product-container{
-         padding: 10px;
-         display: grid;
-         margin: auto;
-         margin-top: 1px;
-         width: 100%;
-         grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
-      }
-      .rowed-container{
-        margin: auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
-        margin: 0;
-        margin-left: 15px;
       }
      }
   </style>
@@ -298,7 +260,7 @@
 
         <div class="card mb-3 border-light page">
             {% if view_page.page.theme_photo %}
-              <img src="{{ view_page.page.theme_photo.url }}" class="card-img-top" style="height: 322px;" alt="{{ view_page.page.page_name }}">
+              <img src="{{ view_page.page.theme_photo.url }}" class="card-img-top" style="height: 322px; border-radius: 16px;" alt="{{ view_page.page.page_name }}">
             {% endif %}
             <div class="card-body">
                 <h5 style="color: coral;" class="card-title">{{ view_page.page.page_name }}</h5>
@@ -353,7 +315,7 @@
     {% if tariff_button %}
         {% for deliver in tariff_button %}
             <a href="{{ deliver.get_absolute_url }}">
-                <button class="tariff" style="width: 160px; height: 60px; background-color: indigo; color: white;
+                <button class="tariff" style="width: 180px; height: 70px; background-color: indigo; color: white;
                  border: none; border-style: solid; border-radius: 12px;">
                 Delivery Tariffs
                 </button>
@@ -400,64 +362,31 @@
 {% endif %}
 
 
-
-    <div class="rowed-container">
-
+<section class="basic-grid">
 {% if product_forpage %}
 
         {% for view in product_forpage %}
 
 
-              <div class="col product-container">
-                <div class="card product">
-                  <a href="{{ view.get_absolute_url }}">
+              <div class="card">
+                  <a style="text-decoration: none;" href="{{ view.get_absolute_url }}">
                     <img src="{{ view.image_url.url }}" class="card-img-top" alt="{{ view.product_name }}" height="242px;">
-                  </a>
                   <div class="card-body">
-                    <h5 style="color: coral;" class="card-title">{{ view.product_name }}</h5>
-                    <p class="card-text"><strong>D{{ view.product_price }}</strong></p>
-                    <p class="card-text">{{ view.stock_available }} in stock</p>
+                    <h5 style="color: coral; font-family: helvetica;" class="card-title">{{ view.product_name }}</h5>
+                    <p class="card-text" style="font-family: Courier New; font-size: 20px; text-decoration: none; color: black;"><strong>D{{ view.product_price }}</strong></p>
+                    <p class="card-text" style="text-decoration: none; color: black;">{{ view.stock_available }} in stock</p>
                         <a href="{% url 'add-to-cart' pk=view.pk %}">
                             <button class="buy-button">
                             Add To Cart
                             </button>
                         </a>
                   </div>
-                </div>
+                  </a>
               </div>
-<br>
-        <br>
-
         {% endfor %}
 {% endif %}
+</section>
 <br>
-        <br>
-
-     {% if service_forpage %}
-        {% for view in service_forpage %}
-
-
-  <div class="col" style="margin-top: 11px">
-    <div class="card h-100" style="width: 20rem">
-      <a href="{{ view.get_absolute_url }}">
-      <img src="" class="card-img-top" alt="{{ view.service_name }}">
-      </a>
-      <div class="card-body">
-        <h5 class="card-title">{{ view.service_name }}</h5>
-        <p class="card-text">{{ view.service_price }}</p>
-        <p class="card-text">{{ view.location }}</p>
-        <a href="#" class="btn btn-primary">
-          Get Now
-        </a>
-      </div>
-    </div>
-  </div>
-
-        {% endfor %}
-     {% endif %}
-
-
-    </div>
 
 <br>
 
