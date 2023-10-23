@@ -159,7 +159,7 @@
         text-align: center;
         justify-content: space-between;
     }
-      @media only screen and (max-width:545px) and (min-width: 272px){
+      @media only screen and (max-width:600px) and (min-width: 272px){
          .nav-signup{
             float: right;
             align: right;
@@ -309,9 +309,9 @@
 
 
 {% block content %}
-<h2 style="font-family: tahoma; margin-left: 10px; color: DarkSlateGray;">
+<h1 style="font-family: arial; margin-left: 10px; color: DarkSlateGray;">
     Latest Products
-</h2>
+</h1>
 <div class="wrapper">
     {% if new_products %}
       {% for new_product in new_products %}
@@ -349,9 +349,9 @@
 </div>
 
 <br>
-<h2 style="font-family: tahoma; margin-left: 10px; color: DarkSlateGray;">
+<h1 style="font-family: arial; margin-left: 10px; color: DarkSlateGray;">
     Featured Products
-</h2>
+</h1>
 <section class="basic-grid">
     {% if all_products %}
       {% for all_product in all_products %}
