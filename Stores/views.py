@@ -96,7 +96,7 @@ def login_account(request):
             messages.success(request, ('Error, invalid password or username, try Again'))
             return redirect('login-user')
             # Return an 'invalid login' error message.
-    return render(request, 'loginpage.html', {})
+    return render(request, 'LoginBase.html', {})
 
 
 def logout_account(request):
@@ -118,7 +118,7 @@ def signup_account(request):
     else:
         form = SignupForm
 
-    return render(request, 'signuppage.html', {'form': form})
+    return render(request, 'signup.html', {'form': form})
 
 
 def view_products(request, pk):
