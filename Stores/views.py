@@ -23,6 +23,9 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import get_template
 
 
+def aboutus(request):
+    return render(request, 'index.html')
+
 
 def home(request):
     all_pages = Usercreatedpage.objects.all().order_by('-id')
