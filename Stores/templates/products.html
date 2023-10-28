@@ -68,11 +68,12 @@
         display: grid;
         gap: 7px;
         grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+        margin: 3px;
       }
       .card{
          text-align: left;
          border-color: PapayaWhip;
-         border-radius: 20px;
+         border-radius: 3px;
          transition: 0.4s;
       }
       .card:hover{
@@ -174,11 +175,12 @@
         display: grid;
         gap: 7px;
         grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+        margin: 3px;
       }
       .card{
          text-align: left;
          border-color: PapayaWhip;
-         border-radius: 20px;
+         border-radius: 3px;
          transition: 0.4s;
       }
     .Wriber img{
@@ -359,16 +361,16 @@
         <a href="{{ all_product.get_absolute_url }}">
                 {% if all_product.image_url %}
                 <img src="{{ all_product.image_url.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="235px;" style="border-radius: 20px;">
+                height="235px;" style="border-radius: 3px;">
                 {% elif all_product.image_url2 %}
                 <img src="{{ all_product.image_url2.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="235px;" style="border-radius: 20px;">
+                height="235px;" style="border-radius: 3px;">
                 {% elif all_product.image_url3 %}
                 <img src="{{ all_product.image_url3.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="235px;" style="border-radius: 20px;">
+                height="235px;" style="border-radius: 3px;">
                 {% elif all_product.image_url4 %}
                 <img src="{{ all_product.image_url4.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="235px;" style="border-radius: 20px;">
+                height="235px;" style="border-radius: 3px;">
                 {% endif %}
                 <div class="card-body">
                     <div style="margin-bottom: -25px;">
