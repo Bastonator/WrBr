@@ -16,6 +16,13 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.conf import settings
+from django.contrib.admin.views.decorators import staff_member_required
+from django.db.models import Count, F, Sum, Avg
+from django.db.models.functions import ExtractYear, ExtractMonth
+from django.http import JsonResponse
+
+
+from utils.charts import months, colorPrimary, colorSuccess, colorDanger, generate_color_palette, get_year_dict
 
 
 from django import forms
@@ -564,3 +571,217 @@ def update_account_profile(request):
 
 #sudo dscl . -create /Users/postgres NFSHomeDirectory /Library/PostgreSQL
 
+
+# Charts For User Details
+@staff_member_required
+def get_user_filter_options(request):
+    grouped_profiles = UserProfile.objects.annotate(year=ExtractYear("created_at")).values("year").order_by(
+        "-year").distinct()
+    options = [profile["year"] for profile in grouped_profiles]
+
+    return JsonResponse({
+        "options": options,
+    })
+
+
+@staff_member_required
+def get_user_growth_chart(request, year):
+    profiles = UserProfile.objects.filter(created_at__year=year)
+    grouped_profiles = profiles.annotate(price=F("pk")).annotate(month=ExtractMonth("created_at")) \
+        .values("month").annotate(average=Sum("pk")/19.571428).values("month", "average").order_by("month")
+
+    users_dict = get_year_dict()
+
+    for group in grouped_profiles:
+        users_dict[months[group["month"] - 1]] = round(group["average"], 2)
+
+    return JsonResponse({
+        "title": f"New Users in {year}",
+        "data": {
+            "labels": list(users_dict.keys()),
+            "datasets": [{
+                "label": "New Users",
+                "backgroundColor": colorPrimary,
+                "borderColor": colorPrimary,
+                "data": list(users_dict.values()),
+            }]
+        },
+    })
+
+
+# Chart For Page Details
+def get_page_filter_options(request):
+    grouped_pages = Usercreatedpage.objects.annotate(year=ExtractYear("created_at")).values("year").order_by(
+        "-year").distinct()
+    options = [page["year"] for page in grouped_pages]
+
+    return JsonResponse({
+        "options": options,
+    })
+
+
+def get_page_growth_chart(request, year):
+    pages = Usercreatedpage.objects.filter(created_at__year=year)
+    grouped_pages = pages.annotate(price=F("pk")).annotate(month=ExtractMonth("created_at")) \
+        .values("month").annotate(average=Sum("pk")/14.66666).values("month", "average").order_by("month")
+
+    pages_dict = get_year_dict()
+
+    for group in grouped_pages:
+        pages_dict[months[group["month"] - 1]] = round(group["average"], 2)
+
+    return JsonResponse({
+        "title": f"New Pages in {year}",
+        "data": {
+            "labels": list(pages_dict.keys()),
+            "datasets": [{
+                "label": "New Pages",
+                "backgroundColor": colorPrimary,
+                "borderColor": colorPrimary,
+                "data": list(pages_dict.values()),
+            }]
+        },
+    })
+
+
+# Chart For Product Details
+@staff_member_required
+def get_product_filter_options(request):
+    grouped_products = Product_info.objects.annotate(year=ExtractYear("created_at")).values("year").order_by(
+        "-year").distinct()
+    options = [product["year"] for product in grouped_products]
+
+    return JsonResponse({
+        "options": options,
+    })
+
+
+@staff_member_required
+def get_product_growth_chart(request, year):
+    products = Product_info.objects.filter(created_at__year=year)
+    grouped_products = products.annotate(price=F("pk")).annotate(month=ExtractMonth("created_at")) \
+        .values("month").annotate(average=Sum("pk")/64.0454545).values("month", "average").order_by("month")
+
+    products_dict = get_year_dict()
+
+    for group in grouped_products:
+        products_dict[months[group["month"] - 1]] = round(group["average"], 2)
+
+    return JsonResponse({
+        "title": f"New Products in {year}",
+        "data": {
+            "labels": list(products_dict.keys()),
+            "datasets": [{
+                "label": "New Products",
+                "backgroundColor": colorPrimary,
+                "borderColor": colorPrimary,
+                "data": list(products_dict.values()),
+            }]
+        },
+    })
+
+
+# Charts For Order Detials
+@staff_member_required
+def get_filter_options(request):
+    grouped_orders = Order.objects.annotate(year=ExtractYear("created_at")).values("year").order_by("-year").distinct()
+    options = [order["year"] for order in grouped_orders]
+
+    return JsonResponse({
+        "options": options,
+    })
+
+
+@staff_member_required
+def get_order_sales_chart(request, year):
+    orders = Order.objects.filter(created_at__year=year)
+    grouped_orders = orders.annotate(price=F("paid_amount")).annotate(month=ExtractMonth("created_at")) \
+        .values("month").annotate(average=Sum("paid_amount")).values("month", "average").order_by("month")
+
+    sales_dict = get_year_dict()
+
+    for group in grouped_orders:
+        sales_dict[months[group["month"] - 1]] = round(group["average"], 2)
+
+    return JsonResponse({
+        "title": f"Sales in {year}",
+        "data": {
+            "labels": list(sales_dict.keys()),
+            "datasets": [{
+                "label": "Amount (D)",
+                "backgroundColor": colorPrimary,
+                "borderColor": colorPrimary,
+                "data": list(sales_dict.values()),
+            }]
+        },
+    })
+
+
+@staff_member_required
+def get_order_number_chart(request, year):
+    orders = Order.objects.filter(created_at__year=year)
+    grouped_orders = orders.annotate(price=F("pk")).annotate(month=ExtractMonth("created_at")) \
+        .values("month").annotate(average=Sum("pk")).values("month", "average").order_by("month")
+
+    orders_dict = get_year_dict()
+
+    for group in grouped_orders:
+        orders_dict[months[group["month"] - 1]] = round(group["average"], 2)
+
+    return JsonResponse({
+        "title": f"Orders in {year}",
+        "data": {
+            "labels": list(orders_dict.keys()),
+            "datasets": [{
+                "label": "NO. Of Orders",
+                "backgroundColor": colorPrimary,
+                "borderColor": colorPrimary,
+                "data": list(orders_dict.values()),
+            }]
+        },
+    })
+
+
+@staff_member_required
+def spend_per_customer_chart(request, year):
+    orders = Order.objects.filter(created_at__year=year)
+    grouped_orders = orders.annotate(price=F("paid_amount")).annotate(month=ExtractMonth("created_at")) \
+        .values("month").annotate(average=Avg("paid_amount")).values("month", "average").order_by("month")
+
+    spend_per_customer_dict = get_year_dict()
+
+    for group in grouped_orders:
+        spend_per_customer_dict[months[group["month"] - 1]] = round(group["average"], 2)
+
+    return JsonResponse({
+        "title": f"Spend per customer in {year}",
+        "data": {
+            "labels": list(spend_per_customer_dict.keys()),
+            "datasets": [{
+                "label": "Amount (D)",
+                "backgroundColor": colorPrimary,
+                "borderColor": colorPrimary,
+                "data": list(spend_per_customer_dict.values()),
+            }]
+        },
+    })
+
+
+@staff_member_required
+def statistics_view(request):
+    return render(request, "statistics.html", {})
+
+
+@staff_member_required
+def user_statistics_view(request):
+    return render(request, "userstatistics.html", {})
+
+
+@staff_member_required
+def product_statistics_view(request):
+    return render(request, "productstatistics.html", {})
+
+
+@staff_member_required
+def page_statistics_view(request):
+    return render(request, "pagestatistics.html", {})

@@ -6,7 +6,10 @@ from django.urls import reverse
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
 
+    class Meta:
+        ordering = ["-created_at"]
 
     def __str__(self):
         return self.user.username
@@ -31,6 +34,10 @@ class Usercreatedpage(models.Model):
                              default=1)
     business_name = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=20, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
+        ordering = ["-created_at"]
 
     def __str__(self):
         return self.page_name
@@ -70,6 +77,10 @@ class Product_info(models.Model):
                                    blank=True,
                                    null=True,
                                    default=1)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
+        ordering = ["-created_at"]
 
     def get_absolute_url(self):
         return reverse("wriber-viewproducts", kwargs={"pk": self.pk})
@@ -132,6 +143,10 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product_info, related_name='items', on_delete=models.CASCADE)
     price = models.IntegerField()
     quantity = models.IntegerField(default=1)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
+        ordering = ["-created_at"]
 
     def __str__(self):
         return self.product.product_name
@@ -149,6 +164,10 @@ class Tariffs(models.Model):
                                    blank=True,
                                    null=True,
                                    default=1)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
+        ordering = ["-created_at"]
 
     def get_absolute_url(self):
         return reverse("tariff-detail", kwargs={"pk": self.pk})
@@ -244,6 +263,7 @@ class location_gambia(models.Model):
     westfield = models.IntegerField(null=True, blank=True)
     yundum = models.IntegerField(null=True, blank=True)
     yuna = models.IntegerField(null=True, blank=True)
+    wellingara = models.IntegerField(null=True, blank=True)
     yarambamba = models.IntegerField(null=True, blank=True)
     user = models.ForeignKey(User, related_name="user_tariff", on_delete=models.DO_NOTHING, default=1)
     tariff_owner = models.ForeignKey(Tariffs, related_name="page_tariff", on_delete=models.DO_NOTHING, blank=True,
@@ -253,6 +273,10 @@ class location_gambia(models.Model):
                                    blank=True,
                                    null=True,
                                    default=1)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+
+    class Meta:
+        ordering = ["-created_at"]
 
     def get_absolute_url(self):
         return reverse("tariff-detail", kwargs={"pk": self.pk})
