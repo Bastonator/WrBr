@@ -50,11 +50,10 @@
         display: grid;
         gap: 7px;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        margin: 3px;
       }
       .card{
          text-align: left;
-         margin-left: 5px;
-         margin-right: 5px;
          border-color: PapayaWhip;
          border-radius: 6px;
          transition: 0.4s;
@@ -254,7 +253,7 @@
 
 
 {% block content %}
-
+<br>
 {% if view_page %}
 <div class="container-fluid" style="width: 100%; height: 2px; margin-left: 1px; margin-right: 1px;">
 
@@ -304,6 +303,17 @@
                             <br>
                             <br>
                             <br>
+<!--{% if request.user.id == view_page.page.user.id %}
+  <div class="container">
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+          <div>
+              Please take note that if you don't create your delivery tariffs in <strong>2 days</strong>, one will be automatically created for you.
+              <strong>If you don't know the proper pricing you want for your tariff, don't create one.</strong>
+          </div>
+        </div>
+    </div>
+{% endif %}-->
     <br>
                             {% else %}
                               {% endif %}
@@ -337,6 +347,19 @@
                     Add Tariff
                 </button>
             </a>
+    {% endif %}
+    {% if view_page %}
+        {% if request.user.id == view_page.page.user.id %}
+          <div class="container">
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                  <div>
+                      Please take note that if you don't create your delivery tariffs in <strong>2 days</strong>, one will be automatically created for you.
+                      <strong>If you don't know the proper pricing you want for your tariff, don't create one.</strong>
+                  </div>
+                </div>
+            </div>
+        {% endif %}
     {% endif %}
     {% endif %}
 </div>
