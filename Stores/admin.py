@@ -35,7 +35,7 @@ class User_pageInline(admin.StackedInline):
 
 class UsercreatedpageAdmin(admin.ModelAdmin):
     model = Usercreatedpage
-    fields = ['page_name', 'page_description', 'theme_photo', 'location', 'user', 'business_name']
+    fields = ['id', 'page_name', 'page_description', 'theme_photo', 'location', 'user', 'business_name']
     inlines = [User_pageInline, Product_infoInline, Service_infoInline]
 
 
