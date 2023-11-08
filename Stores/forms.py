@@ -96,10 +96,11 @@ class OrderForm(forms.ModelForm):
 class PageForm(forms.ModelForm):
     class Meta:
         model = Usercreatedpage
-        fields = ('page_name', 'page_description', 'theme_photo', 'location', 'business_name', 'phone_number')
+        fields = ('id', 'page_name', 'page_description', 'theme_photo', 'location', 'business_name', 'phone_number')
         exclude = ['user']
 
         labels = {
+            'id': '',
             'page_name': '',
             'page_description': '',
             'theme_photo': '',
@@ -109,6 +110,7 @@ class PageForm(forms.ModelForm):
         }
 
         widgets = {
+            'id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Link name e.g. wrbr.xyz/storename. Note: make sure there are no spaces.'}),
             'page_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Page name'}),
             'page_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Tell us about this page'}),
             'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Where is the business located'}),

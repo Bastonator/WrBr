@@ -168,7 +168,7 @@ def orders(request):
 
 
 def user_page(request, pk=None):
-    view_page = User_Page.objects.get(page__id=pk)
+    view_page = User_Page.objects.get(page_id__id=pk)
     product_forpage = Product_info.objects.filter(page_owner_id=pk)
     service_forpage = Service_info.objects.filter(page_owner_id=pk)
     tariff_button = Tariff_query.objects.filter(tariff__page_owner__id=pk)

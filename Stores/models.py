@@ -24,8 +24,7 @@ post_save.connect(CreateUserProfile, sender=User)
 
 
 class Usercreatedpage(models.Model):
-    id = models.CharField(auto_created=False, verbose_name='ID', primary_key=True, max_length=155,
-                          default='to-be-named')
+    id = models.CharField(auto_created=False, verbose_name='ID', primary_key=True, max_length=155)
     page_name = models.CharField(max_length=255, unique=True)
     page_description = models.TextField(blank=True)
     theme_photo = models.ImageField(null=True, blank=True)
