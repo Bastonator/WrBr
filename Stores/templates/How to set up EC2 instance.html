@@ -1,0 +1,148 @@
+Step 3: Connect to your EC2 Instance
+Now that you have created and configured your EC2 instance, it’s time to connect to it. To connect to your instance, you will need to use an SSH client. If you are using a Mac or Linux machine, you can use the terminal. If you are using Windows, you can use PuTTY.
+
+Step 4: Installing python and Nginx
+Let’s update the server’s package index using the command below:
+
+sudo apt update
+sudo apt install python3-pip python3-dev nginx
+This will install python, pip, and Nginx server
+
+Step 5: Creating a python virtual environment
+sudo pip3 install virtualenv
+sudo apt install python3-virtualenv
+This will install a virtual environment package in python. Let’s create a project directory to host our Django application and create a virtual environment inside that directory.
+
+git clone https://github.com/rashiddaha/blogprojectdrf.git
+cd ~/blogprojectdrf
+
+then
+virtualenv env
+A virtual environment named env will be created. Let’s activate this virtual environment:
+
+source env/bin/activate
+pip install -r requirements.txt
+Step 6: Installing Django and gunicorn
+pip install django gunicorn
+This installs Django and gunicorn in our virtual environment
+
+Step 7: Setting up our Django project
+Add your IP address or domain to the ALLOWED_HOSTS variable in settings.py.
+
+If you have any migrations to run, perform the action:
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py collectstatic
+Import Thing about static files, You must make sure to add few lines in your seeting.py file.
+
+add this line “whitenoise.runserver_nostatic”, into your Installed_apps of setting file.
+add ‘whitenoise.middleware.WhiteNoiseMiddleware’, into MiddleWare of your setting File.
+Also, add these lines at the bottom of the blog/urls. py file.
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_URL)
+4. Also, add these imports lines at the top of the blog/urls. py file.
+
+from django.conf import settings # new
+from  django.conf.urls.static import static #new
+5. Run this command
+
+$ pip install whitenoise
+Step 8: Configuring gunicorn
+Deactivate the virtual environment by executing the command below:
+
+deactivate
+Let’s create a system socket file for gunicorn now:
+
+sudo vim /etc/systemd/system/gunicorn.socket
+Paste the contents below and save the file
+
+[Unit]
+Description=gunicorn socket
+
+[Socket]
+ListenStream=/run/gunicorn.sock
+
+[Install]
+WantedBy=sockets.target
+Next, we will create a service file for gunicorn
+
+sudo vim /etc/systemd/system/gunicorn.service
+Paste the contents below inside this file:
+
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/blogprojectdrf
+ExecStart=/home/ubuntu/blogprojectdrf/env/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/gunicorn.sock \
+          blog.wsgi:application
+[Install]
+WantedBy=multi-user.target
+Lets now start and enable the gunicorn socket
+
+sudo systemctl start gunicorn.socket
+sudo systemctl enable gunicorn.socket
+Before You create Nginx File.
+
+With this command, you can check if already a file exists.
+
+cd /etc/nginx/sites-enabled
+
+You can delete the existing default file using the command.
+
+sudo rm -f FileName
+Step 9: Configuring Nginx as a reverse proxy
+Create a configuration file for Nginx using the following command
+
+sudo vim /etc/nginx/sites-available/blog
+Paste the below contents inside the file created
+
+server {
+    listen 80 default_server;
+    server_name _;
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/ubuntu/blogprojectdrf;
+    }
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+}
+Activate the configuration using the following command:
+
+sudo ln -s /etc/nginx/sites-available/blog /etc/nginx/sites-enabled/
+Run this command to load a static file
+
+$ sudo gpasswd -a www-data username
+
+Restart nginx and allow the changes to take place.
+
+sudo systemctl restart nginx
+
+sudo service gunicorn restart
+
+sudo service nginx restart
+Additionally in case of errors
+
+To check error logs
+
+$ sudo tail -f /var/log/nginx/error.log
+
+to check nginx working fine
+
+$ sudo systemctl status nginx
+
+sudo fuser -k 8000/tcpsudo lsof -t -i tcp:8000 | xargs kill -9. # to kill termianl# https://amalgjose.com/2020/02/27/gunicorn-connection-in-use-0-0-0-0-8000/
+Done.

@@ -1,4 +1,4 @@
-{% extends 'WriberAccount.html' %}
+{% extends 'Dashboardtemplates/form-elements.html' %}
 
 
 <div class="container" xmlns="http://www.w3.org/1999/html">
@@ -6,14 +6,16 @@
 
 
 <br>
+    <br>
+<br>
 
-         <h3>Your Tariffs</h3>
+         <h3 style="color: coral;">Your Tariffs</h3>
 
-        <ul>
+        <!--<ul>
             <li style="display: inline;"><a href="{% url 'account-page' request.user.id %}"><button class="home-home-button">Home</button></a></li>
             <li style="display: inline;"><a href="{% url 'orders' %}"><button class="home-product">Orders</button></a></li>
             <li style="display: inline;"><a href="{% url 'dashboard-tariff' %}"><button class="home-product">Tariffs</button></a></li>
-        </ul>
+        </ul>-->
 
 
 
@@ -23,7 +25,7 @@
         {% for tariff in tariff_page %}
 
         <a style="text-decoration: none;" href="{{ tariff.get_absolute_url }}">
-            <h5>{{ tariff.name }}</h5>
+            <h3>{{ tariff.name }}</h3>
         </a>
 
         <a href="{% url 'modify-tariff' pk=tariff.pk %}">

@@ -1,15 +1,16 @@
-{% extends 'WriberAccount.html' %}
+{% extends 'Dashboardtemplates/form-elements.html' %}
 
-<div class="container">
 
 {% block content %}
     <br>
+    <br>
+<br>
+
 <center>
     <h3 align="left">Update Your Tariff</h3>
                  <form action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="container list-tariff" style="display: inline-block; float: left; width: 41%;
-            margin-left: 40px;">
+                        <div class="container list-tariff" style="display: inline-block; width: 35%;">
             <br>
 
             <h6>Abuko: D{{ form.abuko }}</h6>
@@ -84,8 +85,7 @@
 
 </div>
 
-<div class="container list-tariff" style="display: inline-block; float: left; width: 41%;
-            margin-left: 40px;">
+<div class="container list-tariff" style="display: inline-block; width: 35%;">
             <br>
             <h6>Lamin: D{{ form.lamin }}</h6>
 
@@ -163,11 +163,10 @@
 
                         <center>
                             <br>
-                            {{ form.tariff_owner }}
+                            For?: {{ form.tariff_owner }}
                             <br>
-                            {{ form.page_owner }}
+                            For?: {{ form.page_owner }}
                         </center>
-<hr>
                      <div align="right">
                         <input type="submit" value="Update" class="btn btn-outline-dark">
                      </div>
@@ -176,4 +175,3 @@
 
 
 {% endblock %}
-</div>

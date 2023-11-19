@@ -1,4 +1,4 @@
-{% extends 'WriberAccount.html' %}
+{% extends 'Dashboardtemplates/form-elements.html' %}
 
 
 <div class="container">
@@ -19,8 +19,7 @@
                               </div>
                             </div>
                         </div>
-<div class="container list-tariff" style="display: inline-block; float: left; width: 41%;
-            margin-left: 40px;">
+<div class="container list-tariff" style="display: inline-block; width: 35%;">
             <br>
 
             <h6>Abuko: D{{ form.abuko }}</h6>
@@ -95,8 +94,7 @@
 
 </div>
 
-<div class="container list-tariff" style="display: inline-block; float: left; width: 41%;
-            margin-left: 40px;">
+<div class="container list-tariff" style="display: inline-block; width: 35%;">
             <br>
             <h6>Lamin: D{{ form.lamin }}</h6>
 
@@ -178,7 +176,7 @@
                             <p> Which page should this locations be allocated to? Leave blank if you have no page. </p>
                             {{ form.page_owner }}
                         </center>
-<hr>
+
                         <div align="right">
                             <input type="submit" value="Add New Locations" class="btn btn-outline-dark">
                         </div>

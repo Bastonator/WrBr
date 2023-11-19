@@ -1,4 +1,4 @@
-{% extends 'WriberAccount.html' %}
+{% extends 'Dashboardtemplates/form-elements.html' %}
 
 
     <div class="container">
@@ -6,19 +6,22 @@
 
 
 <br>
+        <br>
+<br>
+
 
          <h3>Your Tariffs</h3>
 
-        <ul>
+        <!--<ul>
             <li style="display: inline;"><a href="{% url 'account-page' request.user.id %}"><button class="home-home-button">Home</button></a></li>
             <li style="display: inline;"><a href="{% url 'orders' %}"><button class="home-product">Orders</button></a></li>
             <li style="display: inline;"><a href="{% url 'dashboard-tariff' %}"><button class="home-product">Tariffs</button></a></li>
-        </ul>
+        </ul>-->
 
         {% if detail %}
             {% for location in detail %}
 
-        <div class="container list-tariff" style="display: inline-block; float: left; width: 41%;
+        <div class="container list-tariff" style="display: inline-block; float: left; width: 35%;
             margin-left: 40px;">
             <br>
 

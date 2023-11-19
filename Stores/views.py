@@ -145,26 +145,28 @@ def account_profile(request, pk=None):
     if request.user.is_authenticated:
         accountprofile = UserProfile.objects.get(user_id=pk)
         pages = Usercreatedpage.objects.filter(user_id=pk)
-        return render(request, 'WriberAccount.html', {'accountprofile': accountprofile, 'pages': pages})
+        products = Product_info.objects.filter(user_id=pk)[:100]
+        return render(request, 'Dashboardtemplates/index.html', {'accountprofile': accountprofile, 'pages': pages,
+                                                                 'products': products})
     else:
-        return render(request, 'WriberAccount.html', {})
+        return render(request, 'Dashboardtemplates/index.html', {})
 
 
 def account_page(request, pk=None):
     if request.user.is_authenticated:
         pages = Usercreatedpage.objects.filter(user_id=pk)
         orders = Order.objects.filter(created_by=request.user)
-        return render(request, 'WriberPages.html', {'pages': pages, 'orders': orders})
+        return render(request, 'Dashboardtemplates/form-elements.html', {'pages': pages, 'orders': orders})
     else:
-        return render(request, 'WriberPages.html', {})
+        return render(request, 'Dashboardtemplates/form-elements.html', {})
 
 
 def orders(request):
     if request.user.is_authenticated:
         orders = Order.objects.filter(created_by=request.user)
-        return render(request, 'Orders.html', {'orders': orders})
+        return render(request, 'Dashboardtemplates/buttons.html', {'orders': orders})
     else:
-        return render(request, 'Orders.html', {})
+        return render(request, 'Dashboardtemplates/buttons.html', {})
 
 
 def user_page(request, pk=None):
@@ -182,18 +184,18 @@ def page_dashboard(request, pk):
     if request.user.is_authenticated:
         product_page = Product_info.objects.filter(page_owner_id=pk)
         service_page = Service_info.objects.filter(page_owner_id=pk)
-        return render(request, 'DashBoardPage.html', {'product_page': product_page,
+        return render(request, 'Dashboardtemplates/productpagelist.html', {'product_page': product_page,
                                                       'service_page': service_page})
     else:
-        return render(request, 'DashoardPage.html', {})
+        return render(request, 'Dashboardtemplates/productpagelist.html', {})
 
 
 def perpage_product(request, pk):
     if request.user.is_authenticated:
         products = Product_info.objects.filter(user_id=pk)
-        return render(request, 'DashboardProduct.html', {'products': products})
+        return render(request, 'Dashboardtemplates/productlist.html', {'products': products})
     else:
-        return render(request, 'DashboardProduct.html', {})
+        return render(request, 'Dashboardtemplates/productlist.html', {})
 
 
 def addnew_page(request):
@@ -208,9 +210,9 @@ def addnew_page(request):
                 return redirect(page.get_absolute_url())
 
         else:
-            return render(request, 'WriberPageAdd.html', {'form': form})
+            return render(request, 'Dashboardtemplates/addpage.html', {'form': form})
     else:
-        return render(request, 'WriberPageAdd.html', {})
+        return render(request, 'Dashboardtemplates/addpage.html', {})
 
 
 def addnew_product(request):
@@ -226,9 +228,9 @@ def addnew_product(request):
                 return redirect(product.get_absolute_url())
         else:
             form.fields["page_owner"].queryset=Usercreatedpage.objects.filter(user=request.user)
-        return render(request, 'WriberProductsAdd.html', {'form': form})
+        return render(request, 'Dashboardtemplates/Addproduct.html', {'form': form})
     else:
-        return render(request, 'WriberProductsAdd.html', {})
+        return render(request, 'Dashboardtemplates/Addproduct.html', {})
 
 
 @login_required
@@ -293,7 +295,7 @@ def update_products(request, pk):
     if form.is_valid():
         form.save()
         return render(request, 'Updatedproductalert.html')
-    return render(request, 'WriberProductsUpdate.html', {'show_products': show_products, 'form': form})
+    return render(request, 'Dashboardtemplates/updateproduct.html', {'show_products': show_products, 'form': form})
 
 
 def update_services(request, pk):
@@ -311,7 +313,7 @@ def update_page(request, pk):
     if form.is_valid():
         form.save()
         return render(request, 'Updatedpagealert.html')
-    return render(request, 'WriberPageUpdate.html', {'view_page': view_page, 'form': form})
+    return render(request, 'Dashboardtemplates/updatedpage.html', {'view_page': view_page, 'form': form})
 
 
 def delete_wriber_products_ondash(request, pk):
@@ -436,17 +438,17 @@ def order_items(request, pk):
     if request.user.is_authenticated:
         order = Order.objects.get(id=pk)
         items = OrderItem.objects.filter(order=order)
-        return render(request, 'orderdetail.html', {'order': order, 'items': items})
+        return render(request, 'Dashboardtemplates/orderinfo.html', {'order': order, 'items': items})
     else:
-        return render(request, 'orderdetail.html', {})
+        return render(request, 'Dashboardtemplates/orderinfo.html', {})
 
 
 def order_history(request):
     if request.user.is_authenticated:
         order_items = OrderItem.objects.filter(product__user=request.user).order_by('-id')
-        return render(request, 'orderhistory.html', {'order_items': order_items})
+        return render(request, 'Dashboardtemplates/tables.html', {'order_items': order_items})
     else:
-        return render(request, 'orderhistory.html', {})
+        return render(request, 'Dashboardtemplates/tables.html', {})
 
 
 def view_locations(request, pk):
@@ -527,7 +529,7 @@ def update_location(request, pk):
     form.fields["tariff_owner"].queryset = Tariffs.objects.filter(user=request.user)
     if form.is_valid():
         form.save()
-        return render(request, 'Dashboardtariff.html')
+        return render(request, 'Dashboardtemplates/form-elements.html')
     return render(request, 'WriberTariffUpdate.html', {'locations': locations, 'form': form})
 
 
@@ -537,16 +539,16 @@ def update_tariff(request, pk):
     form.fields["page_owner"].queryset = Usercreatedpage.objects.filter(user=request.user)
     if form.is_valid():
         form.save()
-        return render(request, 'Dashboardtariff.html')
+        return render(request, 'Dashboardtemplates/form-elements.html')
     return render(request, 'WriberTarifflistupdate.html', {'tariffs': tariffs, 'form': form})
 
 
 def settings_dashboard(request, pk):
     if request.user.is_authenticated:
         accountprofile = UserProfile.objects.get(user_id=pk)
-        return render(request, 'Settings.html', {'accountprofile': accountprofile})
+        return render(request, 'Dashboardtemplates/settings.html', {'accountprofile': accountprofile})
     else:
-        return render(request, 'Settings.html', {})
+        return render(request, 'Dashboardtemplates/settings.html', {})
 
 
 def update_account_profile(request):
@@ -558,9 +560,9 @@ def update_account_profile(request):
             login(request, accountprofile)
             messages.success(request, ("Congratulations, your profile is updated"))
             return render(request, 'accountupdatedalert.html')
-        return render(request, 'WriberAccountUpdate.html', {'accountprofile': accountprofile, 'form': form})
+        return render(request, 'Dashboardtemplates/updateaccount.html', {'accountprofile': accountprofile, 'form': form})
     else:
-        return render(request, 'WriberAccountUpdate.html', {})
+        return render(request, 'Dashboardtemplates/updateaccount.html', {})
 
 
 # allow users to be able to view and see all there products on one page and allow them to be able to add products to the database without having a page
