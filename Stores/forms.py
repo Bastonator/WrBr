@@ -111,8 +111,8 @@ class PageForm(forms.ModelForm):
 
         widgets = {
             'id': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Link name e.g. wrbr.xyz/storename. Note: make sure there are no spaces.'}),
-            'page_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Page name'}),
-            'page_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Tell us about this page'}),
+            'page_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Store name'}),
+            'page_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Tell us about this store'}),
             'location': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Where is the business located'}),
             'business_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Business name'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone number.'}),
