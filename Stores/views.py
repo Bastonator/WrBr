@@ -319,7 +319,7 @@ def update_page(request, pk):
 def delete_wriber_products_ondash(request, pk):
     show_products = Product_info.objects.get(id=pk)
     show_products.delete()
-    return render(request, 'DashboardProduct.html')
+    return render(request, 'Dashboardtemplates/productlist.html')
 
 
 def delete_wriber_services(request, pk):
@@ -331,7 +331,7 @@ def delete_wriber_services(request, pk):
 def delete_wriber_products_onpagemanage(request, pk):
     show_products = Product_info.objects.get(id=pk)
     show_products.delete()
-    return render(request, 'DashBoardPage.html')
+    return render(request, 'Dashboardtemplates/index.html')
 
 
 def add_to_cart(request, pk):
