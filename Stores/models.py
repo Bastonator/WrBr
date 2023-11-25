@@ -65,12 +65,12 @@ post_save.connect(CreateUserPage, sender=Usercreatedpage)
 class Product_info(models.Model):
     product_name = models.CharField(max_length=255)
     product_price = models.FloatField()
-    stock_available = models.IntegerField()
+    stock_available = models.IntegerField(null=True, blank=True)
     image_url = models.ImageField(null=True, blank=True)
     image_url2 = models.ImageField(null=True, blank=True, default='no-photo.png')
     image_url3 = models.ImageField(null=True, blank=True, default='no-photo.png')
     image_url4 = models.ImageField(null=True, blank=True, default='no-photo.png')
-    product_description = models.TextField(null=True, max_length=2600)
+    product_description = models.TextField(null=True, max_length=2600, blank=True)
     user = models.ForeignKey(User, related_name="products", on_delete=models.DO_NOTHING, default=1)
     page_owner = models.ForeignKey(Usercreatedpage,
                                    related_name="Userproducts",

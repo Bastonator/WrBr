@@ -145,6 +145,19 @@
   <div class="row match-height">
     {% block content %}
 
+      <div class="col-xl-4 col-lg-6 col-md-12" style="margin-top: 11px">
+                    <div class="card h-100" style="width: 100%">
+
+                      <img style="width: 300px; height: 200px;" src="{% static 'images/istockphoto-1222013518-170667a.jpeg' %}" class="card-img-top" alt="Template Photo">
+                         <div class="card-body">
+
+                            <a href="{% url 'wriber-products-add' %}" class="btn btn-primary">
+                                Add new product
+                            </a>
+                         </div>
+                    </div>
+                </div>
+
 
         {% if product_page %}
             {% for product in product_page %}
@@ -176,18 +189,7 @@
             {% endfor %}
         {% endif %}
 
-            <div class="col-xl-4 col-lg-6 col-md-12" style="margin-top: 11px">
-                    <div class="card h-100" style="width: 100%">
 
-                      <img style="width: 300px; height: 200px;" src="{% static 'images/istockphoto-1222013518-170667a.jpeg' %}" class="card-img-top" alt="Template Photo">
-                         <div class="card-body">
-
-                            <a href="{% url 'wriber-products-add' %}" class="btn btn-primary">
-                                Add new product
-                            </a>
-                         </div>
-                    </div>
-                </div>
 
     </div>
 

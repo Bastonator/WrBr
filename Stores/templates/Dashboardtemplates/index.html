@@ -236,7 +236,7 @@
                         <!--<p class="card-text">Sweet roll marzipan pastry halvah. Cake bear claw sweet. Tootsie roll pie marshmallow lollipop chupa chups donut fruitcake
                             cake.Jelly beans sugar plum cheesecake cookie oatcake soufflé. Tart lollipop carrot cake sugar plum. Marshmallow
                             wafer tiramisu jelly beans.</p>-->
-                        <a style="text-decoration: none; color: coral;" href="{% url 'wriber-updatepages' pk=page.pk %}" class="card-link">Update Page</a>
+                        <a style="text-decoration: none; color: coral;" href="{% url 'wriber-updatepages' pk=page.pk %}" class="card-link">Update Store</a>
                     </div>
                 </div>
             </div>
@@ -271,6 +271,9 @@
                         <li data-target="#carousel-area" data-slide-to="1"></li>
                         <li data-target="#carousel-area" data-slide-to="2"></li>
                     </ol>
+                    <p style="margin: 8px;">
+                        Here you can add more products or make edits to your products.
+                    </p>
                     <!--<div class="carousel-inner" role="listbox">
                         {% if products %}
 
@@ -298,7 +301,12 @@
                         </a>
                 </div>
                 <div class="card-body">
-                    <a href="{% url 'wriber-products-add' %}" class="card-link" style="font-size: medium; color: coral;">Add New Product</a>
+                    <a href="{% url 'wriber-products-add' %}" class="card-link" style="font-size: medium; color: coral;">
+                        <button style="color: coral; background-color: white; border-radius: 19px; border-style; solid; border-color: coral; height: 40px;
+                                        width: 200px;">
+                        Add New Product
+                        </button>
+                    </a>
                     <a href="{% url 'dashboard-product' user.id %}" class="card-link" style="font-size: medium; color: coral;">View All Products</a>
                 </div>
             </div>

@@ -34,7 +34,7 @@ CSRF_TRUSTED_ORIGINS = ['https://*.wrbr.xyz']
 
 
 CART_SESSION_ID = 'cart'
-SESSION_COOKIE_AGE = 86400
+SESSION_COOKIE_AGE = 31536000
 
 LOGIN_URL = 'login-user'
 # Application definition
