@@ -1,0 +1,14 @@
+{% extends 'Dashboardtemplates/productlist.html' %}
+
+
+{% block content %}
+<br>
+    <br>
+<br>
+<br>
+
+    <h5> Your product has been deleted..
+    <a href="{% url 'dashboard-product' user.id %}">Check it out</a>
+   </h5>
+
+{% endblock %}

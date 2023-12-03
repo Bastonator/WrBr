@@ -331,7 +331,7 @@ def delete_wriber_services(request, pk):
 def delete_wriber_products_onpagemanage(request, pk):
     show_products = Product_info.objects.get(id=pk)
     show_products.delete()
-    return render(request, 'Dashboardtemplates/index.html')
+    return render(request, 'Updatedproductalert.html')
 
 
 def add_to_cart(request, pk):
