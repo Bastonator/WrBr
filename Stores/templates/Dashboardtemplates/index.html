@@ -203,7 +203,7 @@
 <!-- Statistics -->
 {% block content %}
 
-<div class="row match-height">
+<div class="row match-height" style="display: inline; margin-bottom: 50px;">
 
     <div class="col-xl-4 col-lg-12">
         {% if pages %}
@@ -232,11 +232,19 @@
                 <div class="card-content">
                     <div class="card-body">
                         <h4 class="card-title">Description:</h4>
-                        <p class="card-text">{{ page.page_description }} </p>
+                        <p class="card-text" style="color: black;">{{ page.page_description }} </p>
                         <!--<p class="card-text">Sweet roll marzipan pastry halvah. Cake bear claw sweet. Tootsie roll pie marshmallow lollipop chupa chups donut fruitcake
                             cake.Jelly beans sugar plum cheesecake cookie oatcake soufflé. Tart lollipop carrot cake sugar plum. Marshmallow
                             wafer tiramisu jelly beans.</p>-->
                         <a style="text-decoration: none; color: coral;" href="{% url 'wriber-updatepages' pk=page.pk %}" class="card-link">Update Store</a>
+                        <br>
+                        <Br>
+                        <a href="{% url 'wriber-page-add' %}" class="card-link" style="font-size: medium; color: coral;">
+                        <button style="color: coral; background-color: white; border-radius: 19px; border-style; solid; border-color: coral; height: 40px;
+                                        width: 200px;">
+                        Create a new store
+                        </button>
+                    </a>
                     </div>
                 </div>
             </div>
@@ -274,7 +282,7 @@
                         <li data-target="#carousel-area" data-slide-to="1"></li>
                         <li data-target="#carousel-area" data-slide-to="2"></li>
                     </ol>
-                    <p style="margin: 8px;">
+                    <p style="margin: 8px; color: black;">
                         Here you can add more products or make edits to your products.
                     </p>
                     <!--<div class="carousel-inner" role="listbox">
