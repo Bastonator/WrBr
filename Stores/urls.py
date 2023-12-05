@@ -67,6 +67,22 @@ urlpatterns = [
     path("chart/number/<int:year>/", views.get_order_number_chart, name="chart-order-number"),
     path("chart/sales/<int:year>/", views.get_order_sales_chart, name="chart-sales"),
     path("chart/spend-per-customer/<int:year>/", views.spend_per_customer_chart, name="chart-spend-per-customer"),
+    path('password_reset/',
+         auth_views.PasswordResetView.as_view(template_name="registration/password_reset_form.html"),
+         name='password_reset'),
+
+    path('password_reset/done/',
+         auth_views.PasswordResetDoneView.as_view(template_name="registration/password_reset_done.html"),
+         name='password_reset_done'),
+
+    path('reset/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(template_name="registration/password_reset_confirm.html"),
+         name='password_reset_confirm'),
+
+    path('reset/done/',
+         auth_views.PasswordResetCompleteView.as_view(template_name="registration/password_reset_complete.html"),
+         name='password_reset_complete'),
+
     #path('feedback', views.feedback_form, name="feedback" ),
 
     #path('reset_password', auth_views.PasswordResetView.as_view(), name="reset_password"),
