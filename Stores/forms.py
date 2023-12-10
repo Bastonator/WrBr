@@ -118,6 +118,12 @@ class PageForm(forms.ModelForm):
             'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone number.'}),
         }
 
+    def __init__(self, *args, **kwargs):
+        super(PageForm, self).__init__(*args, **kwargs)
+
+        self.fields['theme_photo'].widget = forms.FileInput(
+            attrs={'class': 'form-control', 'placeholder': 'Put image here'})
+
 
 class Product_infoForm(forms.ModelForm):
     class Meta:
@@ -144,6 +150,18 @@ class Product_infoForm(forms.ModelForm):
             'page_owner': forms.Select(attrs={'class': 'form-select', 'placeholder': 'This belongs on which page'}),
             'product_description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Description'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(Product_infoForm, self).__init__(*args, **kwargs)
+
+        self.fields['image_url'].widget = forms.FileInput(
+            attrs={'class': 'form-control', 'placeholder': 'Put image here'})
+        self.fields['image_url2'].widget = forms.FileInput(
+            attrs={'class': 'form-control', 'placeholder': 'Put image here'})
+        self.fields['image_url3'].widget = forms.FileInput(
+            attrs={'class': 'form-control', 'placeholder': 'Put image here'})
+        self.fields['image_url4'].widget = forms.FileInput(
+            attrs={'class': 'form-control', 'placeholder': 'Put image here'})
 
 
 class Service_infoForm(ModelForm):

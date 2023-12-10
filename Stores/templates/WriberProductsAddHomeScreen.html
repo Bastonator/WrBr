@@ -35,16 +35,8 @@
                 <br>
                 {{form.stock_available}}
                 <br>
-                <div align="left">
-                    <div class="container">
-                            <div class="alert alert-primary d-flex align-items-center" role="alert">
-                              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-                              <div>
-                                    Add different pics showing different angles of the product.
-                              </div>
-                            </div>
-                    </div>
-                </div> 
+                <div class="container-fluid" style="display: inline;">
+                  <h5 style="color: maroon; font-family: courier new;">Add your product images here:</h5>
                 {{form.image_url}}
                 <br>
                 {{form.image_url2}}
@@ -52,7 +44,17 @@
                 {{form.image_url3}}
                 <br>
                 {{form.image_url4}}
-                <br>
+                </div>
+                <div align="left">
+                  <div class="container">
+                          <div class="alert alert-primary d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                            <div>
+                                  Add different pics showing different angles of the product.
+                            </div>
+                          </div>
+                  </div>
+                </div>
                     <br>
                 {{form.product_description}}
                 <br>

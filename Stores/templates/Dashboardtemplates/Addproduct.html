@@ -10,6 +10,7 @@
     <meta name="author" content="ThemeSelect">
     <title>Wriber-Add product</title>
     <link rel="apple-touch-icon" href="{% static 'WriberDashboard/theme-assets/images/ico/apple-icon-120.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'WriberDashboard/theme-assets/images/ico/favicon.ico' %}">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
@@ -177,16 +178,8 @@
                 <br>
                 {{form.stock_available}}
                 <br>
-                <div align="left">
-                    <div class="container">
-                            <div class="alert alert-primary d-flex align-items-center" role="alert">
-                              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-                              <div>
-                                    Add different pics showing different angles of the product.
-                              </div>
-                            </div>
-                    </div>
-                </div> 
+                <div class="container-fluid" style="display: inline;">
+                  <h5 style="color: maroon; font-family: courier new;">Add your product images here:</h5>
                 {{form.image_url}}
                 <br>
                 {{form.image_url2}}
@@ -194,7 +187,17 @@
                 {{form.image_url3}}
                 <br>
                 {{form.image_url4}}
-                <br>
+                </div>
+                <div align="left">
+                  <div class="container">
+                          <div class="alert alert-primary d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+                            <div>
+                                  Add different pics showing different angles of the product.
+                            </div>
+                          </div>
+                  </div>
+                </div>
                     <br>
                 {{form.product_description}}
                 <br>

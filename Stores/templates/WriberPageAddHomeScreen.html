@@ -23,7 +23,24 @@
                         {% csrf_token %}
 <center>
                         <br>
-                        {{ form.as_p }}
+                        {{ form.id }}
+                        <br>
+                        {{ form.page_name }}
+                        <br>
+                        {{ form.page_description }}
+
+                        <div class="container-fluid" style="display: inline;">
+                        <h5 style="color: blue; font-family: courier new;">Add your business logo here:</h5> {{ form.theme_photo }}
+                        </div>
+                        <div class="container-fluid" style="margin-top: -18px;">
+                        <hr style="color: coral;">
+                        </div>
+                        {{ form.location }}
+                        <br>
+                        {{ form.business_name }}
+                        <br>
+                        {{ form.phone_number }}
+                        <br>
                 <div class="alert alert-danger d-flex align-items-center" role="alert">
                   <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                   <div>
