@@ -146,7 +146,7 @@
         display: grid;
         grid-template-columns: repeat(10, minmax(235px, 1fr));
         overflow-x: auto;
-        border-radius: 3px;
+        border-radius: 1px;
         margin-left: 3px;
         margin-right: 3px;
         justify-content: space-between;
@@ -327,16 +327,16 @@
         <a href="{{ new_product.get_absolute_url }}">
                 {% if new_product.image_url %}
                 <img src="{{ new_product.image_url.url }}" class="card-img-top" alt="{{ new_product.product_name }}"
-                height="225px;" style="border-radius: 3px;">
+                height="225px;" style="border-radius: 1px;">
                 {% elif new_product.image_url2 %}
                 <img src="{{ new_product.image_url2.url }}" class="card-img-top" alt="{{ new_product.product_name }}"
-                height="225px;" style="border-radius: 3px;">
+                height="225px;" style="border-radius: 1px;">
                 {% elif new_product.image_url3 %}
                 <img src="{{ new_product.image_url3.url }}" class="card-img-top" alt="{{ new_product.product_name }}"
-                height="225px;" style="border-radius: 3px;">
+                height="225px;" style="border-radius: 1px;">
                 {% elif new_product.image_url4 %}
                 <img src="{{ new_product.image_url4.url }}" class="card-img-top" alt="{{ new_product.product_name }}"
-                height="225px;" style="border-radius: 3px;">
+                height="225px;" style="border-radius: 1px;">
                 {% endif %}
                 <div class="card-body">
                     <div style="margin-bottom: -25px;">
