@@ -407,10 +407,13 @@ def checkout(request):
 
                     items = OrderItem.objects.filter(order=order)
 
-                    item_user = OrderItem.objects.get(order=order)
+                    item_user = OrderItem.objects.filter(order=order)
 
-                    user_email = item_user.product.user.email
+                    if item_user:
+                        for user in item_user:
+                            email = user.product.user.email
 
+                    user_email = email
                     subject = "An order was made!!!"
                     from_email = settings.EMAIL_HOST_USER
                     to_email = [settings.EMAIL_RECIEVER, user_email]
