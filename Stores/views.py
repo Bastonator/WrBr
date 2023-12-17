@@ -163,7 +163,7 @@ def account_page(request, pk=None):
 
 def orders(request):
     if request.user.is_authenticated:
-        orders = Order.objects.filter(created_by=request.user)
+        orders = Order.objects.filter(created_by=request.user).order_by('-id')
         return render(request, 'Dashboardtemplates/buttons.html', {'orders': orders})
     else:
         return render(request, 'Dashboardtemplates/buttons.html', {})
@@ -416,7 +416,7 @@ def checkout(request):
                     user_email = email
                     subject = "An order was made!!!"
                     from_email = settings.EMAIL_HOST_USER
-                    to_email = [settings.EMAIL_RECIEVER, user_email]
+                    to_email = [settings.EMAIL_RECIEVER, settings.EMAIL_RECIEVER_ALEX, settings.EMAIL_RECIEVER_EMEKA, user_email]
                     stuff = settings.BASE_DIR
                     fullpath = stuff.joinpath("Stores/templates/order_info_email.html")
                     fullpath = stuff / ("Stores/templates/order_info_email.html")

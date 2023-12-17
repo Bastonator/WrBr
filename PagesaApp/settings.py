@@ -154,6 +154,8 @@ EMAIL_HOST_PASSWORD = 'bymfvhtmjxbwilij'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_RECIEVER = 'nwosuedward6@gmail.com'
+EMAIL_RECIEVER_ALEX = 'chinonsoalexjr@gmail.com'
+EMAIL_RECIEVER_EMEKA = 'krypticagha@gmail.com'
 
 
 #s3 Buckets configs
