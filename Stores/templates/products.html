@@ -4,8 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Wriber</title>
+    {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <!-- Google tag (gtag.js) -->
+    <link rel="stylesheet" type="text/css" href="{% static 'Templates/css/main.css'%}">
+      <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BET5CFDC3Z"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -115,7 +117,7 @@
         color: white;
       }
       .upload-button{
-        width: 300px;
+        width: 280px;
         height: 55px;
         color: maroon;
         background-color: white;
@@ -175,12 +177,12 @@
         display: grid;
         gap: 7px;
         grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-        margin: 3px;
+        margin: 2px;
       }
       .card{
          text-align: left;
          border-color: PapayaWhip;
-         border-radius: 3px;
+         border-radius: 1px;
          transition: 0.4s;
       }
     .card-add{
@@ -267,7 +269,7 @@
 
 
   <div class="nav-signup" style="display: flex;">
-               <a style="text-decoration: none;" href="{% url 'cart-view' %}">
+               <a style="text-decoration: none; color: blue;" href="{% url 'cart-view' %}">
                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
                    </svg>
@@ -275,8 +277,8 @@
                </a>
           {% if user.is_authenticated %}
                 <a style="margin-left: 16px; text-decoration: none;" href="{% url 'wriber-page' request.user.id %}">
-                    <button style="border: none; border-radius: 20px; background-color: maroon; color: white; border-style: solid;
-                                    padding: 10px 10px;">
+                    <button style="border: none; border-radius: 15px; background-color: coral; color: white; border-style: solid;
+                                    padding: 10px 10px; font-size: 16px;">
                         Profile
                     </button>
                 </a>
@@ -367,16 +369,16 @@
         <a href="{{ all_product.get_absolute_url }}">
                 {% if all_product.image_url %}
                 <img src="{{ all_product.image_url.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="246px;" style="border-radius: 3px;">
+                height="246px;" style="border-radius: 1px;">
                 {% elif all_product.image_url2 %}
                 <img src="{{ all_product.image_url2.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="246px;" style="border-radius: 3px;">
+                height="246px;" style="border-radius: 1px;">
                 {% elif all_product.image_url3 %}
                 <img src="{{ all_product.image_url3.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="246px;" style="border-radius: 3px;">
+                height="246px;" style="border-radius: 1px;">
                 {% elif all_product.image_url4 %}
                 <img src="{{ all_product.image_url4.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
-                height="246px;" style="border-radius: 3px;">
+                height="246px;" style="border-radius: 1px;">
                 {% endif %}
                 <div class="card-body">
                     <div style="margin-bottom: -25px;">
@@ -397,9 +399,9 @@
                         </button>
                     </a>-->
                     <hr>
-                    <div style="background-color: White; display: flex; margin-bottom: -10px;">
+                    <div style="background-color: White; display: flex; margin-bottom: -8px;">
                         From&nbsp; &nbsp;<a style="text-decoration: none;" href="{{ all_product.page_owner.get_absolute_url }}">
-                            <p>
+                            <p style="color: blue;">
                             {{ all_product.page_owner }}
                             </p>
                         </a>

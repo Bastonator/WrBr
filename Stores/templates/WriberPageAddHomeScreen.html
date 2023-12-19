@@ -24,7 +24,9 @@
 <center>
                         <br>
                         {{ form.id }}
-                        <br>
+    <div style="margin-bottom: -9px; margin-left: 10px;" align="left">
+                    <p style="color: black;">For example; wrbr.xyz/storename</p>
+    </div>
                         {{ form.page_name }}
                         <br>
                         {{ form.page_description }}
@@ -57,12 +59,17 @@
                               </div>
                             </div>
                 </div>
-                     <div align="right">
-                        <input type="submit" value="Create Page" class="btn btn-outline-dark">
+                     <div class="container-login100-form-btn" align="right">
+						<button class="login100-form-btn" style="width: 220px;">
+                        <input type="submit" value="Create Page" class="btn">
+                        </button>
+                     </div>
                      </div>
                 </form>
+        <br>
  </div>
     </div>
+<br>
 </center>
 {% endblock %}
 </div>

@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Wriber</title>
+    {% load static %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'Templates/css/main.css'%}">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-BET5CFDC3Z"></script>
     <script>
@@ -27,7 +29,7 @@
           background-color: white;
           color: coral;
           border-radius: 29px;
-          border-width: 1px;
+          border-width: 3px;
           height: 41px;
           border-color: coral;
           width: 280px;
@@ -127,6 +129,17 @@
   </style>
   </head>
   <body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </symbol>
+      <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+      </symbol>
+      <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+      </symbol>
+    </svg>
   <br>
 {% load static %}
 {% include 'searchbarforproducts.html' %}
@@ -163,8 +176,8 @@
                </a>
           {% if user.is_authenticated %}
                 <a style="margin-left: 16px; text-decoration: none;" href="{% url 'wriber-page' request.user.id %}">
-                    <button style="border: none; border-radius: 20px; background-color: maroon; color: white; border-style: solid;
-                                    padding: 10px 10px;">
+                    <button style="border: none; border-radius: 15px; background-color: coral; color: white; border-style: solid;
+                                    padding: 10px 10px; font-size: 16px;">
                         Profile
                     </button>
                 </a>
@@ -186,39 +199,38 @@
 
 </div>
 
-<div class="container">
 {% block content %}
 
      {% if view_products %}
       
 
-<div class="small-container single-product" style="width: 100%; margin: auto; text-align: center;">
-    <div class="row">
+<div class="small-container single-product" style="width: 100%; margin: auto; text-align: left;" align="center">
+    <div class="row" style="inline-block;">
         <div class="col-2" style="width: 378px;">
             {% if view_products.image_url %}
             <img src="{{ view_products.image_url.url }}" alt="{{ view_products.product_name }}" width="100%" id="ProductImg" style="border-radius: 10px;">
             {% endif %}
             <br>
             <br>
-            <div class="small-img-row">
+            <div class="small-img-row" style="margin-top: 20px;">
                 <div class="small-img-col">
                     {% if view_products.image_url %}
-                    <img src="{{ view_products.image_url.url }}" width="100%" class="small-img" style="border-radius: 3px;">
+                    <img src="{{ view_products.image_url.url }}" width="100%" class="small-img" style="border-radius: 1px;">
                     {% endif %}
                 </div>
                 <div class="small-img-col">
                     {% if view_products.image_url2 %}
-                    <img src="{{ view_products.image_url2.url }}" width="100%" class="small-img" style="border-radius: 3px;">
+                    <img src="{{ view_products.image_url2.url }}" width="100%" class="small-img" style="border-radius: 1px;">
                     {% endif %}
                 </div>
                 <div class="small-img-col">
                     {% if view_products.image_url3 %}
-                    <img src="{{ view_products.image_url3.url }}" width="100%" class="small-img" style="border-radius: 3px;">
+                    <img src="{{ view_products.image_url3.url }}" width="100%" class="small-img" style="border-radius: 1px;">
                     {% endif %}
                 </div>
                 <div class="small-img-col">
                     {% if view_products.image_url4 %}
-                    <img src="{{ view_products.image_url4.url }}" width="100%" class="small-img" style="border-radius: 3px;">
+                    <img src="{{ view_products.image_url4.url }}" width="100%" class="small-img" style="border-radius: 1px;">
                     {% endif %}
                 </div>
             </div>
@@ -231,11 +243,14 @@
                         {{ view_products.page_owner.page_name }}
                     </a>
             </h7>
-            <br>
             <h3 style="font-family: verdana"><strong>D{{ view_products.product_price }}</strong></h3>
-            <br>
+            <div class="alert alert-success" style="border-width: 3px; height: 50px; width: 270px;" role="alert">
+                <strong>
+                    <strong style="color: olive; font-family: modak;">Availability:</strong> {{ view_products.stock_available }} In Stock
+                </strong>
+            </div>
             <a href="{% url 'add-to-cart' pk=view_products.pk %}">
-                <button class="buy-button">
+                <button class="buy-button" style="font-size: 19px;">
                     Add To Cart
                 </button>
             </a>
@@ -259,7 +274,6 @@
      {% endif %}
 
 {% endblock %}
-</div>
 
 
   <script type="text/javascript">

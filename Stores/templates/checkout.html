@@ -36,16 +36,21 @@
         <center>
 
             {% csrf_token %}
+            <div class="container-fluid" style="margin-bottom: 10px;" >
             {{ form.first_name }}
-            <br>
+            </div>
+            <div class="container-fluid" style="margin-bottom: 10px;">
             {{ form.last_name }}
-<br>
+            </div>
+            <div class="container-fluid" style="margin-bottom: 10px;">
                         {{ form.address }}
-            <br>
+            </div>
+            <div class="container-fluid" style="margin-bottom: 10px;">
                         {{ form.city }}
-<br>
+            </div>
+            <div class="container-fluid" style="margin-bottom: 10px;">
                         {{ form.message }}
-            <br>
+            </div>
 
             <div style="display: inline-block;">
                         	<strong>+220</strong> : {{form.phone_number}}
@@ -65,7 +70,9 @@
                           Total
                       </td>
                       <td>
+                          <strong style="font-size: 25px; color: coral;">
                           D{{ cart.get_total_cost }}
+                          </strong>
                       </td>
                   </tr>
               </table>
@@ -82,11 +89,17 @@
             <h6 style="color: midnightblue;">
                 Payment is made on delivery.
             </h6>
-            <input type="submit" value="Place Order" class="btn btn-outline-danger">
+            <div class="container-login100-form-btn">
+						<button class="login100-form-btn" style="width: 300px;">
+            <input type="submit" value="Place Order" class="btn" style="color: white;">
+                        </button>
+            </div>
+            <br>
 
         </center>
 
     </form>
+    <br>
 </div>
 </div>
     </center>
