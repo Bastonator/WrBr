@@ -56,8 +56,8 @@
       }
       .card{
          text-align: left;
-         border-color: PapayaWhip;
-         border-radius: 6px;
+         border-color: gray;
+         border-radius: 1px;
          transition: 0.4s;
       }
       .card:hover{
@@ -134,7 +134,7 @@
          margin-left: 0px;
          margin-right: 0px;
          border-color: PapayaWhip;
-         border-radius: 6px;
+         border-radius: 1px;
          transition: 0.4s;
       }
         .page{
@@ -302,6 +302,8 @@
                             <br>
                             <br>
 <br>
+  <br><br>
+  <br>
                             <br>
                             <br>
                             <br>
@@ -395,9 +397,9 @@
         {% for view in product_forpage %}
 
 
-              <div class="card">
+              <div class="card" style="border-radius: 1px;">
                   <a style="text-decoration: none;" href="{{ view.get_absolute_url }}">
-                    <img src="{{ view.image_url.url }}" class="card-img-top" alt="{{ view.product_name }}" height="242px;">
+                    <img src="{{ view.image_url.url }}" class="card-img-top" alt="{{ view.product_name }}" height="242px;" style="border-radius: 1px;">
                   <div class="card-body">
                     <p style="color: coral; font-family: quicksand; font-size: 18px; margin-bottom: -2px;" class="card-title">
                         <strong>{{ view.product_name }}

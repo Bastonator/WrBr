@@ -208,7 +208,7 @@
     <div class="row" style="inline-block;">
         <div class="col-2" style="width: 378px;">
             {% if view_products.image_url %}
-            <img src="{{ view_products.image_url.url }}" alt="{{ view_products.product_name }}" width="100%" id="ProductImg" style="border-radius: 10px;">
+            <img src="{{ view_products.image_url.url }}" alt="{{ view_products.product_name }}" width="100%" id="ProductImg" style="border-radius: 2px;">
             {% endif %}
             <br>
             <br>
@@ -235,7 +235,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-2" style="width: 380px; margin-left: 38px; margin-right: 25px;">
+        <div class="col-2" style="width: 380px; margin-left: 42px; margin-right: 25px;">
             <p>Home / {{ view_products.product_name }}</p>
             <h4>{{ view_products.product_name }}</h4><p><small>by {{ view_products.user.username }}</small></p>
             <h7>
@@ -244,7 +244,7 @@
                     </a>
             </h7>
             <h3 style="font-family: verdana"><strong>D{{ view_products.product_price }}</strong></h3>
-            <div class="alert alert-success" style="border-width: 3px; height: 50px; width: 270px;" role="alert">
+            <div class="alert alert-success" style="border-width: 3px; height: 56px; width: 270px;" role="alert">
                 <strong>
                     <strong style="color: olive; font-family: modak;">Availability:</strong> {{ view_products.stock_available }} In Stock
                 </strong>
