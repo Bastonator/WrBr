@@ -235,7 +235,9 @@
 
 {% load static %}
 
-    <a class="Wriber" href="{% url 'home' %}">
+  {% include 'searchbarforproducts.html' %}
+
+    <!--<a class="Wriber" href="{% url 'home' %}">
       <img src="{% static 'images/Wriber.png' %}">
     </a>
     <div class="container" style="width: 100%">
@@ -244,7 +246,7 @@
       <input class="form-control me-2" style="border-radius: 18px;" type="text" placeholder="Search"  name="p">
       <button class="search-button" type="submit">Search</button>
     </form>
-    </div>
+    </div>-->
 
 <div class="container-fluid">
 <hr>
