@@ -50,6 +50,7 @@
        }
        .single-product .col-2{
           padding: 20px 0;
+          width: 25%;
        }
        .single-product  h6{
           margin: 20px 0;
@@ -115,8 +116,16 @@
         .for-cart{
              margin-left: 16%;
              display: inline-block;
-
         }
+        .single-product .row{
+          text-align: left;
+          flex-direction: column;
+          margin-right: 0px;
+       }
+       .single-product .col-2{
+          padding: 20px 0;
+          width: 90%;
+       }
       }
       @media only screen and (max-height:945px) {
         .nav-signup{
@@ -205,12 +214,11 @@
       
 
 <div class="small-container single-product" style="width: 100%; margin: auto; text-align: left;" align="center">
-    <div class="row" style="inline-block;">
-        <div class="col-2" style="width: 378px;">
+    <div class="row" style="margin-left: 0px; margin-right: 0px;">
+        <div class="col-2">
             {% if view_products.image_url %}
-            <img src="{{ view_products.image_url.url }}" alt="{{ view_products.product_name }}" width="100%" id="ProductImg" style="border-radius: 2px;">
+            <img src="{{ view_products.image_url.url }}" alt="{{ view_products.product_name }}" width="100%;" id="ProductImg" style="border-radius: 2px;">
             {% endif %}
-            <br>
             <br>
             <div class="small-img-row" style="margin-top: 20px;">
                 <div class="small-img-col">

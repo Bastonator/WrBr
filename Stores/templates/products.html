@@ -72,11 +72,11 @@
         grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
         margin: 3px;
       }
-      .card{
+      .product-card{
          text-align: left;
-         border-color: PapayaWhip;
-         border-radius: 3px;
-         transition: 0.4s;
+         border-color: gray;
+         border-radius: 1px;
+         border-width: 2px;
       }
       .card:hover{
          opacity: 0.9s;
@@ -179,10 +179,10 @@
         grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
         margin: 2px;
       }
-      .card{
+      .product-card{
          text-align: left;
-         border-color: PapayaWhip;
-         border-radius: 1px;
+         border-color: gray;
+         border-radius: 0px;
          transition: 0.4s;
       }
     .card-add{
@@ -367,7 +367,7 @@
 <section class="basic-grid">
     {% if all_products %}
       {% for all_product in all_products %}
-    <div class="card">
+    <div class="card" style="border-radius: 1px; transition: 0.5s;">
         <a href="{{ all_product.get_absolute_url }}">
                 {% if all_product.image_url %}
                 <img src="{{ all_product.image_url.url }}" class="card-img-top" alt="{{ all_product.product_name }}"
