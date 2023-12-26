@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Product_info, Service_info, Usercreatedpage, Order, location_gambia, Tariffs #, feedback
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordResetForm, SetPasswordForm
 from django.contrib.auth.models import User
 
 
@@ -187,31 +187,79 @@ class Service_infoForm(ModelForm):
 
 
 class SignupForm(UserCreationForm):
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Email'}))
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name'}))
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name'}))
-    phone_number = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Phone Number'}))
+    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Email'}))
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'First Name'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Last Name'}))
+    phone_number = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control mb-3', 'placeholder': 'Phone Number'}))
 
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username', 'email', 'password1', 'password2', 'phone_number')
 
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError(
+                'Sorry, it seems this username already exists'
+            )
+        return username
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError(
+                'Please use another email, this one is already taken'
+            )
+        return email
+
+    def clean_password2(self):
+        cd = self.cleaned_data
+        if cd['password1'] != cd['password2']:
+            raise forms.ValidationError("Sorry, the passwords don't match")
+        return cd['password1']
 
     def __init__(self, *args, **kwargs):
         super(SignupForm, self). __init__(*args, **kwargs)
 
-        self.fields['username'].widget.attrs['class'] = 'form-control'
+        self.fields['username'].widget.attrs['class'] = 'form-control mb-3'
         self.fields['username'].widget.attrs['placeholder'] = 'Username'
         self.fields['username'].label = ''
 
-        self.fields['password1'].widget.attrs['class'] = 'form-control'
+        self.fields['password1'].widget.attrs['class'] = 'form-control mb-3'
         self.fields['password1'].widget.attrs['placeholder'] = 'Password'
         self.fields['password1'].label = ''
 
-        self.fields['password2'].widget.attrs['class'] = 'form-control'
+        self.fields['password2'].widget.attrs['class'] = 'form-control mb-3'
         self.fields['password2'].widget.attrs['placeholder'] = 'Password Confirmation'
         self.fields['password2'].label = ''
 
 
+class PwdResetForm(PasswordResetForm):
+    email = forms.EmailField(max_length=255, widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Email'}))
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        e = User.objects.filter(email=email)
+        if not e:
+            raise forms.ValidationError(
+                "Sorry there is an error, try again"
+            )
+        return email
+
+
+class PwdResetConfirmForm(SetPasswordForm):
+    new_password1 = forms.CharField(
+        label='New password', widget=forms.PasswordInput(
+            attrs={'class': 'form-control', 'placeholder': 'New password'}))
+    new_password2 = forms.CharField(
+        label='New password', widget=forms.PasswordInput(
+            attrs={'class': 'form-control', 'placeholder': 'New password'}))
+
+    def clean_new_password2(self):
+        cnd = self.cleaned_data
+        if cnd['new_password1'] != cnd['new_password2']:
+            raise forms.ValidationError("Sorry, the passwords you entered don't match")
+        return cnd['new_password1']
 
 

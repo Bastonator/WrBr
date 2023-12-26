@@ -1,3 +1,13 @@
+{% if form.errors %}
+    <br>
+<div class="container">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>Incorrect Password!</strong> Make sure your password is completely different from your username.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+</div>
+
+{% endif %}
 <table class="table">
   <thead>
     <tr>
