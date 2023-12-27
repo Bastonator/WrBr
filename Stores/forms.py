@@ -218,6 +218,14 @@ class SignupForm(UserCreationForm):
             raise forms.ValidationError("Sorry, the passwords don't match")
         return cd['password1']
 
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data['phone_number']
+        if User.objects.filter(id=phone_number).exists():
+            raise forms.ValidationError(
+                "Sorry this number is already in use, try another one"
+            )
+        return phone_number
+
     def __init__(self, *args, **kwargs):
         super(SignupForm, self). __init__(*args, **kwargs)
 

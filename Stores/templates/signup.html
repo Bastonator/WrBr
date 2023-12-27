@@ -109,6 +109,11 @@
                         	<strong>+220</strong> : {{form.phone_number}}
                     	</div>
 					</div>
+					{% for error in form.phone_number.errors %}
+						<p style="color: red;">
+							{{ error }}
+						</p>
+					{% endfor %}
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Create Account
